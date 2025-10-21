@@ -16,6 +16,8 @@ import {
   Cloud,
   Sparkles,
   Globe,
+  Cog,
+  Blocks,
 } from "lucide-react";
 
 const Section = ({
@@ -269,6 +271,10 @@ export default function Page() {
               points: [
                 "Automated back-office operations using Azure and Python",
                 "Created real-time conversational AI bots leveraging OpenAI, ElevenLabs, and Unity.",
+                "Worked directly with Metality Lab leadership to prioritize roadmaps and ship on schedule.",
+                "Converted a large-scale project from WebGL and WebXR to Android. ",
+                "Owned Android/Quest delivery: APK/OBB packaging, SideQuest distribution, and tester sideloading flows.",
+                "Implemented UI/UX and scene orchestration for inteliMuseum edutainment modules.",
               ],
             },
             {
@@ -280,6 +286,16 @@ export default function Page() {
                 "Created a recursive C# algorithm generating 1,000+ hours of adaptive learning content.",
                 "Delivered user-centric interfaces, economy systems, and analytics pipelines for live Quest titles.",
                 "Deployed secure APIs on Azure for dynamic content delivery.",
+              ],
+            },
+            {
+              company: "Dualmind",
+              role: "Software Engineer",
+              period: "2018",
+              points: [
+                "Developed and maintained web applications using Python, SQL, and Django.",
+                "Worked on a team of 3 to build a teaching aid web application.",
+                "The application was a web-based system dsigned to assist teachers in grading and understanding student performance.",
               ],
             },
           ].map((e) => (
@@ -302,24 +318,75 @@ export default function Page() {
       </Section>
 
       {/* Skills */}
-      <Section id="skills" className="py-16">
+      <Section id="skills" className="py-1">
         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Skills</h2>
         <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {[
             { icon: <Code2 className="h-4 w-4" />, label: "Full-Stack Development" },
-            { icon: <Code2 className="h-4 w-4" />, label: "Cloud Architecture" },
-            { icon: <Code2 className="h-4 w-4" />, label: "Secure Automation" },
-            { icon: <Code2 className="h-4 w-4" />, label: "AI Integration" },
-            { icon: <Code2 className="h-4 w-4" />, label: "TypeScript" },
-            { icon: <Code2 className="h-4 w-4" />, label: "React/Next.js" },
-            { icon: <Cloud className="h-4 w-4" />, label: "AWS (Amplify/CDK)" },
-            { icon: <Cpu className="h-4 w-4" />, label: "Python (AI/ETL)" },
+            { icon: <Cloud className="h-4 w-4" />, label: "Cloud Architecture" },
+            { icon: <Cog className="h-4 w-4" />, label: "Secure Automation" },
+            { icon: <Cpu className="h-4 w-4" />, label: "AI Integration" },
             { icon: <ShieldCheck className="h-4 w-4" />, label: "Security & Compliance" },
-            { icon: <Globe className="h-4 w-4" />, label: "Unity/VR (C#)" },
           ].map((s, i) => (
             <Card key={i} className="flex items-center gap-2 py-3">
               {s.icon}
               <span className="opacity-80">{s.label}</span>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      {/* Skills */}
+      <Section id="skills" className="py-1">
+        {/*<h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Skills</h2>*/}
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            {
+              icon: <Code2 className="h-4 w-4" />,
+              title: "Languages",
+              items: ["Python", "C#", "TypeScript", "JavaScript", "HTML/CSS"],
+            },
+            {
+              icon: <Blocks className="h-4 w-4" />,
+              title: "Frameworks",
+              items: ["Next.js", "React", "FastAPI", "Unity"],
+            },
+            {
+              icon: <Cloud className="h-4 w-4" />,
+              title: "Cloud & DevOps",
+              items: ["AWS Amplify", "AWS CDK", "Lambda", "DynamoDB", "S3", "Azure"],
+            },
+            {
+              icon: <Sparkles className="h-4 w-4" />,
+              title: "AI & Data",
+              items: ["OpenAI", "LLMs", "Pandas", "NumPy", "ElevenLabs", "TTS/STT"],
+            },
+            {
+              icon: <ShieldCheck className="h-4 w-4" />,
+              title: "Security & Compliance",
+              items: ["KMS", "SSE-KMS", "OAuth2", "HIPAA", "GDPR"],
+            },
+            {
+              icon: <Globe className="h-4 w-4" />,
+              title: "Workflows",
+              items: ["GitHub Actions", "CI/CD", "RESTful APIs", "IaC"],
+            },
+          ].map((cat) => (
+            <Card key={cat.title}>
+              <div className="flex items-center gap-2">
+                {cat.icon}
+                <h3 className="text-base font-semibold tracking-tight">{cat.title}</h3>
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {cat.items.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-black/10 dark:border-white/20 bg-white/50 dark:bg-black/30 px-2.5 py-1 text-xs opacity-80"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
             </Card>
           ))}
         </div>
@@ -357,7 +424,7 @@ export default function Page() {
             </div>
           </div>
           <Card>
-            <form action="https://formspree.io/f/your-id" method="POST" className="space-y-3">
+            <form action="https://formspree.io/f/xovkzbkj" method="POST" className="space-y-3">
               <div>
                 <label className="text-sm opacity-80" htmlFor="name">
                   Name
