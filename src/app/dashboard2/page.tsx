@@ -113,7 +113,7 @@ export default function Page() {
                 <Github className="h-4 w-4" /> GitHub
               </a>
               <a
-                href="https://www.linkedin.com/in/adamdugan/"
+                href="https://www.linkedin.com/in/adam-dugan-918722217/"
                 target="_blank"
                 rel="noreferrer noopener"
                 className="inline-flex items-center gap-2 rounded-2xl border border-black/10 dark:border-white/20 px-4 py-2 hover:bg-black/5 dark:hover:bg-white/10"
@@ -176,9 +176,9 @@ export default function Page() {
               tags: ["Python", "Azure", "Twilio", "TTS"],
             },
             {
-              title: "Unity/VR Apps",
-              desc: "Language Lab VR & Castle Thief — immersive learning and gameplay on Quest.",
-              img: "/projects/vr.png",
+              title: "Language Lab",
+              desc: "Immersive education: Simulating real-world language acquisition scenarios.",
+              img: "/projects/languagelab.png",
               href: "https://www.languagelabvr.com/",
               tags: ["Unity", "C#", "Photon", "Oculus"],
             },
@@ -195,7 +195,7 @@ export default function Page() {
               transition={{ duration: 0.4 }}
             >
               <Card className="p-0 overflow-hidden">
-                <div className="relative aspect-[16/10]">
+                <div className="relative aspect-[16/10] rounded-xl ring-1 ring-black/10 dark:ring-white/20 overflow-hidden">
                   <Image src={p.img} alt={p.title} fill className="object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
                 </div>
                 <div className="p-6">
