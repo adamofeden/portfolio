@@ -26,9 +26,22 @@ const Section = ({
   id?: string;
   children: React.ReactNode;
   className?: string;
-}) => <section id={id} className={`mx-auto w-full max-w-7xl px-6 sm:px-8 ${className}`}>{children}</section>;
+}) => (
+  <section
+    id={id}
+    className={`mx-auto w-full max-w-7xl px-6 sm:px-8 ${className}`}
+  >
+    {children}
+  </section>
+);
 
-const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+const Card = ({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
   <div
     className={`rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur p-6 shadow-sm hover:shadow-md transition-shadow ${className}`}
   >
@@ -85,11 +98,12 @@ export default function Page() {
       <Section className="pt-14 sm:pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight">Builder of useful, secure software.</h1>
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight">Building secure, intelligent software solutions.</h1>
             <p className="mt-6 text-base sm:text-lg leading-relaxed text-black/70 dark:text-white/70">
-              I design and ship automation-heavy products end-to-end: <strong>Next.js</strong> front-ends, <strong>AWS</strong>{" "}
-              back-ends, and<strong> Python</strong> data/AI services. Notable builds include <em>BalancingIQ</em> (AI financial
-              advisor) and <em>SOA Assist Pro</em> (Medicare compliance automation), plus Unity/VR apps.
+              I design and deliver automation-driven products end-to-end — from <strong>Next.js</strong> front-ends and <strong>AWS</strong>{" "}
+              cloud infrastructures to<strong> Python</strong>-based AI and data services. My work includes <em>BalancingIQ</em> {" "}
+              (AI-powered financial advisory platform), <em>SOA Assist Pro</em> (Medicare compliance automation suite), automated court case filing,
+              and immersive Unity experiences.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
@@ -136,8 +150,8 @@ export default function Page() {
           {[
             { icon: <Cloud className="h-4 w-4" />, label: "AWS Amplify, CDK, Lambda" },
             { icon: <Code2 className="h-4 w-4" />, label: "Next.js, React, TypeScript" },
-            { icon: <Cpu className="h-4 w-4" />, label: "Python, FastAPI, NumPy/Pandas" },
-            { icon: <ShieldCheck className="h-4 w-4" />, label: "Security: KMS, SSE-KMS, OAuth" },
+            { icon: <Cpu className="h-4 w-4" />, label: "Python, FastAPI, Data, AI" },
+            { icon: <ShieldCheck className="h-4 w-4" />, label: "Security: KMS, SSE-KMS, OAuth, Compliance" },
           ].map((s, i) => (
             <Card key={i} className="flex items-center gap-2 py-3">
               {s.icon}
@@ -152,7 +166,7 @@ export default function Page() {
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Selected Projects</h2>
-            <p className="mt-2 text-black/70 dark:text-white/70">Real, shipped software. Code, cloud, and customer value.</p>
+            <p className="mt-2 text-black/70 dark:text-white/70">Real-world software solutions delivering measurable impact across cloud, AI, and user experience.</p>
           </div>
           <Link href="https://github.com/adamofeden" target="_blank" className="inline-flex items-center gap-2 text-sm opacity-80 hover:opacity-100">
             View all <ExternalLink className="h-4 w-4" />
@@ -163,35 +177,35 @@ export default function Page() {
           {[
             {
               title: "BalancingIQ",
-              desc: "AI-driven financial advisor for SMBs: Xero/QBO ingestion → KPI packs → insights.",
+              desc: "AI-powered financial advisory platform for SMBs — automates Xero/QBO data ingestion, generates KPI packs, and delivers actionable insights.",
               img: "/projects/balancingiq.png",
               href: "https://mybalancingiq.com",
               tags: ["Next.js", "AWS", "Xero/QBO", "LLM"],
             },
             {
               title: "SOA Assist Pro",
-              desc: "Medicare compliance automation: SOA forms, audit trails, agent scheduling.",
+              desc: "End-to-end Medicare compliance automation — manages SOA forms, maintains audit trails, and streamlines agent scheduling.",
               img: "/projects/soa.png",
               href: "https://soaassistpro.com/",
               tags: ["Python", "Azure", "HIPAA", "TTS"],
             },
             {
               title: "Language Lab",
-              desc: "Immersive education: Simulating real-world language acquisition scenarios.",
+              desc: "Immersive education platform simulating real-world language learning environments, engaging thousands of users globally.",
               img: "/projects/languagelab.png",
               href: "https://www.languagelabvr.com/",
               tags: ["Unity", "C#", "Photon", "Oculus"],
             },
             {
               title: "Court Case Filing Automation",
-              desc: "Automated court case filing: Analyzing documents and generating filing plans, cost estimates, and filing steps.",
+              desc: "Desktop automation tool that analyzes case data and generates filing plans, cost estimates, and submission workflows.",
               img: "/projects/courtfiler.png",
               href: "#",
               tags: ["Python", "Selenium", "Tkinter", "Executable"],
             },
             {
               title: "Handyman AI",
-              desc: "AI-powered handyman service: Analyzing images and generating repair plans, cost estimates, and repair steps.",
+              desc: "AI-driven service that analyzes images to produce detailed repair plans, material lists, and cost breakdowns.",
               img: "/projects/handyman.png",
               href: "https://www.handymanllm.com/",
               tags: ["Python", "LLM", "Image Analysis", "Prompt Engineering"],
@@ -236,21 +250,36 @@ export default function Page() {
           {[
             {
               company: "Versytech",
-              role: "Founder & Engineer",
-              period: "2023 — Present",
+              role: "Founder & Full-Stack Engineer",
+              period: "2022 — Present",
               points: [
-                "Architected multi-tenant SaaS on AWS (Amplify Gen2, CDK, Lambda, DynamoDB, S3, KMS).",
-                "Built secure bookkeeping integrations (Xero/QBO OAuth), encrypted token storage, and KPI pipelines.",
-                "Shipped BalancingIQ & SOA Assist Pro; drove product discovery, UX, and GTM content.",
+                "Architected and deployed multi-tenant SaaS on AWS (Amplify Gen2, CDK, Lambda, DynamoDB, S3, KMS).",
+                "Developed encrypted Xero/QBO integrations, KPI pipelines, and REST APIs powering BalancingIQ.",
+                "Built secure bookkeeping integrations with Xero/QBO OAuth and encrypted token storage.",
+                "Shipped BalancingIQ and SOA Assist Pro — led full lifecycle from architecture to UX and GTM.",
+                "Shipped SOA Assist Pro, automating compliance workflows and reducing form processing time by 90%.",
+                "Designed secure deployment pipelines with GitHub Actions and CI/CD automation.",
+                "Built voice-enabled AI assistants using Twilio, OpenAI, and Azure Speech.",
               ],
             },
             {
-              company: "Language Lab VR / Castle Thief",
-              role: "Unity/C# Engineer",
-              period: "2019 — 2023",
+              company: "Intelimmerse LLC",
+              role: "Software Engineer",
+              period: "2024 — 2025",
               points: [
-                "Designed engaging VR experiences with Photon networking, custom shaders, and performance tuning.",
-                "Implemented UI/UX flows, economy systems, and analytics for live titles on Quest.",
+                "Automated back-office operations using Azure and Python",
+                "Created real-time conversational AI bots leveraging OpenAI, ElevenLabs, and Unity.",
+              ],
+            },
+            {
+              company: "Language Lab VR",
+              role: "Co-Founder & Unity/C# Engineer",
+              period: "2019 — 2024",
+              points: [
+                "Designed engaging experiences using Unity, C#, Photon networking, custom shaders, and performance optimization.",
+                "Created a recursive C# algorithm generating 1,000+ hours of adaptive learning content.",
+                "Delivered user-centric interfaces, economy systems, and analytics pipelines for live Quest titles.",
+                "Deployed secure APIs on Azure for dynamic content delivery.",
               ],
             },
           ].map((e) => (
@@ -277,6 +306,10 @@ export default function Page() {
         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Skills</h2>
         <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {[
+            { icon: <Code2 className="h-4 w-4" />, label: "Full-Stack Development" },
+            { icon: <Code2 className="h-4 w-4" />, label: "Cloud Architecture" },
+            { icon: <Code2 className="h-4 w-4" />, label: "Secure Automation" },
+            { icon: <Code2 className="h-4 w-4" />, label: "AI Integration" },
             { icon: <Code2 className="h-4 w-4" />, label: "TypeScript" },
             { icon: <Code2 className="h-4 w-4" />, label: "React/Next.js" },
             { icon: <Cloud className="h-4 w-4" />, label: "AWS (Amplify/CDK)" },
@@ -297,7 +330,7 @@ export default function Page() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
           <div className="lg:col-span-2">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Let’s build something.</h2>
-            <p className="mt-2 text-black/70 dark:text-white/70">Consulting, collaboration, or full-stack product work. I respond quickly.</p>
+            <p className="mt-2 text-black/70 dark:text-white/70">Open to consulting, collaborations, or full-stack product development opportunities. I typically respond within 24 hours.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href="mailto:adamdugan6@gmail.com"
