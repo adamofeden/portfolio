@@ -77,12 +77,12 @@ export default function Page() {
             <a href="#contact" className="opacity-80 hover:opacity-100">
               Contact
             </a>
-            <Link
+            {/*<Link
               href="/AdamDugan_Resume.pdf"
               className="rounded-xl border border-black/5 dark:border-white/10 px-3 py-1.5 hover:bg-black/5 dark:hover:bg-white/10"
             >
               Résumé
-            </Link>
+            </Link>*/}
           </nav>
 
           <div className="flex md:hidden">
