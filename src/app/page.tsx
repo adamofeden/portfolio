@@ -295,7 +295,7 @@ export default function Page() {
               points: [
                 "Developed and maintained web applications using Python, SQL, and Django.",
                 "Worked on a team of 3 to build a teaching aid web application.",
-                "The application was a web-based system dsigned to assist teachers in grading and understanding student performance.",
+                "The application was a web-based system designed to assist teachers in grading and understanding student performance.",
               ],
             },
           ].map((e) => (
