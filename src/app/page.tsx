@@ -193,7 +193,7 @@ export default function Page() {
             },
             {
               title: "Language Lab",
-              desc: "Immersive education platform simulating real-world language learning environments, engaging thousands of users globally.",
+              desc: "Reached Top 3 Worldwide: Language Learning Tool on Meta Quest Store. Immersive education platform simulating real-world language learning environments, engaging thousands of users globally.",
               img: "/projects/languagelab.png",
               href: "https://www.languagelabvr.com/",
               tags: ["Unity", "C#", "Photon", "Oculus"],
