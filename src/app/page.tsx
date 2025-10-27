@@ -1,6 +1,7 @@
 // src/app/page.tsx
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -52,6 +53,55 @@ const Card = ({
 );
 
 export default function Page() {
+  const [showAll, setShowAll] = useState(false);
+
+  const projects = [
+    {
+      title: "BalancingIQ",
+      desc: "AI-powered financial advisory platform for SMBs — automates Xero/QBO data ingestion, generates KPI packs, and delivers actionable insights.",
+      img: "/projects/balancingiq.png",
+      href: "https://mybalancingiq.com",
+      tags: ["Next.js", "AWS", "Xero/QBO", "LLM"],
+    },
+    {
+      title: "SOA Assist Pro",
+      desc: "End-to-end Medicare compliance automation — manages SOA forms, maintains audit trails, and streamlines agent scheduling.",
+      img: "/projects/soa.png",
+      href: "https://soaassistpro.com/",
+      tags: ["Python", "Azure", "HIPAA", "TTS"],
+    },
+    {
+      title: "Language Lab",
+      desc: "Reached Top 3 Worldwide: Language Learning Tool on Meta Quest Store. Immersive education platform simulating real-world language learning environments, engaging thousands of users globally.",
+      img: "/projects/languagelab.png",
+      href: "https://www.languagelabvr.com/",
+      tags: ["Unity", "C#", "Photon", "Oculus"],
+    },
+    {
+      title: "Court Case Filing Automation",
+      desc: "Desktop automation tool that analyzes case data and generates filing plans, cost estimates, and submission workflows.",
+      img: "/projects/courtfiler.png",
+      href: "#",
+      tags: ["Python", "Selenium", "Tkinter", "Executable"],
+    },
+    {
+      title: "Handyman AI",
+      desc: "AI-driven service that analyzes images to produce detailed repair plans, material lists, and cost breakdowns.",
+      img: "/projects/handyman.png",
+      href: "https://www.handymanllm.com/",
+      tags: ["Python", "LLM", "Image Analysis", "Prompt Engineering"],
+    },
+    /*{
+      title: "AI Administrative Assistant",
+      desc: "AI-driven administrative assistant that can perform a wide range of tasks, such as scheduling appointments, sending emails, taking phones calls, and more.",
+      img: "/projects/aiadmin.png",
+      href: "https://www.aiadmin.com/",
+      tags: ["Python", "LLM", "Twilio", "Prompt Engineering", "TTS/STT"],
+    },*/
+  ];
+
+  const visibleProjects = showAll ? projects : projects.slice(0, 3);
+
   return (
     <div className="min-h-screen bg-[radial-gradient(75%_60%_at_50%_-10%,rgba(99,102,241,.25),transparent),radial-gradient(60%_50%_at_100%_0%,rgba(34,197,94,.20),transparent)] dark:bg-[radial-gradient(75%_60%_at_50%_-10%,rgba(99,102,241,.12),transparent),radial-gradient(60%_50%_at_100%_0%,rgba(34,197,94,.12),transparent)] text-foreground">
       {/* Sticky Nav */}
@@ -176,6 +226,50 @@ export default function Page() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {visibleProjects.map((p) => (
+            <motion.a
+              key={p.title}
+              href={p.href}
+              target={p.href.startsWith("http") ? "_blank" : undefined}
+              rel="noreferrer noopener"
+              className="group"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+            >
+              <Card className="p-0 overflow-hidden">
+                <div className="relative aspect-[16/10] rounded-xl ring-1 ring-black/10 dark:ring-white/20 overflow-hidden">
+                  <Image src={p.img} alt={p.title} fill className="object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-2 text-xs text-black/60 dark:text-white/60 mb-2">
+                    {p.tags.map((t) => (
+                      <span key={t} className="rounded-full border border-black/10 dark:border-white/20 px-2 py-0.5">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="text-lg font-semibold tracking-tight">{p.title}</h3>
+                  <p className="mt-1 text-sm opacity-80">{p.desc}</p>
+                </div>
+              </Card>
+            </motion.a>
+          ))}
+        </div>
+
+        {projects.length > 3 && (
+          <div className="mt-6 flex justify-center">
+            <button
+              onClick={() => setShowAll((v) => !v)}
+              className="inline-flex items-center gap-2 rounded-2xl border border-black/10 dark:border-white/20 px-4 py-2 hover:bg-black/5 dark:hover:bg-white/10 text-sm"
+            >
+              {showAll ? "Show less" : "Show more"}
+            </button>
+          </div>
+        )}
+
+        {/*<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {[
             {
               title: "BalancingIQ",
@@ -242,7 +336,7 @@ export default function Page() {
               </Card>
             </motion.a>
           ))}
-        </div>
+        </div>*/}
       </Section>
 
       {/* Experience */}
