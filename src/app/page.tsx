@@ -454,12 +454,12 @@ export default function Page() {
             {
               icon: <Code2 className="h-4 w-4" />,
               title: "Languages",
-              items: ["Python", "C#", "TypeScript", "JavaScript", "HTML/CSS"],
+              items: ["Python", "Rust", "C#", "TypeScript", "JavaScript", "HTML/CSS"],
             },
             {
               icon: <Blocks className="h-4 w-4" />,
               title: "Frameworks",
-              items: ["Next.js", "React", "FastAPI", "Unity"],
+              items: ["Next.js", "React", "Unity"],
             },
             {
               icon: <Cloud className="h-4 w-4" />,
