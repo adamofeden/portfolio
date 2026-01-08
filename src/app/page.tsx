@@ -152,10 +152,14 @@ export default function Page() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight">Building secure, intelligent software solutions.</h1>
             <p className="mt-6 text-base sm:text-lg leading-relaxed text-black/70 dark:text-white/70">
-              I design and deliver automation-driven products end-to-end — from <strong>Next.js</strong> front-ends and <strong>AWS</strong>{" "}
-              cloud infrastructures to<strong> Python</strong>-based AI and data services. My work includes <em>BalancingIQ</em> {" "}
+              I design and deliver automation-driven products end-to-end — from <strong> Python</strong>-based <strong>AI</strong>,
+              <strong> Rust</strong> backend systems, and data services, to <strong>AWS</strong>{" "}cloud infrastructures and
+              <strong> Next.js</strong> front-ends. My work includes <em>BalancingIQ</em> {" "}
               (AI-powered financial advisory platform), <em>SOA Assist Pro</em> (Medicare compliance automation suite), automated court case filing,
               and immersive Unity experiences.
+            </p>
+            <p className="mt-6 text-base sm:text-lg leading-relaxed text-black/70 dark:text-white/70">
+              Co-founded and lead the engineering team at Language Lab, a top performing VR language education platform that was successfully acquired in 2025.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
@@ -202,7 +206,7 @@ export default function Page() {
           {[
             { icon: <Cloud className="h-4 w-4" />, label: "AWS Amplify, CDK, Lambda" },
             { icon: <Code2 className="h-4 w-4" />, label: "Next.js, React, TypeScript" },
-            { icon: <Cpu className="h-4 w-4" />, label: "Python, FastAPI, Data, AI" },
+            { icon: <Cpu className="h-4 w-4" />, label: "Python, Rust, Data, AI" },
             { icon: <ShieldCheck className="h-4 w-4" />, label: "Security: KMS, SSE-KMS, OAuth, Compliance" },
           ].map((s, i) => (
             <Card key={i} className="flex items-center gap-2 py-3">
@@ -347,7 +351,7 @@ export default function Page() {
             {
               company: "Versytech",
               role: "Founder & Full-Stack Engineer",
-              period: "2022 — Present",
+              period: "2023 — Present",
               points: [
                 "Architected and deployed multi-tenant SaaS on AWS (Amplify Gen2, CDK, Lambda, DynamoDB, S3, KMS).",
                 "Developed encrypted Xero/QBO integrations, KPI pipelines, and REST APIs powering BalancingIQ.",
@@ -361,7 +365,7 @@ export default function Page() {
             {
               company: "Intelimmerse LLC",
               role: "Software Engineer",
-              period: "2024 — 2025",
+              period: "2024 — Present",
               points: [
                 "Automated back-office operations using Azure and Python",
                 "Created real-time conversational AI bots leveraging OpenAI, ElevenLabs, and Unity.",
@@ -372,15 +376,27 @@ export default function Page() {
               ],
             },
             {
-              company: "Language Lab VR",
-              role: "Co-Founder & Unity/C# Engineer",
-              period: "2019 — 2024",
+              company: "Language Lab (Acquired)",
+              role: "Co-Founder & Lead Engineer",
+              period: "2020 — 2024",
               points: [
                 "Designed engaging experiences using Unity, C#, Photon networking, custom shaders, and performance optimization.",
                 "Created a recursive C# algorithm generating 1,000+ hours of adaptive learning content.",
                 "Delivered user-centric interfaces, economy systems, and analytics pipelines for live Quest titles.",
                 "Deployed secure APIs on Azure for dynamic content delivery.",
               ],
+            },
+            {
+              company: "Stargrazer Studios",
+              role: "Unity/C# Developer",
+              period: "2019 — 2020",
+              points: [
+                "Used C# and Unity to create a medieval Robin Hood style game for Oculus Quest 1 and 2.",
+                "Built dynamic NPC AI Systems using NavMesh, raycasting and state machines.",
+                "Used Unity Profiler, occlusion culling, and light baking to improve performance on standalone devices’ slow computation speed.",
+                "Used Unity’s XR Interaction Toolkit with AutoHand to create an immersive experience within the virtual world.",
+                "Completed the project from start to finish within a 6-month period."
+              ]
             },
             {
               company: "Dualmind",
