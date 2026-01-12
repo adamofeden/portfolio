@@ -1,4 +1,5 @@
 import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
+import { chatBot } from '../functions/chatbot/resource';
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -12,6 +13,29 @@ const schema = a.schema({
       content: a.string(),
     })
     .authorization((allow) => [allow.guest()]),
+
+  // Add this custom type for the chatbot response
+  ChatbotResponse: a.customType({
+    message: a.string().required(),
+    citations: a.json(),  // Array of citation objects
+  }),
+  
+  // Add this custom type for message input
+  MessageInput: a.customType({
+    role: a.string().required(),
+    content: a.string().required(),
+  }),
+  
+  // Add this query that calls your Lambda function
+  askChatbot: a
+    .query()
+    .arguments({
+      messages: a.json().required(),  // Array of {role, content}
+      systemPrompt: a.string(),
+    })
+    .returns(a.ref('ChatbotResponse'))
+    .handler(a.handler.function(chatBot))
+    .authorization((allow) => [allow.guest()]),  // Or adjust based on your auth needs
 });
 
 export type Schema = ClientSchema<typeof schema>;
