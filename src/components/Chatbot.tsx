@@ -2,10 +2,16 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { generateClient } from "aws-amplify/data";
-import type { Schema } from "../../amplify/data/resource";
 import { MessageCircle, X, Send, Loader2 } from "lucide-react";
 import { SYSTEM_PROMPT } from "@/utils/systemPrompt";
+
+import { Amplify } from 'aws-amplify';
+import { generateClient } from "aws-amplify/data";
+import type { Schema } from "../../amplify/data/resource";
+import outputs from '../../amplify_outputs.json';
+
+Amplify.configure(outputs);
+const client = generateClient<Schema>();
 
 //const client = generateClient<Schema>();
 
@@ -23,9 +29,10 @@ export default function Chatbot() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Use a ref to store the client
-  const clientRef = useRef<any>(null);
+  //const clientRef = useRef<any>(null);
+  const clientRef = useRef<ReturnType<typeof generateClient<Schema>> | null>(null);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const { Amplify } = require('aws-amplify');
     const outputs = require('../../amplify_outputs.json');
     Amplify.configure(outputs);
@@ -33,6 +40,10 @@ export default function Chatbot() {
     const { generateClient } = require('aws-amplify/data');
     clientRef.current = generateClient();
     console.log('Client initialized:', clientRef.current); // Add this
+  }, []);*/
+  useEffect(() => {
+    clientRef.current = client;
+    console.log('Client initialized:', clientRef.current);
   }, []);
 
   const scrollToBottom = () => {
@@ -62,7 +73,8 @@ export default function Chatbot() {
       console.log('Sending message to chatbot...', messagesForAPI);
 
       // Call the GraphQL query
-      const response = await clientRef.current.queries.askChatbot({
+      //const response = await clientRef.current.queries.askChatbot({
+      const response = await client.queries.askChatbot({
         messages: JSON.stringify(messagesForAPI),
         systemPrompt: SYSTEM_PROMPT,
       });
