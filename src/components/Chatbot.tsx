@@ -1,0 +1,175 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+import { generateClient } from "aws-amplify/data";
+import type { Schema } from "../../amplify/data/resource";
+import { MessageCircle, X, Send, Loader2 } from "lucide-react";
+
+const client = generateClient<Schema>();
+
+interface Message {
+  role: "user" | "assistant";
+  content: string;
+  citations?: Array<{ title: string; uri: string }>;
+}
+
+export default function Chatbot() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const sendMessage = async () => {
+    if (!input.trim() || isLoading) return;
+
+    const userMessage: Message = { role: "user", content: input };
+    const updatedMessages = [...messages, userMessage];
+    setMessages(updatedMessages);
+    setInput("");
+    setIsLoading(true);
+
+    try {
+      // Prepare messages for GraphQL - only send role and content
+      const messagesForAPI = updatedMessages.map(({ role, content }) => ({
+        role,
+        content,
+      }));
+
+      // Call the GraphQL query
+      const response = await client.queries.askChatbot({
+        messages: messagesForAPI,
+      });
+
+      if (response.data) {
+        const assistantMessage: Message = {
+          role: "assistant",
+          content: response.data.message || "Sorry, I couldn't generate a response.",
+          citations: response.data.citations ? JSON.parse(response.data.citations as string) : [],
+        };
+        setMessages([...updatedMessages, assistantMessage]);
+      }
+    } catch (error) {
+      console.error("Error calling chatbot:", error);
+      setMessages([
+        ...updatedMessages,
+        {
+          role: "assistant",
+          content: "Sorry, there was an error processing your request.",
+        },
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <>
+      {/* Floating Button */}
+      {!isOpen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-emerald-400 text-white shadow-lg hover:scale-110 transition-transform"
+        >
+          <MessageCircle className="h-6 w-6" />
+        </button>
+      )}
+
+      {/* Chat Window */}
+      {isOpen && (
+        <div className="fixed bottom-6 right-6 z-50 flex h-[500px] w-[380px] flex-col rounded-2xl border border-black/10 dark:border-white/20 bg-white dark:bg-neutral-900 shadow-2xl">
+          {/* Header */}
+          <div className="flex items-center justify-between border-b border-black/10 dark:border-white/20 p-4">
+            <h3 className="font-semibold">Chat Assistant</h3>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="rounded-lg p-1 hover:bg-black/5 dark:hover:bg-white/10"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+
+          {/* Messages */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            {messages.length === 0 && (
+              <div className="text-center text-sm text-black/60 dark:text-white/60 mt-8">
+                <MessageCircle className="h-12 w-12 mx-auto mb-2 opacity-50" />
+                <p>Ask me anything!</p>
+              </div>
+            )}
+            {messages.map((msg, i) => (
+              <div
+                key={i}
+                className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+              >
+                <div
+                  className={`max-w-[80%] rounded-2xl px-4 py-2 ${
+                    msg.role === "user"
+                      ? "bg-gradient-to-br from-indigo-500 to-emerald-400 text-white"
+                      : "bg-black/5 dark:bg-white/10"
+                  }`}
+                >
+                  <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                  {msg.citations && msg.citations.length > 0 && (
+                    <div className="mt-2 text-xs opacity-70">
+                      Sources:
+                      {msg.citations.map((cite, idx) => (
+                        <a
+                          key={idx}
+                          href={cite.uri}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block hover:underline"
+                        >
+                          {cite.title || cite.uri}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-black/5 dark:bg-white/10 rounded-2xl px-4 py-2">
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+
+          {/* Input */}
+          <div className="border-t border-black/10 dark:border-white/20 p-4">
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+                placeholder="Type your message..."
+                className="flex-1 rounded-xl border border-black/10 dark:border-white/20 bg-white/70 dark:bg-black/30 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-400"
+                disabled={isLoading}
+              />
+              <button
+                onClick={sendMessage}
+                disabled={isLoading || !input.trim()}
+                className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-emerald-400 text-white hover:opacity-90 disabled:opacity-50"
+              >
+                <Send className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
