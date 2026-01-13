@@ -1,5 +1,14 @@
 # amplify/functions/chatbot/index.py
 
+def _to_gemini_contents(messages: list[dict]) -> list[dict]:
+    """Map [{'role':'user'|'assistant','content':str}] -> Gemini 'contents'."""
+    role_map = {"user": "user", "assistant": "model"}
+    contents = []
+    for m in messages:
+        r = role_map.get(m.get("role", "user"), "user")
+        contents.append({"role": r, "parts": [{"text": m.get("content", "")}]})
+    return contents
+    
 def _ask_gemini(messages: list[dict], system_prompt: str, *, enable_search: bool=False) -> str:
     print("ask_gemini")
     from google import genai
