@@ -589,9 +589,9 @@ export default function Page() {
             <a href="/terms" className="hover:opacity-100">
               Terms
             </a>
-            {/* Chatbot Widget */}
-            <Chatbot />
           </div>
+          {/* Chatbot Widget */}
+          <Chatbot />
         </Section>
       </footer>
     </div>
