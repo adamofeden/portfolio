@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import { Amplify } from 'aws-amplify';
+import outputs from '../../amplify_outputs.json'
+
+Amplify.configure(outputs, { ssr: true });
+
 export const metadata: Metadata = {
   title: "Adam Dugan — Software Engineer",
   description:

@@ -21,6 +21,8 @@ import {
   Blocks,
 } from "lucide-react";
 
+import Chatbot from "@/components/Chatbot";
+
 const Section = ({
   id,
   children,
@@ -587,6 +589,8 @@ export default function Page() {
             <a href="/terms" className="hover:opacity-100">
               Terms
             </a>
+            {/* Chatbot Widget */}
+            <Chatbot />
           </div>
         </Section>
       </footer>
