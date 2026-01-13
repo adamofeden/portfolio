@@ -1,3 +1,4 @@
+// src/components/Chatbot.tsx
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -6,7 +7,7 @@ import type { Schema } from "../../amplify/data/resource";
 import { MessageCircle, X, Send, Loader2 } from "lucide-react";
 import { SYSTEM_PROMPT } from "@/utils/systemPrompt";
 
-const client = generateClient<Schema>();
+//const client = generateClient<Schema>();
 
 interface Message {
   role: "user" | "assistant";
@@ -20,6 +21,19 @@ export default function Chatbot() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Use a ref to store the client
+  const clientRef = useRef<any>(null);
+
+  useEffect(() => {
+    const { Amplify } = require('aws-amplify');
+    const outputs = require('../../amplify_outputs.json');
+    Amplify.configure(outputs);
+    
+    const { generateClient } = require('aws-amplify/data');
+    clientRef.current = generateClient();
+    console.log('Client initialized:', clientRef.current); // Add this
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -45,11 +59,15 @@ export default function Chatbot() {
         content,
       }));
 
+      console.log('Sending message to chatbot...', messagesForAPI);
+
       // Call the GraphQL query
-      const response = await client.queries.askChatbot({
-        messages: messagesForAPI,
+      const response = await clientRef.current.queries.askChatbot({
+        messages: JSON.stringify(messagesForAPI),
         systemPrompt: SYSTEM_PROMPT,
       });
+
+      console.log('Response received:', response);
 
       if (response.data) {
         const assistantMessage: Message = {
@@ -61,6 +79,7 @@ export default function Chatbot() {
       }
     } catch (error) {
       console.error("Error calling chatbot:", error);
+      console.error("Error details:", JSON.stringify(error, null, 2));
       setMessages([
         ...updatedMessages,
         {
