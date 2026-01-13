@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { generateClient } from "aws-amplify/data";
 import type { Schema } from "../../amplify/data/resource";
 import { MessageCircle, X, Send, Loader2 } from "lucide-react";
+import { SYSTEM_PROMPT } from "@/utils/systemPrompt";
 
 const client = generateClient<Schema>();
 
@@ -47,6 +48,7 @@ export default function Chatbot() {
       // Call the GraphQL query
       const response = await client.queries.askChatbot({
         messages: messagesForAPI,
+        systemPrompt: SYSTEM_PROMPT,
       });
 
       if (response.data) {
