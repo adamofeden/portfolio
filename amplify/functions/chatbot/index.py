@@ -16,7 +16,7 @@ def _get_gcp_credentials():
     from botocore.exceptions import ClientError
     
     secret_name = os.environ.get("GCP_SECRET_NAME", "gemini-service-account")
-    region_name = os.environ.get("AWS_REGION", "us-east-1")
+    region_name = os.environ.get("AWS_REGION", "us-west-2")
     
     # Create a Secrets Manager client
     session = boto3.session.Session()
@@ -99,6 +99,29 @@ def _ask_gemini(messages: list[dict], system_prompt: str, *, enable_search: bool
     return {"message": (resp.text or "").strip(), "citations": cites}
     #return (resp.text or "").strip()
 
+def _get_gpt_api_key():
+    """Retrieve OpenAI API key from AWS Secrets Manager"""
+    import boto3
+    import os
+    from botocore.exceptions import ClientError
+    
+    secret_name = "OPENAI_API_KEY_SECRET"  # Or make it configurable via env var
+    region_name = os.environ.get("AWS_REGION", "us-west-2")
+    
+    # Create a Secrets Manager client
+    session = boto3.session.Session()
+    client = session.client(
+        service_name='secretsmanager',
+        region_name=region_name
+    )
+    
+    try:
+        get_secret_value_response = client.get_secret_value(SecretId=secret_name)
+        return get_secret_value_response['SecretString']
+    except ClientError as e:
+        print(f"Error retrieving OpenAI API key secret: {e}")
+        raise
+
 def _ask_chatgpt(messages: list[dict], system_prompt: str) -> dict:
     """Call OpenAI's ChatGPT API with the given messages and system prompt."""
     print("ask_chatgpt")
@@ -107,7 +130,7 @@ def _ask_chatgpt(messages: list[dict], system_prompt: str) -> dict:
     print("Finished importing")
     
     # Get API key from environment variable
-    api_key = os.environ.get("OPENAI_API_KEY")
+    api_key = _get_gpt_api_key()#os.environ.get("OPENAI_API_KEY")
     if not api_key:
         raise ValueError("OPENAI_API_KEY environment variable not set")
     
