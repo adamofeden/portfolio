@@ -108,8 +108,10 @@ export default function Chatbot() {
   const warmLambda = async () => {
     try {
       await client.queries.askChatbot({
-        messages: JSON.stringify([]), // Empty messages
-        initializeSession: true,
+        messages: JSON.stringify([{ role: "user", content: "Hi" }]), // Minimal message
+        systemPrompt: "Reply with one word only.",
+        //messages: JSON.stringify([]), // Empty messages
+        //initializeSession: true,
       });
       console.log('Lambda warmed successfully');
     } catch (error) {
