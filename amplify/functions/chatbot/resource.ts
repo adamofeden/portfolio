@@ -29,12 +29,12 @@ export const chatBot = defineFunction(
           local: {
             tryBundle(outputDir: string) {
               try{
-                //execSync(
-                //  `python -m pip install -r ${path.join(functionDir, 'requirements.txt')} -t ${outputDir} --platform manylinux2014_x86_64 --only-binary=:all:`
-                //);
                 execSync(
-                  `pip install -r ${path.join(functionDir, 'requirements.txt')} -t ${outputDir}`
+                  `python -m pip install -r ${path.join(functionDir, 'requirements.txt')} -t ${outputDir} --platform manylinux2014_x86_64 --python-version 3.11 --only-binary=:all:`
                 );
+                //execSync(
+                //  `pip install -r ${path.join(functionDir, 'requirements.txt')} -t ${outputDir}`
+                //);
                 execSync(`cp ${path.join(functionDir, 'index.py')} ${outputDir}`); // Windows copy
                 return true;
               } catch (error) {
