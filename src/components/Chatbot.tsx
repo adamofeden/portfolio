@@ -126,11 +126,18 @@ export default function Chatbot() {
     // Then warm every 4-5 minutes (Lambda container stays warm ~10-15 min)
     const warmingInterval = setInterval(() => {
       warmLambda();
-    }, 4 * 60 * 1000); // 4 minutes
+    }, 2 * 60 * 1000); // 4 minutes
     //}, 5 * 1000); // 5 seconds
     
     return () => clearInterval(warmingInterval);
   }, []);
+
+  const SUGGESTED_QUESTIONS = [
+    "How can I contact Adam?",
+    "What projects has Adam worked on?",
+    "What are Adam's technical skills?",
+    "Tell me about Adam's experience",
+  ];
 
   return (
     <>
@@ -138,9 +145,11 @@ export default function Chatbot() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-emerald-400 text-white shadow-lg hover:scale-110 transition-transform"
+          //className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-emerald-400 text-white shadow-lg hover:scale-110 transition-transform"
+          className="fixed bottom-6 right-6 z-50 flex h-14 items-center justify-center gap-3 rounded-full bg-gradient-to-br from-indigo-500 to-emerald-400 px-5 text-white shadow-lg hover:scale-110 transition-transform"
         >
           <MessageCircle className="h-6 w-6" />
+          <span className="font-medium">CHAT WITH ADAM'S AI</span>
         </button>
       )}
 
@@ -149,7 +158,7 @@ export default function Chatbot() {
         <div className="fixed bottom-6 right-6 z-50 flex h-[500px] w-[380px] flex-col rounded-2xl border border-black/10 dark:border-white/20 bg-white dark:bg-neutral-900 shadow-2xl">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-black/10 dark:border-white/20 p-4">
-            <h3 className="font-semibold">Chat Assistant</h3>
+            <h3 className="font-semibold">Adam's AI</h3>
             <button
               onClick={() => setIsOpen(false)}
               className="rounded-lg p-1 hover:bg-black/5 dark:hover:bg-white/10"
@@ -161,9 +170,24 @@ export default function Chatbot() {
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.length === 0 && (
-              <div className="text-center text-sm text-black/60 dark:text-white/60 mt-8">
+              <div className="text-center text-sm text-black/60 dark:text-white/60 mt-0">
                 <MessageCircle className="h-12 w-12 mx-auto mb-2 opacity-50" />
-                <p>Ask me anything!</p>
+                <p className="font-medium">
+                  Ask me anything!
+                </p>
+                <div className="space-y-2 mt-4">
+                  {SUGGESTED_QUESTIONS.map((question, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setInput(question)}
+                      className="text-center px-4 py-3 rounded-3xl bg-gradient-to-br from-indigo-500/10 to-emerald-400/10 hover:from-indigo-500/20 hover:to-emerald-400/20 border border-indigo-500/20 text-sm transition-all hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <span className="bg-gradient-to-br from-indigo-500 to-emerald-400 bg-clip-text text-transparent font-medium">
+                        {question}
+                      </span>
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
             {messages.map((msg, i) => (
