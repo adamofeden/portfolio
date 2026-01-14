@@ -48,7 +48,7 @@ def _ask_gemini(messages: list[dict], system_prompt: str, *, enable_search: bool
     os.chmod(sa_path, stat.S_IRUSR | stat.S_IWUSR)  # 0o600
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = sa_path
     os.environ.setdefault("GCP_PROJECT", "balancingiqproject")
-    os.environ.setdefault("GCP_LOCATION", "europe-west2")
+    os.environ.setdefault("GCP_LOCATION", "us-central1")
 
     #api_key = os.environ.get("GEMINI_API_KEY") or "AIzaSyBZDOhs0XL2LF11Q2Q9iKxmQOPjxm9L7uo"
     #client = genai.Client(api_key=api_key)
@@ -57,7 +57,7 @@ def _ask_gemini(messages: list[dict], system_prompt: str, *, enable_search: bool
     client = genai.Client(
         vertexai=True,
         project="balancingiqproject",#os.environ["GCP_PROJECT"],
-        location="europe-west2",#os.environ.get("GCP_LOCATION", "us-central1"),
+        location="us-central1",#os.environ.get("GCP_LOCATION", "us-central1"),
     )
 
     model_id = os.environ.get("GEMINI_MODEL_ID", "gemini-2.5-flash")
