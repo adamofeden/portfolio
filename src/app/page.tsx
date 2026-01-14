@@ -303,8 +303,8 @@ export default function Page() {
       <Section id="projects" className="py-20">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Projects</h2>
-            <p className="mt-2 text-black/70 dark:text-white/70">Real-world software solutions delivering measurable impact across cloud, AI, and user experience.</p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Products & Platforms</h2>
+            {/*<p className="mt-2 text-black/70 dark:text-white/70">Real-world software solutions delivering measurable impact across cloud, AI, and user experience.</p>*/}
           </div>
           {/*<Link href="https://github.com/adamofeden" target="_blank" className="inline-flex items-center gap-2 text-sm opacity-80 hover:opacity-100">
             View all <ExternalLink className="h-4 w-4" />
