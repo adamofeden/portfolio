@@ -54,7 +54,8 @@ export const chatBot = defineFunction(
     chatBotFunction.addToRolePolicy(new PolicyStatement({
       actions: ['secretsmanager:GetSecretValue'],
       resources: [
-        'arn:aws:secretsmanager:*:*:secret:gemini-service-account*'
+        'arn:aws:secretsmanager:*:*:secret:gemini-service-account*',
+        'arn:aws:secretsmanager:*:*:secret:OPENAI_API_KEY_SECRET*'
       ]
     }));
 
