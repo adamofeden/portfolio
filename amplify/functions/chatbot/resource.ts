@@ -23,23 +23,17 @@ export const chatBot = defineFunction(
       },
       code: Code.fromAsset(functionDir, {
         bundling: {
-          image: DockerImage.fromRegistry('public.ecr.aws/lambda/python:3.11'),
-          command: [
-            'bash', '-c',
-            'pip install -r requirements.txt -t /asset-output && cp index.py /asset-output'
-          ],
-        },
-      }),
-      /*code: Code.fromAsset(functionDir, {
-        bundling: {
           // For pure-Python deps you can bundle without Docker.
           // If you add native deps, plan to build in CI on Linux.
           image: DockerImage.fromRegistry('dummy'),
           local: {
             tryBundle(outputDir: string) {
               try{
+                //execSync(
+                //  `python -m pip install -r ${path.join(functionDir, 'requirements.txt')} -t ${outputDir} --platform manylinux2014_x86_64 --only-binary=:all:`
+                //);
                 execSync(
-                  `python -m pip install -r ${path.join(functionDir, 'requirements.txt')} -t ${outputDir} --platform manylinux2014_x86_64 --only-binary=:all:`
+                  `pip install -r ${path.join(functionDir, 'requirements.txt')} -t ${outputDir}`
                 );
                 execSync(`cp ${path.join(functionDir, 'index.py')} ${outputDir}`); // Windows copy
                 return true;
@@ -50,7 +44,7 @@ export const chatBot = defineFunction(
             },
           },
         },
-      }),*/
+      }),
     });
 
     return chatBotFunction;
