@@ -124,8 +124,8 @@ export default function Chatbot() {
     // Then warm every 4-5 minutes (Lambda container stays warm ~10-15 min)
     const warmingInterval = setInterval(() => {
       warmLambda();
-    //}, 4 * 60 * 1000); // 4 minutes
-    }, 5 * 1000); // 5 seconds
+    }, 4 * 60 * 1000); // 4 minutes
+    //}, 5 * 1000); // 5 seconds
     
     return () => clearInterval(warmingInterval);
   }, []);
