@@ -32,6 +32,7 @@ const schema = a.schema({
     .arguments({
       messages: a.json().required(),  // Array of {role, content}
       systemPrompt: a.string(),
+      initializeSession: a.boolean(),
     })
     .returns(a.ref('ChatbotResponse'))
     .handler(a.handler.function(chatBot))

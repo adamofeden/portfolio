@@ -104,6 +104,32 @@ export default function Chatbot() {
     }
   };
 
+  // Warm Lambda to stop long waiting for cold starts
+  const warmLambda = async () => {
+    try {
+      await client.queries.askChatbot({
+        messages: JSON.stringify([]), // Empty messages
+        initializeSession: true,
+      });
+      console.log('Lambda warmed successfully');
+    } catch (error) {
+      console.error('Error warming Lambda:', error);
+    }
+  };
+  useEffect(() => {
+    console.log('Warming Lambda...');
+    // Warm immediately when component mounts
+    warmLambda();
+    
+    // Then warm every 4-5 minutes (Lambda container stays warm ~10-15 min)
+    const warmingInterval = setInterval(() => {
+      warmLambda();
+    }, 4 * 60 * 1000); // 4 minutes
+    //}, 5 * 1000); // 5 seconds
+    
+    return () => clearInterval(warmingInterval);
+  }, []);
+
   return (
     <>
       {/* Floating Button */}

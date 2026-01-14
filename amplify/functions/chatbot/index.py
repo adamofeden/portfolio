@@ -182,8 +182,15 @@ def ask_chatbot(messages: list[dict], system_prompt: str) -> str:
 def handler(event, context):
     print("Received event")
     
-    # Extract messages from the arguments
     arguments = event.get('arguments', {})
+
+    # Initialize session, used to keep function warm to stop long waiting for cold starts
+    initialize_session = arguments.get('initializeSession', False)
+    if initialize_session:
+        print("Initializing session")
+        return {"message": "Session initialized"}
+    
+    # Extract messages from the arguments
     messages = arguments.get('messages', [])
     override_system_prompt = arguments.get('systemPrompt', None)
     system_prompt = (override_system_prompt or SYSTEM_PROMPT)
