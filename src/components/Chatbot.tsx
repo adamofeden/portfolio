@@ -149,7 +149,7 @@ export default function Chatbot() {
           className="fixed bottom-6 right-6 z-50 flex h-14 items-center justify-center gap-3 rounded-full bg-gradient-to-br from-indigo-500 to-emerald-400 px-5 text-white shadow-lg hover:scale-110 transition-transform"
         >
           <MessageCircle className="h-6 w-6" />
-          <span className="font-medium">CHAT WITH ADAM'S AI</span>
+          <span className="font-medium">CHAT WITH ADAM&apos;S AI</span>
         </button>
       )}
 
@@ -158,7 +158,7 @@ export default function Chatbot() {
         <div className="fixed bottom-6 right-6 z-50 flex h-[500px] w-[380px] flex-col rounded-2xl border border-black/10 dark:border-white/20 bg-white dark:bg-neutral-900 shadow-2xl">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-black/10 dark:border-white/20 p-4">
-            <h3 className="font-semibold">Adam's AI</h3>
+            <h3 className="font-semibold">Adam&apos;s AI</h3>
             <button
               onClick={() => setIsOpen(false)}
               className="rounded-lg p-1 hover:bg-black/5 dark:hover:bg-white/10"
