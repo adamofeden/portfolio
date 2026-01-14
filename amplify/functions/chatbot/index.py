@@ -99,7 +99,7 @@ def _ask_gemini(messages: list[dict], system_prompt: str, *, enable_search: bool
     #return (resp.text or "").strip()
 
 def ask_chatbot(messages: list[dict], system_prompt: str) -> str:
-    return _ask_gemini(messages=messages, system_prompt=system_prompt, enable_search=True)
+    return _ask_gemini(messages=messages, system_prompt=system_prompt, enable_search=False)
 
 def handler(event, context):
     print("Received event")
