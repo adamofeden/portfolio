@@ -38,6 +38,7 @@ def _ask_gemini(messages: list[dict], system_prompt: str, *, enable_search: bool
     from google.genai import types
     import os
     import stat
+    print("Finished importing")
 
     sa_json = _get_gcp_credentials()
 
@@ -98,8 +99,53 @@ def _ask_gemini(messages: list[dict], system_prompt: str, *, enable_search: bool
     return {"message": (resp.text or "").strip(), "citations": cites}
     #return (resp.text or "").strip()
 
+def _ask_chatgpt(messages: list[dict], system_prompt: str) -> dict:
+    """Call OpenAI's ChatGPT API with the given messages and system prompt."""
+    print("ask_chatgpt")
+    import os
+    from openai import OpenAI
+    print("Finished importing")
+    
+    # Get API key from environment variable
+    api_key = "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"#os.environ.get("OPENAI_API_KEY")
+    if not api_key:
+        raise ValueError("OPENAI_API_KEY environment variable not set")
+    
+    client = OpenAI(api_key=api_key)
+    
+    # Prepare messages in OpenAI format
+    openai_messages = [{"role": "system", "content": system_prompt}]
+    
+    # Add conversation history
+    for msg in messages:
+        openai_messages.append({
+            "role": msg.get("role", "user"),
+            "content": msg.get("content", "")
+        })
+    
+    # Call OpenAI API
+    model = os.environ.get("OPENAI_MODEL", "gpt-4o-mini")
+    temperature = float(os.environ.get("OPENAI_TEMP", "0.2"))
+    
+    response = client.chat.completions.create(
+        model=model,
+        messages=openai_messages,
+        temperature=temperature,
+        max_tokens=2048
+    )
+    
+    # Extract response text
+    message_text = response.choices[0].message.content or ""
+    
+    # Return in the same format as _ask_gemini
+    return {
+        "message": message_text.strip(),
+        "citations": []  # ChatGPT doesn't provide citations by default
+    }
+
 def ask_chatbot(messages: list[dict], system_prompt: str) -> str:
-    return _ask_gemini(messages=messages, system_prompt=system_prompt, enable_search=False)
+    #return _ask_gemini(messages=messages, system_prompt=system_prompt, enable_search=False)
+    return _ask_chatgpt(messages=messages, system_prompt=system_prompt)
 
 def handler(event, context):
     print("Received event")
