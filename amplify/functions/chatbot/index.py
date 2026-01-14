@@ -1,8 +1,14 @@
 # amplify/functions/chatbot/index.py
 import json
+import os
+from openai import OpenAI
+import boto3
+import os
+from botocore.exceptions import ClientError
 
+"""
 def _to_gemini_contents(messages: list[dict]) -> list[dict]:
-    """Map [{'role':'user'|'assistant','content':str}] -> Gemini 'contents'."""
+    """"""Map [{'role':'user'|'assistant','content':str}] -> Gemini 'contents'.""""""
     role_map = {"user": "user", "assistant": "model"}
     contents = []
     for m in messages:
@@ -11,7 +17,7 @@ def _to_gemini_contents(messages: list[dict]) -> list[dict]:
     return contents
 
 def _get_gcp_credentials():
-    """Retrieve GCP service account JSON from AWS Secrets Manager"""
+    """"""Retrieve GCP service account JSON from AWS Secrets Manager""""""
     import boto3
     import os
     from botocore.exceptions import ClientError
@@ -99,12 +105,12 @@ def _ask_gemini(messages: list[dict], system_prompt: str, *, enable_search: bool
 
     return {"message": (resp.text or "").strip(), "citations": cites}
     #return (resp.text or "").strip()
-
+"""
 def _get_gpt_api_key():
     """Retrieve OpenAI API key from AWS Secrets Manager"""
-    import boto3
-    import os
-    from botocore.exceptions import ClientError
+    #import boto3
+    #import os
+    #from botocore.exceptions import ClientError
     
     secret_name = "OPENAI_API_KEY_SECRET"  # Or make it configurable via env var
     region_name = os.environ.get("AWS_REGION", "us-west-2")
@@ -128,9 +134,9 @@ def _get_gpt_api_key():
 def _ask_chatgpt(messages: list[dict], system_prompt: str) -> dict:
     """Call OpenAI's ChatGPT API with the given messages and system prompt."""
     print("ask_chatgpt")
-    import os
-    from openai import OpenAI
-    print("Finished importing")
+    #import os
+    #from openai import OpenAI
+    #print("Finished importing")
     
     # Get API key from environment variable
     api_key = _get_gpt_api_key()#os.environ.get("OPENAI_API_KEY")
