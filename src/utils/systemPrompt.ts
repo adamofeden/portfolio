@@ -120,6 +120,14 @@ ABOUT ADAM DUGAN {
         Developed and maintained web applications using Python, SQL, and Django
         Worked on a team of 3 to build a teaching aid web application
         The application was a web-based system designed to assist teachers in grading and understanding student performance
+
+        The Shuler Group INC - Manufacturing Engineer & CAD Designer (2014 — 2016)
+        Designed and manufactured custom surfboards using CAD software and CNC/CAD-driven shaping systems
+        Engineered and maintained electrical hot-wire foam cutting systems for precision shaping and repeatability
+        Translated digital designs into physical products, managing tolerances, materials, and manufacturing constraints
+        Built and iterated on custom tooling, jigs, and fabrication workflows to improve accuracy and efficiency
+        Worked hands-on across the full production lifecycle: design, prototyping, fabrication, finishing, and QA
+        Developed a strong foundation in systems thinking, applied engineering, and design-for-manufacturing principles
     }
 
     TECHNICAL SKILLS {
