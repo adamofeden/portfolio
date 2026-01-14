@@ -23,6 +23,15 @@ export const chatBot = defineFunction(
       },
       code: Code.fromAsset(functionDir, {
         bundling: {
+          image: DockerImage.fromRegistry('public.ecr.aws/lambda/python:3.11'),
+          command: [
+            'bash', '-c',
+            'pip install -r requirements.txt -t /asset-output && cp index.py /asset-output'
+          ],
+        },
+      }),
+      /*code: Code.fromAsset(functionDir, {
+        bundling: {
           // For pure-Python deps you can bundle without Docker.
           // If you add native deps, plan to build in CI on Linux.
           image: DockerImage.fromRegistry('dummy'),
@@ -41,7 +50,7 @@ export const chatBot = defineFunction(
             },
           },
         },
-      }),
+      }),*/
     });
 
     return chatBotFunction;
