@@ -21,7 +21,7 @@ export const chatBot = defineFunction(
         GEMINI_REGION: 'eu-west-2', // Set your preferred region
         GEMINI_MODEL_ID: 'gemini-2.5-flash', // Set your preferred model
         GCP_PROJECT: 'balancingiqproject',
-        GCP_LOCATION: 'europe-west2',
+        GCP_LOCATION: 'us-central1',
         GCP_SECRET_NAME: 'gemini-service-account', 
       },
       code: Code.fromAsset(functionDir, {
