@@ -1,4 +1,5 @@
 # amplify/functions/chatbot/index.py
+import json
 
 def _to_gemini_contents(messages: list[dict]) -> list[dict]:
     """Map [{'role':'user'|'assistant','content':str}] -> Gemini 'contents'."""
@@ -117,7 +118,9 @@ def _get_gpt_api_key():
     
     try:
         get_secret_value_response = client.get_secret_value(SecretId=secret_name)
-        return get_secret_value_response['SecretString']
+        secret_string = get_secret_value_response['SecretString']
+        secret_dict = json.loads(secret_string)
+        return secret_dict['OPENAI_API_KEY']#get_secret_value_response['SecretString']
     except ClientError as e:
         print(f"Error retrieving OpenAI API key secret: {e}")
         raise
