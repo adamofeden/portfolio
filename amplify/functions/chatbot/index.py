@@ -8,6 +8,29 @@ def _to_gemini_contents(messages: list[dict]) -> list[dict]:
         r = role_map.get(m.get("role", "user"), "user")
         contents.append({"role": r, "parts": [{"text": m.get("content", "")}]})
     return contents
+
+def _get_gcp_credentials():
+    """Retrieve GCP service account JSON from AWS Secrets Manager"""
+    import boto3
+    import os
+    from botocore.exceptions import ClientError
+    
+    secret_name = os.environ.get("GCP_SECRET_NAME", "gemini-service-account")
+    region_name = os.environ.get("AWS_REGION", "us-east-1")
+    
+    # Create a Secrets Manager client
+    session = boto3.session.Session()
+    client = session.client(
+        service_name='secretsmanager',
+        region_name=region_name
+    )
+    
+    try:
+        get_secret_value_response = client.get_secret_value(SecretId=secret_name)
+        return get_secret_value_response['SecretString']
+    except ClientError as e:
+        print(f"Error retrieving secret: {e}")
+        raise
     
 def _ask_gemini(messages: list[dict], system_prompt: str, *, enable_search: bool=False) -> str:
     print("ask_gemini")
@@ -16,24 +39,12 @@ def _ask_gemini(messages: list[dict], system_prompt: str, *, enable_search: bool
     import os
     import stat
 
-    # ⛔️ DEV-ONLY: pasted SA JSON below, delete after testing
-    SA_JSON = r'''{
-        "type": "service_account",
-        "project_id": "balancingiqproject",
-        "private_key_id": "68602f3706a9508e7f0c55b39ba1a62d54d2d9dc",
-        "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC+Fl86WW+ZAh01\noszlfzYGGFJ72/XSzshE2vnqU/eCsj4QD8KBk3ZQvqrLlUO9siSIsthBv58iY3f5\nEsFX3u5KlSxJCfJZi5oWGMVB1kYBVlmVX4Iggz3XlOxIu64YMoIQf2W2YFM7F2PO\nnyloXBTH06Oqt0NjVEskmzTgDyL4Y8Cwzv69esJ64fDnp+ZQpG5mxKccZCimFFoj\nw6oGPqM4XALZerGQ6WDRhR7JJeKL/PP3VytOJagO2oaC6dY+6OIhMMgDOoKxl2Oy\n1Z0KNqerXuNfveofmf2AN/nOAPDfL7l74dNGlQZzMZXi6WaXRe7HH2CiOhbDaUKR\nWF8LXW+pAgMBAAECggEACt+TEpk4wdW19Qel1So53WRjx35VaU8hyT/baYo5uh9X\nCdUqSP417OLTOJ0GXcyvEVC6/8Z7JFzwk8NSYvk3bqBqLZgPkGFkxDHQ4CC71WoV\nQBmmrb8ZeQJQTSLLOnVygjNqDozOW1l4Ve090aCUIbrF/ccePYl+A4817uvUEhri\nqrmBt7PQdVGWXW5oV1JbO3bndtoLztFrEjOgbNjquRvp1TYEclYMJnNS+0aEjJfQ\n2znIsslFSsH0jhd8jQ45qfWX98kREZBWIln3bUz5ND45cdiGr658Q5jobNxtZORP\n+tvxRRiwD9Y1Ud+BPRCUfkO9pZKiG37jXcvOOAOblwKBgQDwGut1brK1lWQVt20W\nHZIZFJ+nMl/GXTF/CYvt7pAT5DcasBwQcTeGquIdtLKGx9fuQJR0vyziZv2KBTu3\nyFvOvtkVRZHR+hRIhrAneiDeS7nw4zwmL+KUnT+VgyGIWuBuupVSJDVo2H6+C3ee\nZ+8SVIFi0/FzyJySg3xs1Gt/vwKBgQDKq8whAaXoJgJbOhn7enbq7d2kxx8NA4Y7\nG2Y1Fs4O/b0/8tcxO5FnqpfvUXdGM9DiOV/ZShsDXQC2so4POHs0FNozjS79Ct0v\n6GLu+MzPLLfCU8OGQhr//Z/91LL7Ht2Fj+AFMGXuzu6J8TlHCU3PG6jGjQP443IF\nrLJNBvBqlwKBgQDi3kzE9QffE30yF9L3JpG5KQeBj9N3Nu9hvb993gA9C1IV4Xli\n/9cbY7OrpeVZ/NJGyLZ9aXYbpnzCQRegG6zDuQidVNLnuIgZz0n6wybzZFIZDlzz\nKCPLkJlXyEOS92tAtQQKTTQ6EPYQ0/z+q+31P+vRWbm3UULAHYUfv8ajOQKBgGn1\nDWCIMwu+q2a0ZpcSPI+wUjtumu471HacaYAB7zLpN4LyW8zyfp97EbndloUOW/uZ\n0WGRm7PTcKcTjK+qcMcWy8k9274Ravg7/1U+oB0EHQIstsE/WExTdczH4dbmGRxV\nzuIHnpMOfqmBgtd/pr1LkZ5UZSo/BwKuef1JTnH7AoGAdOak7WvLZnyhGFkLyLOq\nquHBsESTA4+kdhJ5F4uuwujYuKwpddhVOfBDIJSXreZvObQKEQOibV8YHQnSkXe7\n+OdNws5cr1RwHlbn29qnK4TGDNfERMRw7sAidnC3DA222sncD95WhbuS1ec21PNw\nxn1Xfxug0On3NUJ2TJTaEFI=\n-----END PRIVATE KEY-----\n",
-        "client_email": "aiserviceaccount@balancingiqproject.iam.gserviceaccount.com",
-        "client_id": "108344216484180157899",
-        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-        "token_uri": "https://oauth2.googleapis.com/token",
-        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/aiserviceaccount%40balancingiqproject.iam.gserviceaccount.com",
-        "universe_domain": "googleapis.com"
-    }'''
+    sa_json = _get_gcp_credentials()
+
     # Write to /tmp and point ADC at it
     sa_path = "/tmp/gcp-sa.json"
     with open(sa_path, "w") as f:
-        f.write(SA_JSON)
+        f.write(sa_json)
     os.chmod(sa_path, stat.S_IRUSR | stat.S_IWUSR)  # 0o600
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = sa_path
     os.environ.setdefault("GCP_PROJECT", "balancingiqproject")

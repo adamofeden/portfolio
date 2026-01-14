@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { defineFunction } from '@aws-amplify/backend';
 import { DockerImage, Duration } from 'aws-cdk-lib';
 import { Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
-//import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
 const functionDir = path.dirname(fileURLToPath(import.meta.url));
 
@@ -20,6 +20,9 @@ export const chatBot = defineFunction(
         // Environment variables for Bedrock configuration
         GEMINI_REGION: 'eu-west-2', // Set your preferred region
         GEMINI_MODEL_ID: 'gemini-2.5-flash', // Set your preferred model
+        GCP_PROJECT: 'balancingiqproject',
+        GCP_LOCATION: 'europe-west2',
+        GCP_SECRET_NAME: 'gemini-service-account', 
       },
       code: Code.fromAsset(functionDir, {
         bundling: {
@@ -46,6 +49,14 @@ export const chatBot = defineFunction(
         },
       }),
     });
+
+    // Grant permission to read from Secrets Manager
+    chatBotFunction.addToRolePolicy(new PolicyStatement({
+      actions: ['secretsmanager:GetSecretValue'],
+      resources: [
+        'arn:aws:secretsmanager:*:*:secret:gemini-service-account*'
+      ]
+    }));
 
     return chatBotFunction;
   },
