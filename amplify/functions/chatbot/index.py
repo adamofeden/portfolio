@@ -107,7 +107,7 @@ def _ask_chatgpt(messages: list[dict], system_prompt: str) -> dict:
     print("Finished importing")
     
     # Get API key from environment variable
-    api_key = "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"#os.environ.get("OPENAI_API_KEY")
+    api_key = os.environ.get("portfolio-key")
     if not api_key:
         raise ValueError("OPENAI_API_KEY environment variable not set")
     
