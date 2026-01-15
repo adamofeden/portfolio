@@ -347,11 +347,11 @@ export default function Page() {
           <Card>
             <h3 className="text-xl font-semibold mb-4">What Drives Me Today</h3>
             <p className="text-black/70 dark:text-white/70 leading-relaxed">
-              I build software that solves real problems, whether it's automating 
+              I build software that solves real problems, whether it&apos;s automating 
               compliance for healthcare, democratizing financial insights for small 
               businesses, or creating immersive educational experiences. My background 
               in storytelling, manufacturing, and international experience gives me a 
-              unique lens: technology isn't just about elegant code, it's about 
+              unique lens: technology isn&apos;t just about elegant code, it&apos;s about 
               understanding people and creating meaningful impact.
             </p>
           </Card>
