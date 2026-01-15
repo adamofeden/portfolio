@@ -10,6 +10,9 @@ import { generateClient } from "aws-amplify/data";
 import type { Schema } from "../../amplify/data/resource";
 import outputs from '../../amplify_outputs.json';
 
+import ReactMarkdown from 'react-markdown';
+import remarkBreaks from 'remark-breaks';
+
 Amplify.configure(outputs);
 const client = generateClient<Schema>();
 
@@ -202,7 +205,12 @@ export default function Chatbot() {
                       : "bg-black/5 dark:bg-white/10"
                   }`}
                 >
-                  <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                  {/*<p className="text-sm whitespace-pre-wrap">{msg.content}</p>*/}
+                  <div className="text-sm prose prose-sm dark:prose-invert max-w-none">
+                    <ReactMarkdown remarkPlugins={[remarkBreaks]}>
+                      {msg.content}
+                    </ReactMarkdown>
+                  </div>
                   {msg.citations && msg.citations.length > 0 && (
                     <div className="mt-2 text-xs opacity-70">
                       Sources:
