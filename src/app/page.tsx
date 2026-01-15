@@ -234,7 +234,7 @@ export default function Page() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight">Building secure, intelligent software solutions</h1>
             <p className="mt-6 text-base sm:text-lg leading-relaxed text-black/70 dark:text-white/70">
-              I design and deliver automation driven products end-to-end from <strong> Python</strong> based <strong>AI</strong>,
+              I design and deliver scalable software products end-to-end from <strong> Python</strong> based <strong>AI</strong>,
               <strong> Rust</strong> backend systems, and data services, to <strong>AWS</strong>{" "}cloud infrastructures and
               <strong> Next.js</strong> front ends. My work includes <em>BalancingIQ</em> {" "}
               (AI powered financial advisory platform), <em>SOA Assist Pro</em> (Medicare compliance automation suite), automated court case filing,
