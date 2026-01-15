@@ -299,6 +299,66 @@ export default function Page() {
         </div>
       </Section>
 
+      {/* About Me - Personal Story */}
+      <Section id="about" className="py-20">
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">About Me</h2>
+        
+        <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          {/* Card 1: The Journalism Journey */}
+          <Card>
+            <h3 className="text-xl font-semibold mb-4">Stories Before Code</h3>
+            <p className="text-black/70 dark:text-white/70 leading-relaxed">
+              Before I wrote my first line of code, I was chasing stories around the 
+              world as an independent journalist. I spent 15 months in New Zealand, a year 
+              in Australia, six months across Asia, and a year in Turkey, learning 
+              to listen, ask questions, and understand different perspectives. That 
+              curiosity about how people think and what they need became the foundation 
+              for how I approach software today.
+            </p>
+          </Card>
+          
+          {/* Card 2: Manufacturing to Tech */}
+          <Card>
+            <h3 className="text-xl font-semibold mb-4">From Surfboards to Software</h3>
+            <p className="text-black/70 dark:text-white/70 leading-relaxed">
+              My path into tech started in a workshop at The Shuler Group, where I 
+              designed and manufactured custom surfboards using CAD and CNC systems. 
+              The precision required to turn digital designs into physical products, 
+              managing tolerances, materials, and constraints taught me systems 
+              thinking that translates directly to software architecture.
+            </p>
+          </Card>
+          
+          {/* Card 3: Entrepreneurial Journey */}
+          <Card>
+            <h3 className="text-xl font-semibold mb-4">Building Language Lab</h3>
+            <p className="text-black/70 dark:text-white/70 leading-relaxed">
+              In 2020, I co-founded Language Lab, combining my passion for language, 
+              travel, and technology. We built a VR language learning platform that 
+              reached Top 3 worldwide on the Meta Quest Store, engaging thousands of 
+              users globally. The successful acquisition in 2025 was validation that 
+              understanding users deeply, a skill honed through journalism, creates 
+              products that resonate.
+            </p>
+          </Card>
+          
+          {/* Card 4: What Drives Me */}
+          <Card>
+            <h3 className="text-xl font-semibold mb-4">What Drives Me Today</h3>
+            <p className="text-black/70 dark:text-white/70 leading-relaxed">
+              I build software that solves real problems, whether it's automating 
+              compliance for healthcare, democratizing financial insights for small 
+              businesses, or creating immersive educational experiences. My background 
+              in storytelling, manufacturing, and international experience gives me a 
+              unique lens: technology isn't just about elegant code, it's about 
+              understanding people and creating meaningful impact.
+            </p>
+          </Card>
+          
+        </div>
+      </Section>
+
       {/* Projects */}
       <Section id="projects" className="py-20">
         <div className="mb-8 flex items-end justify-between gap-4">
