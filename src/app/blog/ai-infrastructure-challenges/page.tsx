@@ -190,7 +190,7 @@ export default function Page() {
         </li>
         <li>
           <strong>Confidence indicators:</strong> For predictions or suggestions, we show confidence 
-          levels. &quot;High confidence&quot; means we have clean, complete data. &quot;"Low confidence&quot; means 
+          levels. &quot;High confidence&quot; means we have clean, complete data. &quot;Low confidence&quot; means 
           there are gaps or anomalies.
         </li>
       </ul>

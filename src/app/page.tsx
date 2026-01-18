@@ -10,7 +10,7 @@ import {
   Github,
   Linkedin,
   Mail,
-  ExternalLink,
+  //ExternalLink,
   Cpu,
   Code2,
   ShieldCheck,

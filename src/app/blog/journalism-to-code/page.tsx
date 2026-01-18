@@ -106,9 +106,9 @@ export default function Page() {
         solution matters struggle to get buy-in.
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
-        Journalism taught me to frame technical work in human terms. Not "We implemented a Lambda-based 
+        Journalism taught me to frame technical work in human terms. Not &quot;We implemented a Lambda-based 
         event-driven architecture&quot; — but &quot;Now when a customer uploads their financial data, it processes 
-        in the background so they don&apos;t have to wait."
+        in the background so they don&apos;t have to wait.&quot;
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">The Manufacturing Years: Systems Thinking Before Systems Architecture</h2>

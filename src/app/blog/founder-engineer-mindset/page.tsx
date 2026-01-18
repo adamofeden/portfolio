@@ -158,7 +158,7 @@ export default function Page() {
         have massive communities. When something breaks, I can find answers in minutes, not days.
       </p>
 
-      <h3 className="mt-8 text-xl font-semibold">"Future-Proofing&quot; That Never Arrives</h3>
+      <h3 className="mt-8 text-xl font-semibold">&quot;Future-Proofing&quot; That Never Arrives</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         &quot;What if we need to support multiple payment providers?&quot; &quot;What if we need to run on-prem?&quot;
         &quot;What if we need to handle billions of records?&quot;

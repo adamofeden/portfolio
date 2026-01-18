@@ -349,7 +349,7 @@ const invoices = await adapter.getInvoices(org.id);`}</pre>
 
       <h3 className="mt-8 text-xl font-semibold">4. Chart of Accounts Variations</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Every business structures their COA differently. You can&apos;t hardcode "Revenue" is account 
+        Every business structures their COA differently. You can&apos;t hardcode &quot;Revenue&quot; is account 
         code 4000. Instead, let users map their accounts to your categories, or use heuristics based 
         on account types.
       </p>

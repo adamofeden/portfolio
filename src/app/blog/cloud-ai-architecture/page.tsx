@@ -98,11 +98,11 @@ export default function Page() {
         and error rates at a glance.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Most outages I&apos;ve debugged in AI systems weren&apos;t "the model failed" — they were timeouts, rate limits, 
+        Most outages I&apos;ve debugged in AI systems weren&apos;t &quot;the model failed&quot; — they were timeouts, rate limits, 
         malformed prompts, or upstream API changes. Without observability, you&apos;re flying blind.
       </p>
 
-      <h2 className="mt-10 text-2xl font-semibold">Most Outages Aren&apos;t "AI Problems"</h2>
+      <h2 className="mt-10 text-2xl font-semibold">Most Outages Aren&apos;t &quot;AI Problems&quot;</h2>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Here&apos;s a pattern I&apos;ve seen repeatedly: A team spends weeks tuning prompts, benchmarking models, and 
         optimizing embeddings. Then they push to production and the system falls over — not because the AI failed, 
