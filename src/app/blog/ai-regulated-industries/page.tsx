@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "AI in Regulated Industries: Why Constraints Lead to Better Engineering — Adam Dugan",
+  title: "AI in Regulated Industries: Why Constraints Lead to Better Engineering - Adam Dugan",
   description:
     "Building AI systems for healthcare, finance, and regulated industries requires auditability, deterministic workflows, secure data boundaries, and human override paths. Here's why these constraints make you a better engineer.",
 };
@@ -25,7 +25,7 @@ export default function Page() {
       </h1>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        &quot;Move fast and break things&quot; works great — until you&apos;re dealing with protected health 
+        &quot;Move fast and break things&quot; works great, until you&apos;re dealing with protected health 
         information, financial records, or personally identifiable data. In regulated industries, 
         breaking things isn&apos;t a learning opportunity. It&apos;s a compliance violation, a breach 
         notification, or a lawsuit.
@@ -34,7 +34,7 @@ export default function Page() {
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         I&apos;ve spent the last few years building AI systems in exactly these environments: 
         <em> BalancingIQ</em> handles financial data for small businesses, and <em>SOA Assist Pro</em> 
-        automates Medicare compliance workflows. Both operate under strict regulatory frameworks — 
+        automates Medicare compliance workflows. Both operate under strict regulatory frameworks, 
         financial regulations for one, HIPAA for the other.
       </p>
 
@@ -53,7 +53,7 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">1. Auditability: Everything Must Leave a Trail</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        In regulated industries, you don&apos;t just need to know <em>what</em> your system did — you 
+        In regulated industries, you don&apos;t just need to know <em>what</em> your system did, you 
         need to prove it. To auditors, regulators, and sometimes courts.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -62,7 +62,7 @@ export default function Page() {
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         In <em>SOA Assist Pro</em>, we process Medicare forms where documentation is legally required. 
-        Every step — from data ingestion to AI-generated suggestions to final submission — is logged 
+        Every step (from data ingestion to AI-generated suggestions to final submission) is logged 
         with timestamps, user IDs, and input/output pairs. If an auditor asks &quot;Why did you submit 
         this form this way?&quot;, we can reconstruct the entire decision chain in seconds.
       </p>
@@ -85,7 +85,7 @@ export default function Page() {
         different answers on refresh, you have a liability problem.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        This doesn&apos;t mean you can&apos;t use AI — it means you architect carefully. In <em>BalancingIQ</em>, 
+        This doesn&apos;t mean you can&apos;t use AI, it means you architect carefully. In <em>BalancingIQ</em>, 
         we use LLMs to generate financial insights, but the underlying calculations are deterministic: 
         same books, same KPIs, same numbers. The AI adds narrative and context, but the facts don&apos;t 
         change between runs.
@@ -108,11 +108,11 @@ export default function Page() {
       <h3 className="mt-8 text-xl font-semibold">3. Secure Data Boundaries: Trust Nothing, Encrypt Everything</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         If you&apos;re handling PHI (Protected Health Information) or financial data, encryption isn&apos;t 
-        a nice-to-have. It&apos;s the law. And it&apos;s not just &quot;encrypt at rest&quot; — it&apos;s encrypt in transit, 
+        a nice-to-have. It&apos;s the law. And it&apos;s not just &quot;encrypt at rest&quot;, it&apos;s encrypt in transit, 
         encrypt in memory when possible, and <em>never</em> send sensitive data where it doesn&apos;t belong.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        In <em>SOA Assist Pro</em>, patient data flows through our system — names, Medicare numbers, 
+        In <em>SOA Assist Pro</em>, patient data flows through our system names, Medicare numbers, 
         health histories. HIPAA requires that we:
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
@@ -137,7 +137,7 @@ export default function Page() {
       <h3 className="mt-8 text-xl font-semibold">4. Clear Human Override Paths: AI Suggests, Humans Decide</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         In regulated industries, AI can assist, but it can&apos;t decide. A doctor, accountant, or 
-        compliance officer must always have the final say — and they need to be able to override 
+        compliance officer must always have the final say and they need to be able to override 
         the AI easily, without diving into code or config files.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -161,8 +161,8 @@ export default function Page() {
       </ul>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         <strong>Why it makes you better:</strong> Designing for human oversight forces you to 
-        build transparent, explainable AI. No one trusts a black box. But if you show your work — 
-        &quot;Here&apos;s the data, here&apos;s the logic, here&apos;s the suggestion&quot; — humans can validate, learn, 
+        build transparent, explainable AI. No one trusts a black box. But if you show your work( 
+        &quot;Here&apos;s the data, here&apos;s the logic, here&apos;s the suggestion&quot;) humans can validate, learn, 
         and improve the system over time.
       </p>
 
@@ -185,7 +185,7 @@ export default function Page() {
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>
           <strong>Encryption by default:</strong> All data is encrypted before it touches S3. 
-          Developers don&apos;t opt in to encryption — they&apos;d have to actively disable it (and that 
+          Developers don&apos;t opt in to encryption, they&apos;d have to actively disable it (and that 
           requires admin approval).
         </li>
         <li>
@@ -200,13 +200,13 @@ export default function Page() {
         <li>
           <strong>Access controls are implicit:</strong> Multi-tenancy is enforced at the database 
           layer. Queries automatically filter by tenant. Developers can&apos;t accidentally leak data 
-          across organizations — the architecture prevents it.
+          across organizations, the architecture prevents it.
         </li>
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         When you design this way, compliance isn&apos;t a burden — it&apos;s invisible. Security isn&apos;t an 
-        afterthought — it&apos;s the foundation.
+        afterthought, it&apos;s the foundation.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">Why These Constraints Make You a Better Engineer</h2>
@@ -232,14 +232,14 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">3. You Build Trust by Default</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        When you design for transparency — showing users what data you use, what the AI suggested, 
-        what got approved — people trust your system. Trust is the hardest thing to build and the 
+        When you design for transparency (showing users what data you use, what the AI suggested, 
+        what got approved) people trust your system. Trust is the hardest thing to build and the 
         easiest to lose. Regulated industries force you to earn it from day one.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">4. You Ship Systems That Actually Scale</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Secure boundaries, explicit data flow, deterministic outputs — these aren&apos;t just compliance 
+        Secure boundaries, explicit data flow, deterministic outputs, these aren&apos;t just compliance 
         requirements. They&apos;re architectural best practices. Systems built this way are easier to 
         test, easier to debug, easier to scale, and far less likely to surprise you at 2am.
       </p>
@@ -255,25 +255,25 @@ export default function Page() {
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Engineers who understand how to build AI systems that are <strong>auditable, deterministic, 
         secure, and human-centered</strong> will be in high demand. These aren&apos;t skills you pick 
-        up overnight — they require a mindset shift from &quot;move fast&quot; to &quot;move carefully, but still 
+        up overnight, they require a mindset shift from &quot;move fast&quot; to &quot;move carefully, but still 
         ship.&quot;
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         And here&apos;s the secret: once you learn to build this way, you realize it&apos;s not slower. 
-        It&apos;s <em>faster</em> — because you&apos;re not constantly fixing bugs, patching security holes, 
+        It&apos;s <em>faster</em> because you&apos;re not constantly fixing bugs, patching security holes, 
         or rewriting systems that don&apos;t scale. You&apos;re building systems that work, that last, and 
         that you&apos;re proud to put your name on.
       </p>
 
-      <h2 className="mt-10 text-2xl font-semibold">Key Takeaways</h2>
+      {/*<h2 className="mt-10 text-2xl font-semibold">Key Takeaways</h2>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70">
         <li>
           AI in regulated industries requires <strong>auditability, deterministic workflows, secure 
           data boundaries, and human override paths.</strong>
         </li>
         <li>
-          These constraints don&apos;t make engineering harder — they make it <strong>clearer, more 
+          These constraints don&apos;t make engineering harder. They make it <strong>clearer, more 
           disciplined, and more resilient.</strong>
         </li>
         <li>
@@ -288,7 +288,7 @@ export default function Page() {
           As AI adoption grows in finance, healthcare, and other regulated spaces, engineers who 
           understand compliance will be invaluable.
         </li>
-      </ul>
+      </ul>*/}
 
       <div className="mt-12 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur">
         <p className="text-sm text-black/70 dark:text-white/70">

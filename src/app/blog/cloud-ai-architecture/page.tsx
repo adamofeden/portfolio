@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Why Architecture Matters More Than Your Model Choice in Cloud + AI Systems — Adam Dugan",
+  title: "Why Architecture Matters More Than Your Model Choice in Cloud + AI Systems - Adam Dugan",
   description:
     "Early architectural decisions in cloud and AI systems compound faster than model improvements. Learn why event-driven workflows, data partitioning, encryption boundaries, and observability matter more than Model A vs Model B.",
 };
@@ -25,8 +25,8 @@ export default function Page() {
       </h1>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        I&apos;ve noticed a consistent pattern working with startups and enterprise teams building AI-powered systems: 
-        there&apos;s an overwhelming focus on <strong>which model to use</strong> — GPT-4 vs Claude vs Gemini — 
+        I&apos;ve noticed a consistent pattern working with startups and enterprise teams building AI powered systems: 
+        there&apos;s an overwhelming focus on <strong>which model to use</strong> (GPT-4 vs Claude vs Gemini) 
         while foundational architectural decisions get rushed or overlooked entirely.
       </p>
 
@@ -41,14 +41,14 @@ export default function Page() {
       <h3 className="mt-8 text-xl font-semibold">1. Event-Driven vs Synchronous Workflows</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         This is one of the earliest forks in the road, and it shapes everything downstream. When an AI system 
-        processes user input — whether that&apos;s generating a report, analyzing an image, or synthesizing data — 
+        processes user input, whether that&apos;s generating a report, analyzing an image, or synthesizing data, 
         do you block the user and wait for completion, or do you fire an event and return immediately?
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Synchronous workflows are simple to build and reason about, but they become brittle at scale. If your 
         LLM call takes 8 seconds and your gateway times out at 30, you&apos;re one retry away from cascading failures. 
-        Event-driven architectures — using queues, streams, or pub/sub — decouple request handling from execution, 
-        giving you resilience, retries, and horizontal scaling.
+        Event-driven architectures (using queues, streams, or pub/sub) decouple request handling from execution 
+        gives you resilience, retries, and horizontal scaling.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         <strong>Why it matters:</strong> Once you&apos;ve built a synchronous API with 10 endpoints and tight coupling, 
@@ -58,7 +58,7 @@ export default function Page() {
       <h3 className="mt-8 text-xl font-semibold">2. Data Partitioning Strategies</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         AI systems are data-hungry. You&apos;re ingesting user files, API responses, embeddings, chat histories, 
-        generated outputs — and it adds up fast. How you partition that data determines your query performance, 
+        generated outputs, and it adds up fast. How you partition that data determines your query performance, 
         cost structure, and compliance posture.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -75,7 +75,7 @@ export default function Page() {
       <h3 className="mt-8 text-xl font-semibold">3. Encryption Boundaries</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Where does data get encrypted? At rest, in transit, or in memory? Do you encrypt before it hits S3, 
-        or do you rely on server-side encryption? Who manages the keys — AWS KMS, your own HSM, or a secrets manager?
+        or do you rely on server-side encryption? Who manages the keys, AWS KMS, your own HSM, or a secrets manager?
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         These decisions aren&apos;t just compliance checkboxes. They define your threat model. If an attacker gains 
@@ -88,7 +88,7 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">4. Observability From Day One</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Logging, metrics, traces — these aren&apos;t &quot;nice to haves&quot; you bolt on later. They&apos;re the difference 
+        Logging, metrics, traces; these aren&apos;t &quot;nice to haves&quot; you bolt on later. They&apos;re the difference 
         between debugging a production issue in 10 minutes vs 10 hours.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -98,14 +98,14 @@ export default function Page() {
         and error rates at a glance.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Most outages I&apos;ve debugged in AI systems weren&apos;t &quot;the model failed&quot; — they were timeouts, rate limits, 
+        Most outages I&apos;ve debugged in AI systems weren&apos;t &quot;the model failed&quot;; they were timeouts, rate limits, 
         malformed prompts, or upstream API changes. Without observability, you&apos;re flying blind.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">Most Outages Aren&apos;t &quot;AI Problems&quot;</h2>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Here&apos;s a pattern I&apos;ve seen repeatedly: A team spends weeks tuning prompts, benchmarking models, and 
-        optimizing embeddings. Then they push to production and the system falls over — not because the AI failed, 
+        optimizing embeddings. Then they push to production and the system falls over; not because the AI failed, 
         but because:
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
@@ -137,7 +137,7 @@ export default function Page() {
 
       <h2 className="mt-10 text-2xl font-semibold">Build Boring Foundations. Let the AI Be the Exciting Part.</h2>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        The promise of AI is incredible — automated insights, personalized experiences, natural interfaces. 
+        The promise of AI is incredible: automated insights, personalized experiences, natural interfaces. 
         But to deliver on that promise reliably, at scale, with security and compliance baked in, you need 
         solid, boring infrastructure underneath.
       </p>
@@ -152,10 +152,10 @@ export default function Page() {
       </ul>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         These aren&apos;t trade-offs. They&apos;re prerequisites. And the teams that get them right early are the ones 
-        that ship AI products that don&apos;t just demo well — they run well.
+        that ship AI products that don&apos;t just demo well, they run well.
       </p>
 
-      <h2 className="mt-10 text-2xl font-semibold">Key Takeaways</h2>
+      {/*<h2 className="mt-10 text-2xl font-semibold">Key Takeaways</h2>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70">
         <li>
           <strong>Early architectural decisions compound faster than model improvements.</strong> Choose 
@@ -163,7 +163,7 @@ export default function Page() {
         </li>
         <li>
           Event-driven vs synchronous, data partitioning, encryption boundaries, and observability are 
-          foundational — not afterthoughts.
+          foundational, not afterthoughts.
         </li>
         <li>
           Most outages in AI systems are system design problems, not AI problems. Your infrastructure 
@@ -175,7 +175,7 @@ export default function Page() {
         <li>
           Retrofitting architecture is expensive and slow. Get it right from day one.
         </li>
-      </ul>
+      </ul>*/}
 
       <div className="mt-12 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur">
         <p className="text-sm text-black/70 dark:text-white/70">
