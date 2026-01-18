@@ -21,7 +21,7 @@ export default function Page() {
       </nav>
 
       <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
-        Building Voice AI That Doesn't Suck: Real-Time Conversational Interfaces in Production
+        Building Voice AI That Doesn&apos;t Suck: Real-Time Conversational Interfaces in Production
       </h1>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -30,14 +30,14 @@ export default function Page() {
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        I've built voice AI systems for multiple projects: an AI administrative assistant that takes 
+        I&apos;ve built voice AI systems for multiple projects: an AI administrative assistant that takes 
         phone calls, schedules appointments, and responds to inquiries; voice interfaces for 
         <em> SOA Assist Pro</em> to help agents navigate Medicare forms; and experimental interfaces 
         for customer support automation.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Here's what I learned the hard way: <strong>Most voice AI feels clunky because latency, 
+        Here&apos;s what I learned the hard way: <strong>Most voice AI feels clunky because latency, 
         conversation design, and interruption handling are harder problems than prompt engineering.</strong>
       </p>
 
@@ -47,15 +47,15 @@ export default function Page() {
         Think about the last time you called an automated customer service line. You probably experienced:
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
-        <li>Long pauses where you're not sure if the system heard you</li>
+        <li>Long pauses where you&apos;re not sure if the system heard you</li>
         <li>The bot talking over you when you try to interrupt</li>
         <li>Misunderstanding what you said, even when you spoke clearly</li>
         <li>Robotic, unnatural pacing and tone</li>
-        <li>Getting stuck in loops where you can't reach a human</li>
+        <li>Getting stuck in loops where you can&apos;t reach a human</li>
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        These aren't AI problems — they're <strong>engineering problems</strong>. The underlying LLM 
+        These aren&apos;t AI problems — they&apos;re <strong>engineering problems</strong>. The underlying LLM 
         is perfectly capable of understanding and responding. But the infrastructure between "user 
         speaks" and "bot responds" is where everything falls apart.
       </p>
@@ -63,14 +63,14 @@ export default function Page() {
       <h2 className="mt-10 text-2xl font-semibold">The Stack That Actually Works</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        After trying multiple approaches, here's the stack I've converged on for production voice AI:
+        After trying multiple approaches, here&apos;s the stack I&apos;ve converged on for production voice AI:
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">Twilio for Telephony</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         <strong>Twilio</strong> handles the phone infrastructure: receiving calls, managing sessions, 
-        and streaming audio. It's rock-solid, well-documented, and handles edge cases (dropped calls, 
-        poor connections) better than anything I've tried to build myself.
+        and streaming audio. It&apos;s rock-solid, well-documented, and handles edge cases (dropped calls, 
+        poor connections) better than anything I&apos;ve tried to build myself.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Key features:
@@ -85,7 +85,7 @@ export default function Page() {
       <h3 className="mt-8 text-xl font-semibold">Azure Speech for TTS/STT</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         For <strong>Text-to-Speech (TTS)</strong> and <strong>Speech-to-Text (STT)</strong>, I use 
-        <strong> Azure Speech Services</strong>. I've tried OpenAI's Whisper, Google Cloud Speech, 
+        <strong> Azure Speech Services</strong>. I&apos;ve tried OpenAI&apos;s Whisper, Google Cloud Speech, 
         and AWS Transcribe. Azure wins on the combination of:
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
@@ -93,18 +93,18 @@ export default function Page() {
         <li><strong>Natural voices:</strong> Neural TTS voices sound genuinely human, not robotic</li>
         <li><strong>Customization:</strong> SSML support for pacing, emphasis, pauses</li>
         <li><strong>Streaming:</strong> Both STT and TTS support streaming, critical for real-time feel</li>
-        <li><strong>Cost:</strong> More affordable than OpenAI's TTS for production volume</li>
+        <li><strong>Cost:</strong> More affordable than OpenAI&apos;s TTS for production volume</li>
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Note: OpenAI's Whisper is excellent for accuracy, but it's not real-time. For voice calls, 
+        Note: OpenAI&apos;s Whisper is excellent for accuracy, but it&apos;s not real-time. For voice calls, 
         you need streaming STT, and Azure handles this better.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">OpenAI (or Claude) for Conversational Intelligence</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         For the <strong>conversational logic</strong> — understanding intent, generating responses, 
-        maintaining context — I use <strong>OpenAI's GPT-4</strong> or <strong>Anthropic's Claude</strong>, 
+        maintaining context — I use <strong>OpenAI&apos;s GPT-4</strong> or <strong>Anthropic&apos;s Claude</strong>, 
         depending on the use case.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -123,7 +123,7 @@ export default function Page() {
       <h2 className="mt-10 text-2xl font-semibold">The Architecture: How It All Connects</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Here's the flow for a typical voice AI call:
+        Here&apos;s the flow for a typical voice AI call:
       </p>
 
       <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur">
@@ -162,7 +162,7 @@ export default function Page() {
         <li><strong>Network overhead:</strong> 100-300ms across hops</li>
       </ul>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        <strong>Total: 1-2.7 seconds</strong> in the best case. You're already at the edge of acceptable.
+        <strong>Total: 1-2.7 seconds</strong> in the best case. You&apos;re already at the edge of acceptable.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -170,7 +170,7 @@ export default function Page() {
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li><strong>Stream everything:</strong> Use streaming STT, streaming LLM responses, and 
-        streaming TTS. Don't wait for complete outputs.</li>
+        streaming TTS. Don&apos;t wait for complete outputs.</li>
         <li><strong>Start speaking early:</strong> As soon as you have the first sentence from the 
         LLM, convert it to speech and start playing. The user hears a response while the rest is 
         still generating.</li>
@@ -188,7 +188,7 @@ export default function Page() {
         "Sure, what day works for you?"
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Most voice AI doesn't handle this. The bot keeps talking even when you start speaking. It's 
+        Most voice AI doesn&apos;t handle this. The bot keeps talking even when you start speaking. It&apos;s 
         infuriating.
       </p>
 
@@ -198,11 +198,11 @@ export default function Page() {
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li><strong>Barge-in detection:</strong> Monitor incoming audio while the bot is speaking. 
         If speech is detected above a threshold, immediately stop the TTS playback.</li>
-        <li><strong>Clear the buffers:</strong> Cancel any pending TTS and LLM streaming. Don't let 
+        <li><strong>Clear the buffers:</strong> Cancel any pending TTS and LLM streaming. Don&apos;t let 
         old content leak into the new turn.</li>
         <li><strong>Acknowledge the interruption:</strong> Optional, but human-like: "Oh, sorry—go ahead."</li>
         <li><strong>Context preservation:</strong> Keep the conversation history so the bot knows what 
-        it was about to say, in case it's relevant.</li>
+        it was about to say, in case it&apos;s relevant.</li>
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -212,7 +212,7 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">3. Conversation Design (Not Just Prompt Engineering)</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Designing for voice is fundamentally different than designing for chat. Here's what I learned:
+        Designing for voice is fundamentally different than designing for chat. Here&apos;s what I learned:
       </p>
 
       <h4 className="mt-6 text-lg font-semibold">Keep Responses Short</h4>
@@ -231,8 +231,8 @@ export default function Page() {
 
       <h4 className="mt-6 text-lg font-semibold">Clarify Ambiguity Early</h4>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        STT isn't perfect, especially with background noise, accents, or domain-specific terms. If 
-        you're not sure what the user said, <strong>ask for confirmation</strong>.
+        STT isn&apos;t perfect, especially with background noise, accents, or domain-specific terms. If 
+        you&apos;re not sure what the user said, <strong>ask for confirmation</strong>.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Example: "Did you say Tuesday at 2pm, or Thursday at 2pm?"
@@ -240,7 +240,7 @@ export default function Page() {
 
       <h4 className="mt-6 text-lg font-semibold">Provide Escape Hatches</h4>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Always give users a way out. "If you'd like to speak to a human, just say 'agent' or press 0."
+        Always give users a way out. "If you&apos;d like to speak to a human, just say &apos;agent&apos; or press 0."
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Nothing destroys trust faster than trapping someone in a bot loop with no way to escalate.
@@ -255,7 +255,7 @@ export default function Page() {
 
       <h4 className="mt-6 text-lg font-semibold">Test With Real Phone Calls</h4>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Don't just test in a quiet room with a clear microphone. Call from your car, from a coffee shop, 
+        Don&apos;t just test in a quiet room with a clear microphone. Call from your car, from a coffee shop, 
         with background noise. Real-world audio quality is <em>much</em> worse than you expect.
       </p>
 
@@ -271,7 +271,7 @@ export default function Page() {
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>
-          <strong>Noise suppression:</strong> Azure Speech has built-in noise reduction. It's not 
+          <strong>Noise suppression:</strong> Azure Speech has built-in noise reduction. It&apos;s not 
           perfect, but it helps with background chatter, traffic, etc.
         </li>
         <li>
@@ -292,7 +292,7 @@ export default function Page() {
       <h2 className="mt-10 text-2xl font-semibold">Cost Considerations: Voice AI Is Expensive</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Let's talk money. Voice AI isn't cheap, especially at scale.
+        Let&apos;s talk money. Voice AI isn&apos;t cheap, especially at scale.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -307,7 +307,7 @@ export default function Page() {
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        That's $6.36 per hour of conversation, or $636 for 100 hours. If you're running a customer 
+        That&apos;s $6.36 per hour of conversation, or $636 for 100 hours. If you&apos;re running a customer 
         support line with hundreds of calls per day, it adds up fast.
       </p>
 
@@ -321,7 +321,7 @@ export default function Page() {
         to GPT-4.</li>
         <li><strong>Set time limits:</strong> Cap calls at 10 minutes, then offer to transfer to a human.</li>
         <li><strong>Monitor usage per customer:</strong> Flag and investigate outliers (someone making 
-        50 calls/day probably isn't legitimate use).</li>
+        50 calls/day probably isn&apos;t legitimate use).</li>
       </ul>
 
       <h2 className="mt-10 text-2xl font-semibold">Real-World Example: AI Administrative Assistant</h2>
@@ -337,7 +337,7 @@ export default function Page() {
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>Streaming everything: latency stayed under 1.5 seconds for most turns</li>
         <li>Pre-cached greetings and FAQs: instant responses for common questions</li>
-        <li>Clear escalation path: "If you need immediate help, I'll transfer you now"</li>
+        <li>Clear escalation path: "If you need immediate help, I&apos;ll transfer you now"</li>
         <li>Conversational function calling: "Let me check the calendar" → query Google Calendar API</li>
         <li>Call recording + transcript logging: useful for debugging and training</li>
       </ul>
@@ -355,13 +355,13 @@ export default function Page() {
       <h2 className="mt-10 text-2xl font-semibold">When to Use Voice AI (and When Not To)</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Voice AI isn't always the right solution. Here's when it makes sense:
+        Voice AI isn&apos;t always the right solution. Here&apos;s when it makes sense:
       </p>
 
       <h3 className="mt-6 text-lg font-semibold">Good Use Cases:</h3>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
-        <li><strong>High-volume, low-complexity queries:</strong> "What are your hours?" "Where's my order?"</li>
-        <li><strong>After-hours support:</strong> Handle calls when humans aren't available</li>
+        <li><strong>High-volume, low-complexity queries:</strong> "What are your hours?" "Where&apos;s my order?"</li>
+        <li><strong>After-hours support:</strong> Handle calls when humans aren&apos;t available</li>
         <li><strong>Appointment scheduling:</strong> Voice is more natural than form-filling</li>
         <li><strong>Triage and routing:</strong> Figure out what the caller needs, then route appropriately</li>
       </ul>
@@ -372,7 +372,7 @@ export default function Page() {
         planning — these need humans</li>
         <li><strong>High-emotion situations:</strong> Angry customers, emergencies — escalate immediately</li>
         <li><strong>Tasks requiring visual elements:</strong> "Fill out this form" works better on web/app</li>
-        <li><strong>Long-form content:</strong> Don't read a 10-minute policy over the phone</li>
+        <li><strong>Long-form content:</strong> Don&apos;t read a 10-minute policy over the phone</li>
       </ul>
 
       <h2 className="mt-10 text-2xl font-semibold">Key Takeaways</h2>
@@ -409,7 +409,7 @@ export default function Page() {
 
       <div className="mt-12 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur">
         <p className="text-sm text-black/70 dark:text-white/70">
-          <strong>Building voice AI for your product?</strong> I'd love to hear about your challenges 
+          <strong>Building voice AI for your product?</strong> I&apos;d love to hear about your challenges 
           with latency, conversation design, or production deployment. Reach out at{" "}
           <a href="mailto:adamdugan6@gmail.com" className="underline hover:opacity-80">
             adamdugan6@gmail.com

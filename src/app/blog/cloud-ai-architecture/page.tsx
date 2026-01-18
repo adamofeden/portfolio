@@ -25,13 +25,13 @@ export default function Page() {
       </h1>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        I've noticed a consistent pattern working with startups and enterprise teams building AI-powered systems: 
-        there's an overwhelming focus on <strong>which model to use</strong> — GPT-4 vs Claude vs Gemini — 
+        I&apos;ve noticed a consistent pattern working with startups and enterprise teams building AI-powered systems: 
+        there&apos;s an overwhelming focus on <strong>which model to use</strong> — GPT-4 vs Claude vs Gemini — 
         while foundational architectural decisions get rushed or overlooked entirely.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Here's the uncomfortable truth: <strong>early architectural decisions compound faster than model improvements</strong>. 
+        Here&apos;s the uncomfortable truth: <strong>early architectural decisions compound faster than model improvements</strong>. 
         The choices you make about system design in the first few weeks will determine your scalability, 
         security posture, and operational stability far more than whether you chose Model A or Model B.
       </p>
@@ -41,29 +41,29 @@ export default function Page() {
       <h3 className="mt-8 text-xl font-semibold">1. Event-Driven vs Synchronous Workflows</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         This is one of the earliest forks in the road, and it shapes everything downstream. When an AI system 
-        processes user input — whether that's generating a report, analyzing an image, or synthesizing data — 
+        processes user input — whether that&apos;s generating a report, analyzing an image, or synthesizing data — 
         do you block the user and wait for completion, or do you fire an event and return immediately?
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Synchronous workflows are simple to build and reason about, but they become brittle at scale. If your 
-        LLM call takes 8 seconds and your gateway times out at 30, you're one retry away from cascading failures. 
+        LLM call takes 8 seconds and your gateway times out at 30, you&apos;re one retry away from cascading failures. 
         Event-driven architectures — using queues, streams, or pub/sub — decouple request handling from execution, 
         giving you resilience, retries, and horizontal scaling.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        <strong>Why it matters:</strong> Once you've built a synchronous API with 10 endpoints and tight coupling, 
+        <strong>Why it matters:</strong> Once you&apos;ve built a synchronous API with 10 endpoints and tight coupling, 
         refactoring to event-driven is a multi-month rewrite. Choose early.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">2. Data Partitioning Strategies</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        AI systems are data-hungry. You're ingesting user files, API responses, embeddings, chat histories, 
+        AI systems are data-hungry. You&apos;re ingesting user files, API responses, embeddings, chat histories, 
         generated outputs — and it adds up fast. How you partition that data determines your query performance, 
         cost structure, and compliance posture.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Partition by <strong>tenant</strong> (multi-tenancy), <strong>time</strong> (daily/monthly buckets), 
-        or <strong>geography</strong> (regional compliance). Get it wrong, and you'll spend months migrating 
+        or <strong>geography</strong> (regional compliance). Get it wrong, and you&apos;ll spend months migrating 
         millions of records or dealing with hot partitions that slow everything down.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -78,17 +78,17 @@ export default function Page() {
         or do you rely on server-side encryption? Who manages the keys — AWS KMS, your own HSM, or a secrets manager?
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        These decisions aren't just compliance checkboxes. They define your threat model. If an attacker gains 
+        These decisions aren&apos;t just compliance checkboxes. They define your threat model. If an attacker gains 
         access to your S3 bucket, can they read the data? If they compromise a Lambda, can they decrypt customer files?
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        <strong>Why it matters:</strong> Retrofitting encryption after launch is painful. You're migrating data, 
+        <strong>Why it matters:</strong> Retrofitting encryption after launch is painful. You&apos;re migrating data, 
         updating policies, and auditing every access path. Get the boundaries right from day one.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">4. Observability From Day One</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Logging, metrics, traces — these aren't "nice to haves" you bolt on later. They're the difference 
+        Logging, metrics, traces — these aren&apos;t "nice to haves" you bolt on later. They&apos;re the difference 
         between debugging a production issue in 10 minutes vs 10 hours.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -98,19 +98,19 @@ export default function Page() {
         and error rates at a glance.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Most outages I've debugged in AI systems weren't "the model failed" — they were timeouts, rate limits, 
-        malformed prompts, or upstream API changes. Without observability, you're flying blind.
+        Most outages I&apos;ve debugged in AI systems weren&apos;t "the model failed" — they were timeouts, rate limits, 
+        malformed prompts, or upstream API changes. Without observability, you&apos;re flying blind.
       </p>
 
-      <h2 className="mt-10 text-2xl font-semibold">Most Outages Aren't "AI Problems"</h2>
+      <h2 className="mt-10 text-2xl font-semibold">Most Outages Aren&apos;t "AI Problems"</h2>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Here's a pattern I've seen repeatedly: A team spends weeks tuning prompts, benchmarking models, and 
+        Here&apos;s a pattern I&apos;ve seen repeatedly: A team spends weeks tuning prompts, benchmarking models, and 
         optimizing embeddings. Then they push to production and the system falls over — not because the AI failed, 
         but because:
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
-        <li>They didn't handle rate limits from the LLM provider</li>
-        <li>Their database couldn't scale to handle concurrent writes</li>
+        <li>They didn&apos;t handle rate limits from the LLM provider</li>
+        <li>Their database couldn&apos;t scale to handle concurrent writes</li>
         <li>They had no circuit breakers, so one slow call blocked everything</li>
         <li>Their encryption keys rotated and broke token refresh</li>
         <li>They logged sensitive data and violated compliance rules</li>
@@ -127,11 +127,11 @@ export default function Page() {
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         But if you built on a synchronous, monolithic architecture with no partitioning strategy and 
-        no observability, you're stuck. Every new feature compounds the technical debt. Every scaling 
+        no observability, you&apos;re stuck. Every new feature compounds the technical debt. Every scaling 
         challenge hits harder. Every security audit surfaces gaps that require fundamental rewrites.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Good architecture is boring. It's unsexy. But it's what lets you ship fast, scale smoothly, 
+        Good architecture is boring. It&apos;s unsexy. But it&apos;s what lets you ship fast, scale smoothly, 
         and sleep well at night.
       </p>
 
@@ -148,11 +148,11 @@ export default function Page() {
         <li><strong>Event-driven workflows</strong> that handle retries and failures gracefully</li>
         <li><strong>Partitioned data</strong> that scales horizontally and respects tenant boundaries</li>
         <li><strong>Encryption boundaries</strong> that protect sensitive information at every layer</li>
-        <li><strong>Observability</strong> that tells you what's happening, in real time, before your users notice</li>
+        <li><strong>Observability</strong> that tells you what&apos;s happening, in real time, before your users notice</li>
       </ul>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        These aren't trade-offs. They're prerequisites. And the teams that get them right early are the ones 
-        that ship AI products that don't just demo well — they run well.
+        These aren&apos;t trade-offs. They&apos;re prerequisites. And the teams that get them right early are the ones 
+        that ship AI products that don&apos;t just demo well — they run well.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">Key Takeaways</h2>
