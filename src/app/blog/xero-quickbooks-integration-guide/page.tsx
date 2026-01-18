@@ -21,7 +21,7 @@ export default function Page() {
       </nav>
 
       <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
-        Integrating with Xero and QuickBooks: A Developer's Guide to Accounting APIs
+        Integrating with Xero and QuickBooks: A Developer&apos;s Guide to Accounting APIs
       </h1>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -32,20 +32,20 @@ export default function Page() {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Three weeks later, I was still debugging OAuth token refresh loops, figuring out why 
-        invoice line items didn't match between Xero and QuickBooks, and learning the hard way 
+        invoice line items didn&apos;t match between Xero and QuickBooks, and learning the hard way 
         that "accounting data" is far messier than it looks in a demo.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Here's what I wish someone had told me before I started: <strong>accounting APIs are 
-        deceptively complex.</strong> They're not like Stripe or Twilio where the data model 
-        is clean and the docs are excellent. They're built on decades of accounting principles, 
-        with edge cases you've never heard of, and they assume you already know how double-entry 
+        Here&apos;s what I wish someone had told me before I started: <strong>accounting APIs are 
+        deceptively complex.</strong> They&apos;re not like Stripe or Twilio where the data model 
+        is clean and the docs are excellent. They&apos;re built on decades of accounting principles, 
+        with edge cases you&apos;ve never heard of, and they assume you already know how double-entry 
         bookkeeping works.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        This guide is what I wish I'd read before integrating Xero and QuickBooks into production. 
+        This guide is what I wish I&apos;d read before integrating Xero and QuickBooks into production. 
         It covers the real challenges, the gotchas nobody tells you, and the patterns that actually 
         work at scale.
       </p>
@@ -53,13 +53,13 @@ export default function Page() {
       <h2 className="mt-10 text-2xl font-semibold">Why Accounting APIs Are Harder Than They Look</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        If you've integrated with Stripe or Shopify, you might think accounting APIs will be similar. 
-        They're not. Here's why:
+        If you&apos;ve integrated with Stripe or Shopify, you might think accounting APIs will be similar. 
+        They&apos;re not. Here&apos;s why:
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">1. The Data Models Are Complex and Domain-Specific</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Accounting isn't just "revenue in, expenses out." It's:
+        Accounting isn&apos;t just "revenue in, expenses out." It&apos;s:
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li><strong>Invoices</strong> with line items, tax rates, discounts, partial payments</li>
@@ -71,13 +71,13 @@ export default function Page() {
         <li><strong>Multi-currency</strong> with exchange rates and gains/losses</li>
       </ul>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        And that's just the basics. Every business organizes their chart of accounts differently, 
+        And that&apos;s just the basics. Every business organizes their chart of accounts differently, 
         uses different tax codes, and has custom workflows.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">2. Xero and QuickBooks Have Different Philosophies</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        You can't just write one integration layer and expect it to work for both:
+        You can&apos;t just write one integration layer and expect it to work for both:
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li><strong>Xero</strong> is more flexible, developer-friendly, and "modern" in API design</li>
@@ -87,7 +87,7 @@ export default function Page() {
         <li>IDs differ: Xero uses GUIDs, QBO uses numeric IDs</li>
       </ul>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        You need an abstraction layer, or you'll end up with spaghetti code full of if/else branches.
+        You need an abstraction layer, or you&apos;ll end up with spaghetti code full of if/else branches.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">3. OAuth Is Just the Beginning of Your Pain</h3>
@@ -101,20 +101,20 @@ export default function Page() {
         <li>Refresh token rotation: each refresh gives you a <em>new</em> refresh token; the old one is invalidated</li>
       </ul>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        If you don't handle token refresh correctly, users will randomly get logged out, and you'll 
+        If you don&apos;t handle token refresh correctly, users will randomly get logged out, and you&apos;ll 
         spend days debugging why.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">OAuth Implementation: The Right Way</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Let's start with OAuth, because if you get this wrong, nothing else matters.
+        Let&apos;s start with OAuth, because if you get this wrong, nothing else matters.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">The OAuth Flow (High Level)</h3>
       <ol className="mt-4 list-decimal list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>User clicks "Connect Xero" or "Connect QuickBooks" in your app</li>
-        <li>You redirect them to the provider's OAuth consent screen</li>
+        <li>You redirect them to the provider&apos;s OAuth consent screen</li>
         <li>User authorizes your app and is redirected back with an authorization code</li>
         <li>You exchange the code for an access token and refresh token</li>
         <li>You store both tokens <strong>encrypted</strong> in your database</li>
@@ -147,7 +147,7 @@ const encrypted = await kms.encrypt({
 await db.put({
   orgId: organization.id,
   encryptedTokens: encrypted.CiphertextBlob,
-  provider: 'xero', // or 'quickbooks'
+  provider: &apos;xero&apos;, // or &apos;quickbooks&apos;
   expiresAt: new Date(Date.now() + 30 * 60 * 1000) // 30 min
 });`}</pre>
       </div>
@@ -156,17 +156,17 @@ await db.put({
         <strong>2. Refresh tokens proactively, not reactively</strong>
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Don't wait until you get a 401 error to refresh. Set up a scheduled job (e.g., Lambda cron) 
+        Don&apos;t wait until you get a 401 error to refresh. Set up a scheduled job (e.g., Lambda cron) 
         that runs every 15 minutes and refreshes any tokens expiring in the next 10 minutes.
       </p>
 
       <div className="mt-4 p-4 rounded-lg bg-black/5 dark:bg-white/5 font-mono text-sm overflow-x-auto">
         <pre>{`// Scheduled Lambda that runs every 15 minutes
 const tokensExpiringSoon = await db.query({
-  IndexName: 'expiresAt-index',
-  KeyConditionExpression: 'expiresAt < :soon',
+  IndexName: &apos;expiresAt-index&apos;,
+  KeyConditionExpression: &apos;expiresAt < :soon&apos;,
   ExpressionAttributeValues: {
-    ':soon': Date.now() + 10 * 60 * 1000 // 10 min buffer
+    &apos;:soon&apos;: Date.now() + 10 * 60 * 1000 // 10 min buffer
   }
 });
 
@@ -180,7 +180,7 @@ for (const record of tokensExpiringSoon) {
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         When you refresh, you get a <em>new</em> refresh token. The old one is invalidated immediately. 
-        If two processes try to refresh at the same time, one will fail and you'll lose access.
+        If two processes try to refresh at the same time, one will fail and you&apos;ll lose access.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Solution: Use a lock (DynamoDB conditional writes, Redis lock, etc.) to ensure only one 
@@ -191,7 +191,7 @@ for (const record of tokensExpiringSoon) {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         You need an abstraction layer that normalizes the differences between Xero and QuickBooks. 
-        Here's the pattern that worked for us:
+        Here&apos;s the pattern that worked for us:
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">Define a Common Interface</h3>
@@ -218,7 +218,7 @@ interface Invoice {
   tax: number;
   total: number;
   amountDue: number;
-  status: 'draft' | 'submitted' | 'paid' | 'voided';
+  status: &apos;draft&apos; | &apos;submitted&apos; | &apos;paid&apos; | &apos;voided&apos;;
 }`}</pre>
       </div>
 
@@ -249,7 +249,7 @@ interface Invoice {
 
 class QuickBooksAdapter {
   async getInvoices(orgId: string): Promise<Invoice[]> {
-    const raw = await qboClient.query('SELECT * FROM Invoice');
+    const raw = await qboClient.query(&apos;SELECT * FROM Invoice&apos;);
     return raw.map(this.normalizeInvoice);
   }
 
@@ -273,11 +273,11 @@ class QuickBooksAdapter {
       <h3 className="mt-8 text-xl font-semibold">Use a Factory Pattern</h3>
 
       <div className="mt-4 p-4 rounded-lg bg-black/5 dark:bg-white/5 font-mono text-sm overflow-x-auto">
-        <pre>{`function getAccountingAdapter(provider: 'xero' | 'quickbooks') {
+        <pre>{`function getAccountingAdapter(provider: &apos;xero&apos; | &apos;quickbooks&apos;) {
   switch (provider) {
-    case 'xero':
+    case &apos;xero&apos;:
       return new XeroAdapter();
-    case 'quickbooks':
+    case &apos;quickbooks&apos;:
       return new QuickBooksAdapter();
     default:
       throw new Error(\`Unknown provider: \${provider}\`);
@@ -331,7 +331,7 @@ const invoices = await adapter.getInvoices(org.id);`}</pre>
 
       <h3 className="mt-8 text-xl font-semibold">1. Modified Data Detection</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Don't re-fetch all invoices every time. Use the <code>If-Modified-Since</code> header (Xero) 
+        Don&apos;t re-fetch all invoices every time. Use the <code>If-Modified-Since</code> header (Xero) 
         or <code>ModifiedAfter</code> query param (QBO) to only fetch changes since your last sync.
       </p>
 
@@ -344,19 +344,19 @@ const invoices = await adapter.getInvoices(org.id);`}</pre>
       <h3 className="mt-8 text-xl font-semibold">3. Multi-Currency Complications</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         If a business uses multiple currencies, every amount needs a currency code. Exchange rates 
-        change daily. Don't try to convert everything to USD — store amounts in their original currency.
+        change daily. Don&apos;t try to convert everything to USD — store amounts in their original currency.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">4. Chart of Accounts Variations</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Every business structures their COA differently. You can't hardcode "Revenue" is account 
+        Every business structures their COA differently. You can&apos;t hardcode "Revenue" is account 
         code 4000. Instead, let users map their accounts to your categories, or use heuristics based 
         on account types.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">5. Webhooks Are Unreliable</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Both platforms support webhooks, but they're not 100% reliable. Use them for real-time updates, 
+        Both platforms support webhooks, but they&apos;re not 100% reliable. Use them for real-time updates, 
         but always have a background job that syncs periodically (hourly or daily) to catch missed events.
       </p>
 
@@ -368,7 +368,7 @@ const invoices = await adapter.getInvoices(org.id);`}</pre>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>You need real Xero/QBO accounts to test against</li>
         <li>Test data needs to be realistic (invoices with line items, tax, discounts, etc.)</li>
-        <li>Both platforms have sandbox environments, but they're limited</li>
+        <li>Both platforms have sandbox environments, but they&apos;re limited</li>
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -402,7 +402,7 @@ const invoices = await adapter.getInvoices(org.id);`}</pre>
 
       <h3 className="mt-8 text-xl font-semibold">3. Incremental Syncing</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Only fetch data that's changed since the last sync. Store <code>lastSyncedAt</code> per 
+        Only fetch data that&apos;s changed since the last sync. Store <code>lastSyncedAt</code> per 
         organization and use it to filter queries.
       </p>
 
@@ -421,7 +421,7 @@ const invoices = await adapter.getInvoices(org.id);`}</pre>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70">
         <li>
           Accounting APIs are <strong>far more complex</strong> than they initially appear. Budget 
-          2-3x the time you think you'll need.
+          2-3x the time you think you&apos;ll need.
         </li>
         <li>
           <strong>OAuth token management</strong> is critical. Encrypt tokens, refresh proactively, 
@@ -429,7 +429,7 @@ const invoices = await adapter.getInvoices(org.id);`}</pre>
         </li>
         <li>
           Build an <strong>abstraction layer</strong> to normalize differences between Xero and 
-          QuickBooks. Don't scatter if/else logic throughout your codebase.
+          QuickBooks. Don&apos;t scatter if/else logic throughout your codebase.
         </li>
         <li>
           <strong>Rate limits</strong> are real. Implement exponential backoff, cache aggressively, 
@@ -441,13 +441,13 @@ const invoices = await adapter.getInvoices(org.id);`}</pre>
         </li>
         <li>
           <strong>Sync in the background</strong>, cache results, and serve from your database. 
-          Don't make users wait for API calls.
+          Don&apos;t make users wait for API calls.
         </li>
       </ul>
 
       <div className="mt-12 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur">
         <p className="text-sm text-black/70 dark:text-white/70">
-          <strong>Building a FinTech product?</strong> I've built production integrations with Xero 
+          <strong>Building a FinTech product?</strong> I&apos;ve built production integrations with Xero 
           and QuickBooks for <em>BalancingIQ</em> and would love to share more detailed patterns and 
           code. Reach out at{" "}
           <a href="mailto:adamdugan6@gmail.com" className="underline hover:opacity-80">

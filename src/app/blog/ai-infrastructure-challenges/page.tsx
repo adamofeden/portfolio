@@ -21,55 +21,55 @@ export default function Page() {
       </nav>
 
       <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
-        The Hard Part Isn't the Model: Real Challenges in Production AI Systems
+        The Hard Part Isn&apos;t the Model: Real Challenges in Production AI Systems
       </h1>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        I've been building AI-powered systems for a few years now — from <em>BalancingIQ</em> 
+        I&apos;ve been building AI-powered systems for a few years now — from <em>BalancingIQ</em> 
         (financial advisory platform) to <em>SOA Assist Pro</em> (Medicare compliance automation) 
-        to smaller tools for court filing and handyman services. And here's what I've learned the 
+        to smaller tools for court filing and handyman services. And here&apos;s what I&apos;ve learned the 
         hard way:
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        <strong>The hard part isn't the model. It's everything around it.</strong>
+        <strong>The hard part isn&apos;t the model. It&apos;s everything around it.</strong>
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Getting ChatGPT to return a useful response? That's the easy part. You tune the prompt, 
-        adjust the temperature, maybe add a system message — and you're 80% there in a few hours.
+        Getting ChatGPT to return a useful response? That&apos;s the easy part. You tune the prompt, 
+        adjust the temperature, maybe add a system message — and you&apos;re 80% there in a few hours.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         But building a <em>production system</em> where multiple customers trust the AI with 
-        sensitive data, where costs don't spiral out of control, where non-technical users understand 
-        what's happening, and where automation doesn't accidentally break something important? 
-        That's where the real work begins.
+        sensitive data, where costs don&apos;t spiral out of control, where non-technical users understand 
+        what&apos;s happening, and where automation doesn&apos;t accidentally break something important? 
+        That&apos;s where the real work begins.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">The Four Challenges Nobody Talks About</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        When I look back at the toughest problems I've solved in AI products, none of them were 
+        When I look back at the toughest problems I&apos;ve solved in AI products, none of them were 
         "which LLM should I use?" They were all infrastructure, security, UX, and trust problems.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">1. Secure Multi-Tenant Data Isolation</h3>
       
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        If you're building a SaaS product, you have multiple customers (tenants) using the same 
-        infrastructure. That means Customer A's data needs to stay completely separate from 
-        Customer B's — not just logically, but <em>provably, auditibly, at every layer</em>.
+        If you&apos;re building a SaaS product, you have multiple customers (tenants) using the same 
+        infrastructure. That means Customer A&apos;s data needs to stay completely separate from 
+        Customer B&apos;s — not just logically, but <em>provably, auditibly, at every layer</em>.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         This gets complex fast when AI enters the picture:
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
-        <li>You're feeding customer data into prompts sent to third-party LLM APIs</li>
-        <li>You're caching responses to reduce costs, but caches can leak between tenants</li>
-        <li>You're storing embeddings and vector data, which need the same isolation</li>
-        <li>You're logging inputs/outputs for debugging, which might contain PII</li>
+        <li>You&apos;re feeding customer data into prompts sent to third-party LLM APIs</li>
+        <li>You&apos;re caching responses to reduce costs, but caches can leak between tenants</li>
+        <li>You&apos;re storing embeddings and vector data, which need the same isolation</li>
+        <li>You&apos;re logging inputs/outputs for debugging, which might contain PII</li>
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -85,8 +85,8 @@ export default function Page() {
           `WHERE orgId = :currentOrgId`. No way to accidentally query across tenants.
         </li>
         <li>
-          <strong>Separate encryption contexts:</strong> Each organization's data is encrypted with 
-          a unique KMS key context. Even if someone gains access to the raw data, they can't decrypt 
+          <strong>Separate encryption contexts:</strong> Each organization&apos;s data is encrypted with 
+          a unique KMS key context. Even if someone gains access to the raw data, they can&apos;t decrypt 
           it without the right context.
         </li>
         <li>
@@ -96,7 +96,7 @@ export default function Page() {
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        This isn't just security theater — it's about building systems where data leakage is 
+        This isn&apos;t just security theater — it&apos;s about building systems where data leakage is 
         <em>architecturally impossible</em>, not just "unlikely."
       </p>
 
@@ -114,7 +114,7 @@ export default function Page() {
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        If you don't build cost controls from day one, you'll wake up to a $10K bill and no idea 
+        If you don&apos;t build cost controls from day one, you&apos;ll wake up to a $10K bill and no idea 
         which customer caused it.
       </p>
 
@@ -132,13 +132,13 @@ export default function Page() {
           Once they hit it, requests are queued or rejected with a clear message. No surprise bills.
         </li>
         <li>
-          <strong>Smart truncation:</strong> If a user uploads a massive document, we don't send 
+          <strong>Smart truncation:</strong> If a user uploads a massive document, we don&apos;t send 
           the whole thing to the LLM. We extract the relevant sections using cheaper methods 
           (embeddings, keyword search) first, then send only what matters.
         </li>
         <li>
           <strong>Cost tracking per request:</strong> Every API call logs token usage to DynamoDB 
-          with `orgId` and `timestamp`. We can show customers exactly what they're spending and 
+          with `orgId` and `timestamp`. We can show customers exactly what they&apos;re spending and 
           where.
         </li>
         <li>
@@ -149,20 +149,20 @@ export default function Page() {
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Cost control isn't just about saving money — it's about making AI economically viable at scale.
+        Cost control isn&apos;t just about saving money — it&apos;s about making AI economically viable at scale.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">3. Making AI Outputs Explainable to Non-Technical Users</h3>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Here's a hard truth: <strong>Most users don't trust black boxes.</strong> If the AI spits 
-        out an answer with no context, no citations, no way to verify — people won't use it, or 
-        worse, they'll use it incorrectly.
+        Here&apos;s a hard truth: <strong>Most users don&apos;t trust black boxes.</strong> If the AI spits 
+        out an answer with no context, no citations, no way to verify — people won&apos;t use it, or 
+        worse, they&apos;ll use it incorrectly.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        In <em>BalancingIQ</em>, we're generating financial insights for small business owners — 
-        people who aren't accountants. If we just said "Your profit margin is concerning," they'd 
+        In <em>BalancingIQ</em>, we&apos;re generating financial insights for small business owners — 
+        people who aren&apos;t accountants. If we just said "Your profit margin is concerning," they&apos;d 
         have no idea what to do with that. Are we talking about gross margin? Net margin? Compared 
         to what?
       </p>
@@ -196,26 +196,26 @@ export default function Page() {
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Explainability isn't just a nice feature — it's what turns AI from a novelty into a tool 
+        Explainability isn&apos;t just a nice feature — it&apos;s what turns AI from a novelty into a tool 
         people actually rely on.
       </p>
 
-      <h3 className="mt-8 text-xl font-semibold">4. Designing Guardrails So Automation Doesn't Break Trust</h3>
+      <h3 className="mt-8 text-xl font-semibold">4. Designing Guardrails So Automation Doesn&apos;t Break Trust</h3>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        AI can do a lot. But just because it <em>can</em> do something doesn't mean it <em>should</em>, 
+        AI can do a lot. But just because it <em>can</em> do something doesn&apos;t mean it <em>should</em>, 
         at least not without guardrails.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         In <em>SOA Assist Pro</em>, we automate Medicare form processing. The AI reads patient 
         data, fills out forms, and prepares them for submission. But if the AI makes a mistake — 
-        wrong patient ID, wrong diagnosis code — that's not just a bug. It's a compliance violation 
+        wrong patient ID, wrong diagnosis code — that&apos;s not just a bug. It&apos;s a compliance violation 
         and potentially a lawsuit.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        So we don't let the AI submit forms automatically. Ever.
+        So we don&apos;t let the AI submit forms automatically. Ever.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -240,26 +240,26 @@ export default function Page() {
           decision chain.
         </li>
         <li>
-          <strong>Undo and rollback:</strong> If a user approves something and later realizes it's 
+          <strong>Undo and rollback:</strong> If a user approves something and later realizes it&apos;s 
           wrong, they can undo it. No irreversible actions.
         </li>
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Guardrails aren't about limiting AI — they're about building systems that people can trust, 
+        Guardrails aren&apos;t about limiting AI — they&apos;re about building systems that people can trust, 
         even when the stakes are high.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">The AI Only Works If the Foundation Is Solid</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Here's the pattern I see over and over: teams spend 90% of their time tuning the model and 
+        Here&apos;s the pattern I see over and over: teams spend 90% of their time tuning the model and 
         10% on infrastructure, security, and UX. Then they launch, and reality hits:
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
-        <li>A customer's data leaks into another customer's session → trust destroyed</li>
-        <li>Costs spike to $50K/month and the startup can't afford it → shutdown</li>
-        <li>Users don't understand why the AI suggested something → low adoption</li>
+        <li>A customer&apos;s data leaks into another customer&apos;s session → trust destroyed</li>
+        <li>Costs spike to $50K/month and the startup can&apos;t afford it → shutdown</li>
+        <li>Users don&apos;t understand why the AI suggested something → low adoption</li>
         <li>The AI makes a mistake in production with no way to catch it → lawsuit</li>
       </ul>
 
@@ -269,7 +269,7 @@ export default function Page() {
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        What you <em>can't</em> replace easily:
+        What you <em>can&apos;t</em> replace easily:
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>A multi-tenant architecture that enforces isolation at the data layer</li>
@@ -279,35 +279,35 @@ export default function Page() {
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        These are <strong>foundational</strong>. They take weeks to build right, but once they're 
+        These are <strong>foundational</strong>. They take weeks to build right, but once they&apos;re 
         in place, everything else gets easier.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">Balancing Speed and Safety</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        I get it — there's pressure to ship fast. AI is moving quickly, and if you spend three 
+        I get it — there&apos;s pressure to ship fast. AI is moving quickly, and if you spend three 
         months building perfect infrastructure, your competitors might beat you to market.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        But here's what I've learned: <strong>Cutting corners on infrastructure, security, and UX 
-        doesn't save time. It just moves the pain to later.</strong>
+        But here&apos;s what I&apos;ve learned: <strong>Cutting corners on infrastructure, security, and UX 
+        doesn&apos;t save time. It just moves the pain to later.</strong>
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         You ship fast, but then:
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
-        <li>You spend weeks debugging production issues that wouldn't exist with better isolation</li>
+        <li>You spend weeks debugging production issues that wouldn&apos;t exist with better isolation</li>
         <li>You lose customers because costs are unsustainable</li>
-        <li>Adoption is low because users don't trust the AI</li>
-        <li>You can't scale because your architecture doesn't support it</li>
+        <li>Adoption is low because users don&apos;t trust the AI</li>
+        <li>You can&apos;t scale because your architecture doesn&apos;t support it</li>
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        The teams that win aren't the ones that ship first — they're the ones that ship systems 
-        that work, that scale, that people trust, and that don't explode your budget.
+        The teams that win aren&apos;t the ones that ship first — they&apos;re the ones that ship systems 
+        that work, that scale, that people trust, and that don&apos;t explode your budget.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -317,19 +317,19 @@ export default function Page() {
         <li>
           <strong>Start with the hard problems.</strong> Multi-tenant isolation, cost tracking, 
           observability — build these first, even if they feel like "infrastructure work" that 
-          doesn't ship features.
+          doesn&apos;t ship features.
         </li>
         <li>
           <strong>Ship MVPs with guardrails.</strong> Launch with limited features but solid 
-          foundations. You can add capabilities fast; you can't easily retrofit security.
+          foundations. You can add capabilities fast; you can&apos;t easily retrofit security.
         </li>
         <li>
           <strong>Measure everything.</strong> Token usage, latency, error rates, user actions. 
-          You can't optimize what you don't measure.
+          You can&apos;t optimize what you don&apos;t measure.
         </li>
         <li>
           <strong>Design for trust from day one.</strong> Explainability, human oversight, audit 
-          trails — these aren't optional at scale.
+          trails — these aren&apos;t optional at scale.
         </li>
       </ul>
 
@@ -363,7 +363,7 @@ export default function Page() {
 
       <div className="mt-12 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur">
         <p className="text-sm text-black/70 dark:text-white/70">
-          <strong>How is your team handling these challenges?</strong> I'd love to hear about your 
+          <strong>How is your team handling these challenges?</strong> I&apos;d love to hear about your 
           approach to multi-tenant isolation, cost control, and AI explainability. Reach out at{" "}
           <a href="mailto:adamdugan6@gmail.com" className="underline hover:opacity-80">
             adamdugan6@gmail.com
