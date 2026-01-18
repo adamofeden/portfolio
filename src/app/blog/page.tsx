@@ -17,6 +17,55 @@ type Post = {
 
 const posts: Post[] = [
   {
+    slug: "voice-ai-production",
+    title: "Building Voice AI That Doesn't Suck: Real-Time Conversational Interfaces in Production",
+    description: "Everyone wants to build 'the next Jarvis,' but most voice AI feels clunky. Here's what I learned about latency, interruptions, and conversation design using Twilio, OpenAI, and Azure Speech.",
+    date: "2026-01-22",
+    tags: ["Voice AI", "Twilio", "Azure", "OpenAI", "Real-time", "TTS", "STT"],
+  },
+  {
+    slug: "journalism-to-code",
+    title: "From Journalism to Code: Why Non-Traditional Backgrounds Make Better Engineers",
+    description: "Most engineers start with CS degrees. I started by interviewing strangers in Istanbul cafes. Here's why taking the scenic route creates more empathetic, user-focused engineers.",
+    date: "2026-01-21",
+    tags: ["Career", "Engineering", "Storytelling", "Product", "UX"],
+  },
+  {
+    slug: "xero-quickbooks-integration-guide",
+    title: "Integrating with Xero and QuickBooks: A Developer's Guide to Accounting APIs",
+    description: "Building BalancingIQ taught me that accounting APIs are deceptively complex. Here's everything about OAuth flows, data models, rate limits, and making integrations production-ready.",
+    date: "2026-01-20",
+    tags: ["FinTech", "API Integration", "Xero", "QuickBooks", "OAuth", "Backend"],
+  },
+  {
+    slug: "ai-infrastructure-challenges",
+    title: "The Hard Part Isn't the Model: Real Challenges in Production AI Systems",
+    description: "After building multiple AI products, the toughest problems weren't prompts or LLM choice — they were multi-tenant isolation, cost control, explainability, and guardrails. Here's what actually matters.",
+    date: "2026-01-19",
+    tags: ["AI", "Infrastructure", "Security", "Multi-tenant", "Cost Optimization"],
+  },
+  {
+    slug: "ai-regulated-industries",
+    title: "AI in Regulated Industries: Why Constraints Lead to Better Engineering",
+    description: "Building AI for healthcare, finance, and regulated spaces requires auditability, deterministic workflows, secure data boundaries, and human oversight. Here's why these constraints make you a better engineer.",
+    date: "2026-01-18",
+    tags: ["AI", "Compliance", "Security", "HIPAA", "Healthcare", "Finance"],
+  },
+  {
+    slug: "founder-engineer-mindset",
+    title: "How Being Both a Founder and Engineer Changed How I Write Software",
+    description: "Wearing both hats taught me to ask four critical questions about every feature, and made me ruthless about over-engineering, shiny abstractions, and false future-proofing.",
+    date: "2026-01-18",
+    tags: ["Engineering", "Startup", "Product", "Leadership"],
+  },
+  {
+    slug: "cloud-ai-architecture",
+    title: "Why Architecture Matters More Than Your Model Choice in Cloud + AI Systems",
+    description: "Early architectural decisions compound faster than model improvements. Learn why event-driven workflows, data partitioning, encryption boundaries, and observability matter more than which model you choose.",
+    date: "2026-01-17",
+    tags: ["Architecture", "AI", "Cloud", "AWS", "System Design"],
+  },
+  {
     slug: "seoaeogeo",
     title: "SEO / AEO / GEO",
     description: "Quick primer on Search, Answer, and Generative Engine Optimization.",

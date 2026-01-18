@@ -208,6 +208,9 @@ export default function Page() {
             <a href="#skills" className="opacity-80 hover:opacity-100">
               Skills
             </a>
+            <a href="/blog" className="opacity-80 hover:opacity-100">
+              Blog
+            </a>
             <a href="#contact" className="opacity-80 hover:opacity-100">
               Contact
             </a>
@@ -269,6 +272,13 @@ export default function Page() {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Skills
+                </a>
+                <a
+                  href="/blog"
+                  className="px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Blog
                 </a>
                 <a
                   href="#contact"
