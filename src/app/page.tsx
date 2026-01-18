@@ -56,6 +56,7 @@ const Card = ({
 );
 
 export default function Page() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showAll, setShowAll] = useState(false);
   const [showAllExperience, setShowAllExperience] = useState(false);
 
@@ -196,6 +197,7 @@ export default function Page() {
             <span>Adam Dugan</span>
           </Link>
 
+          {/* Desktop menu */}
           <nav className="hidden md:flex items-center gap-6 text-sm">
             <a href="#projects" className="opacity-80 hover:opacity-100">
               Projects
@@ -217,15 +219,74 @@ export default function Page() {
             </Link>
           </nav>
 
-          <div className="flex md:hidden">
+          {/* Mobile menu */}
+          {/*<div className="flex md:hidden">
             <a
               href="#contact"
               className="inline-flex items-center gap-2 rounded-xl border border-black/5 dark:border-white/10 px-3 py-1.5 hover:bg-black/5 dark:hover:bg-white/10"
             >
               <Mail className="h-4 w-4" /> <span>Contact</span>
             </a>
-          </div>
+          </div>*/}
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="flex md:hidden p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10"
+            aria-label="Toggle menu"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </Section>
+        
+        {/* Mobile Menu Dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-black/5 dark:border-white/10 bg-white/95 dark:bg-neutral-950/95 backdrop-blur">
+            <Section className="py-4">
+              <nav className="flex flex-col gap-3">
+                <a
+                  href="#projects"
+                  className="px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Projects
+                </a>
+                <a
+                  href="#experience"
+                  className="px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Experience
+                </a>
+                <a
+                  href="#skills"
+                  className="px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Skills
+                </a>
+                <a
+                  href="#contact"
+                  className="px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Contact
+                </a>
+                <Link
+                  href="/AdamDugan_Resume.pdf"
+                  className="px-3 py-2 rounded-lg border border-black/10 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/10 text-center"
+                >
+                  Résumé
+                </Link>
+              </nav>
+            </Section>
+          </div>
+        )}
       </header>
 
       {/* Hero */}
