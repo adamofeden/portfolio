@@ -46,26 +46,26 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">1. Who Actually Uses This?</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Not "who might use this someday" or "what if a user wants to…" — but <strong>who, right now, 
+        Not &quot;who might use this someday&quot; or &quot;what if a user wants to…&quot; — but <strong>who, right now, 
         is asking for this?</strong> If I can&apos;t name a specific customer or use case, I don&apos;t build it.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         As an engineer, I used to build features because they were interesting or because they made 
-        the architecture more "complete." As a founder, I realized that every feature has a carrying 
+        the architecture more &quot;complete.&quot; As a founder, I realized that every feature has a carrying 
         cost: maintenance, documentation, support burden, cognitive overhead. If no one&apos;s asking for 
         it, it&apos;s not a feature — it&apos;s tech debt I&apos;m paying interest on.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Example: Early on in <em>BalancingIQ</em>, I wanted to build a sophisticated role-based 
         permissions system with granular controls. But when I talked to customers, they just needed 
-        "admin" and "viewer." We shipped the simple version in a day. Six months later, still no one 
+        &quot;admin&quot; and &quot;viewer.&quot; We shipped the simple version in a day. Six months later, still no one 
         has asked for more. That&apos;s weeks of engineering time saved.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">2. What Happens When It Breaks at 2am?</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         This one is personal. If you&apos;re the founder, you&apos;re also the on-call engineer. There&apos;s no 
-        "escalate to the team" when you <em>are</em> the team.
+        &quot;escalate to the team&quot; when you <em>are</em> the team.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         So before I ship something, I ask: If this fails at 2am, can I understand what went wrong 
@@ -86,7 +86,7 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">3. Can This Scale Without a Rewrite?</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        I used to think "premature optimization is the root of all evil" meant you could ignore 
+        I used to think &quot;premature optimization is the root of all evil&quot; meant you could ignore 
         scalability early on. Now I realize it means: <strong>don&apos;t over-engineer, but don&apos;t paint 
         yourself into a corner either.</strong>
       </p>
@@ -137,7 +137,7 @@ export default function Page() {
       <h3 className="mt-8 text-xl font-semibold">Over-Engineering</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Engineers love building flexible, extensible systems. But flexibility has a cost: complexity. 
-        Every abstraction layer, every plugin system, every "future-proof" interface adds cognitive 
+        Every abstraction layer, every plugin system, every &quot;future-proof&quot; interface adds cognitive 
         overhead and maintenance burden.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -158,10 +158,10 @@ export default function Page() {
         have massive communities. When something breaks, I can find answers in minutes, not days.
       </p>
 
-      <h3 className="mt-8 text-xl font-semibold">"Future-Proofing" That Never Arrives</h3>
+      <h3 className="mt-8 text-xl font-semibold">"Future-Proofing&quot; That Never Arrives</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        "What if we need to support multiple payment providers?" "What if we need to run on-prem?" 
-        "What if we need to handle billions of records?"
+        &quot;What if we need to support multiple payment providers?&quot; &quot;What if we need to run on-prem?&quot;
+        &quot;What if we need to handle billions of records?&quot;
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         These are valid questions — <em>if</em> they&apos;re grounded in reality. But most of the time, 
@@ -183,7 +183,7 @@ export default function Page() {
       
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         The most beautiful abstraction in the world doesn&apos;t matter if it ships three months late. The 
-        most extensible architecture doesn&apos;t matter if it crashes under load. The most "future-proof" 
+        most extensible architecture doesn&apos;t matter if it crashes under load. The most &quot;future-proof&quot; 
         system doesn&apos;t matter if no one uses it.
       </p>
 
@@ -213,7 +213,7 @@ export default function Page() {
           cognitive load?
         </li>
         <li>
-          Be ruthless about cutting over-engineering, shiny abstractions, and "future-proofing" that 
+          Be ruthless about cutting over-engineering, shiny abstractions, and &quot;future-proofing&quot; that 
           never arrives.
         </li>
         <li>

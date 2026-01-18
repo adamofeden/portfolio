@@ -27,12 +27,12 @@ export default function Page() {
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         I didn&apos;t write my first line of code until my late twenties. Before that, I was a journalist 
         chasing stories across four continents, a manufacturing engineer building custom surfboards, 
-        and someone who thought "API" was a typo.
+        and someone who thought &quot;API&quot; was a typo.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Today, I build AI-powered systems, architect cloud infrastructure, and run a software company. 
-        And here&apos;s what I&apos;ve learned: <strong>My "unconventional" path wasn&apos;t a detour — it was the 
+        And here&apos;s what I&apos;ve learned: <strong>My &quot;unconventional&quot; path wasn&apos;t a detour — it was the 
         foundation.</strong>
       </p>
 
@@ -66,16 +66,16 @@ export default function Page() {
         user need this? Why now?
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
-        Most engineers jump straight to "How do I build this?" But if you don&apos;t understand the 
-        "why," you&apos;re solving the wrong problem.
+        Most engineers jump straight to &quot;How do I build this?&quot; But if you don&apos;t understand the 
+        &quot;why,&quot; you&apos;re solving the wrong problem.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         <strong>2. Empathy Through Listening</strong>
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
-        As a journalist, I learned to shut up and listen. Really listen. Not "waiting for my turn 
-        to talk" listening, but "trying to understand how this person sees the world" listening.
+        As a journalist, I learned to shut up and listen. Really listen. Not &quot;waiting for my turn 
+        to talk&quot; listening, but &quot;trying to understand how this person sees the world&quot; listening.
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
         That skill translates directly to user research. When I talk to customers about 
@@ -107,7 +107,7 @@ export default function Page() {
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
         Journalism taught me to frame technical work in human terms. Not "We implemented a Lambda-based 
-        event-driven architecture" — but "Now when a customer uploads their financial data, it processes 
+        event-driven architecture&quot; — but &quot;Now when a customer uploads their financial data, it processes 
         in the background so they don&apos;t have to wait."
       </p>
 
@@ -136,8 +136,8 @@ export default function Page() {
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
         Software has the same constraints: latency, memory, cost, time. The best engineers don&apos;t 
-        fight constraints — they design around them. I learned to ask "What&apos;s actually possible 
-        here?" before "What would be ideal?"
+        fight constraints — they design around them. I learned to ask &quot;What&apos;s actually possible 
+        here?&quot; before &quot;What would be ideal?&quot;
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -171,7 +171,7 @@ export default function Page() {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Spending years abroad — New Zealand, Australia, Asia, Turkey — fundamentally changed how 
-        I think about users. Not "the user" as an abstract persona, but <em>actual humans</em> with 
+        I think about users. Not &quot;the user&quot; as an abstract persona, but <em>actual humans</em> with 
         different contexts, assumptions, and mental models.
       </p>
 
@@ -181,11 +181,11 @@ export default function Page() {
         <strong>1. Your Assumptions Are Local</strong>
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
-        In New Zealand, I learned that "next week" means genuinely next week, not "maybe in a month." 
+        In New Zealand, I learned that &quot;next week&quot; means genuinely next week, not &quot;maybe in a month.&quot; 
         In Turkey, I learned that tea isn&apos;t a beverage — it&apos;s a social ritual. Context shapes everything.
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
-        The same is true in software. What feels "intuitive" to you is often just familiar <em>to you</em>. 
+        The same is true in software. What feels &quot;intuitive&quot; to you is often just familiar <em>to you</em>. 
         Travel taught me to question my assumptions: Does this workflow make sense to someone who&apos;s 
         never used software like this? Does this UI work for someone in a different timezone, on a 
         different device, with a different workflow?
@@ -196,7 +196,7 @@ export default function Page() {
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
         Living abroad is humbling. You don&apos;t speak the language. You don&apos;t understand the customs. 
-        You&apos;re constantly a beginner, asking "dumb" questions and learning obvious things.
+        You&apos;re constantly a beginner, asking &quot;dumb&quot; questions and learning obvious things.
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
         That humility is <em>essential</em> in engineering. Every user is coming to your product 
@@ -217,7 +217,7 @@ export default function Page() {
         quickly and keep moving forward.
       </p>
 
-      <h2 className="mt-10 text-2xl font-semibold">The "Beginner&apos;s Mind" Advantage</h2>
+      <h2 className="mt-10 text-2xl font-semibold">The &quot;Beginner&apos;s Mind&quot; Advantage</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         When I started learning to code in my late twenties, I was surrounded by people who&apos;d been 
@@ -229,7 +229,7 @@ export default function Page() {
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        When you learn to code early, you absorb the culture, the assumptions, the "right way" 
+        When you learn to code early, you absorb the culture, the assumptions, the &quot;right way&quot; 
         to do things. When you learn later, you question everything. Why is this API so confusing? 
         Why does this error message make no sense? Why does this workflow feel so clunky?
       </p>
@@ -278,8 +278,8 @@ export default function Page() {
           these fields teach systems thinking that translates directly to software architecture.
         </li>
         <li>
-          <strong>Challenge assumptions.</strong> Career switchers ask "Why do we do it this way?" 
-          instead of accepting "This is how it&apos;s always been done."
+          <strong>Challenge assumptions.</strong> Career switchers ask &quot;Why do we do it this way?&quot; 
+          instead of accepting &quot;This is how it&apos;s always been done.&quot;
         </li>
       </ul>
 
@@ -291,7 +291,7 @@ export default function Page() {
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        <strong>Your "detour" wasn&apos;t a detour.</strong> The years you spent interviewing people, 
+        <strong>Your &quot;detour&quot; wasn&apos;t a detour.</strong> The years you spent interviewing people, 
         building physical products, living abroad — those weren&apos;t wasted. They gave you perspective 
         that most engineers never develop.
       </p>
@@ -353,7 +353,7 @@ export default function Page() {
           humility — essential for designing products that work for diverse users.
         </li>
         <li>
-          <strong>The "beginner&apos;s mind" is an advantage,</strong> not a weakness. Fresh eyes spot 
+          <strong>The &quot;beginner&apos;s mind&quot; is an advantage,</strong> not a weakness. Fresh eyes spot 
           problems that veterans have stopped noticing.
         </li>
         <li>

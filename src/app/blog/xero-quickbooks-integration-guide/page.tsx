@@ -26,14 +26,14 @@ export default function Page() {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         When I started building <em>BalancingIQ</em>, I thought integrating with accounting 
-        software would be straightforward. "Just hit their REST API," I told myself. "OAuth, 
-        grab some data, done in a week."
+        software would be straightforward. &quot;Just hit their REST API,&quot; I told myself. &quot;OAuth, 
+        grab some data, done in a week.&quot;
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Three weeks later, I was still debugging OAuth token refresh loops, figuring out why 
         invoice line items didn&apos;t match between Xero and QuickBooks, and learning the hard way 
-        that "accounting data" is far messier than it looks in a demo.
+        that &quot;accounting data&quot; is far messier than it looks in a demo.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -59,7 +59,7 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">1. The Data Models Are Complex and Domain-Specific</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Accounting isn&apos;t just "revenue in, expenses out." It&apos;s:
+        Accounting isn&apos;t just &quot;revenue in, expenses out.&quot; It&apos;s:
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li><strong>Invoices</strong> with line items, tax rates, discounts, partial payments</li>
@@ -80,7 +80,7 @@ export default function Page() {
         You can&apos;t just write one integration layer and expect it to work for both:
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
-        <li><strong>Xero</strong> is more flexible, developer-friendly, and "modern" in API design</li>
+        <li><strong>Xero</strong> is more flexible, developer-friendly, and &quot;modern&quot; in API design</li>
         <li><strong>QuickBooks Online (QBO)</strong> is more rigid, enterprise-focused, and has quirks from legacy desktop versions</li>
         <li>Field names differ: Xero uses <code>LineAmount</code>, QBO uses <code>Amount</code></li>
         <li>Date formats differ: Xero uses ISO strings, QBO uses YYYY-MM-DD</li>
@@ -113,7 +113,7 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">The OAuth Flow (High Level)</h3>
       <ol className="mt-4 list-decimal list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
-        <li>User clicks "Connect Xero" or "Connect QuickBooks" in your app</li>
+        <li>User clicks &quot;Connect Xero&quot; or &quot;Connect QuickBooks&quot; in your app</li>
         <li>You redirect them to the provider&apos;s OAuth consent screen</li>
         <li>User authorizes your app and is redirected back with an authorization code</li>
         <li>You exchange the code for an access token and refresh token</li>

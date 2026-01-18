@@ -51,7 +51,7 @@ export default function Page() {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         When I look back at the toughest problems I&apos;ve solved in AI products, none of them were 
-        "which LLM should I use?" They were all infrastructure, security, UX, and trust problems.
+        &quot;which LLM should I use?&quot; They were all infrastructure, security, UX, and trust problems.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">1. Secure Multi-Tenant Data Isolation</h3>
@@ -97,7 +97,7 @@ export default function Page() {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         This isn&apos;t just security theater — it&apos;s about building systems where data leakage is 
-        <em>architecturally impossible</em>, not just "unlikely."
+        <em>architecturally impossible</em>, not just &quot;unlikely.&quot;
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">2. Cost Control Under Unpredictable Usage</h3>
@@ -110,7 +110,7 @@ export default function Page() {
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>One user submits a 100-word prompt → 500 tokens</li>
         <li>Another uploads a 50-page PDF → 50,000 tokens</li>
-        <li>Someone hits "regenerate" 20 times → 20x the cost</li>
+        <li>Someone hits &quot;regenerate&quot; 20 times → 20x the cost</li>
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -162,7 +162,7 @@ export default function Page() {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         In <em>BalancingIQ</em>, we&apos;re generating financial insights for small business owners — 
-        people who aren&apos;t accountants. If we just said "Your profit margin is concerning," they&apos;d 
+        people who aren&apos;t accountants. If we just said &quot;Your profit margin is concerning,&quot; they&apos;d 
         have no idea what to do with that. Are we talking about gross margin? Net margin? Compared 
         to what?
       </p>
@@ -173,7 +173,7 @@ export default function Page() {
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>
           <strong>Show the data sources:</strong> Every AI insight shows exactly which numbers it 
-          used. "Based on your October revenue ($50K) vs September ($58K), revenue is down 13.8%."
+          used. &quot;Based on your October revenue ($50K) vs September ($58K), revenue is down 13.8%.&quot;
         </li>
         <li>
           <strong>Link to source documents:</strong> Users can click through to see the original 
@@ -181,16 +181,16 @@ export default function Page() {
         </li>
         <li>
           <strong>Explain the reasoning:</strong> Instead of just conclusions, we show the logic. 
-          "Your cost of goods sold increased by 22%, while revenue only grew 5%, which is why 
-          profit margin declined."
+          &quot;Your cost of goods sold increased by 22%, while revenue only grew 5%, which is why 
+          profit margin declined.&quot;
         </li>
         <li>
           <strong>Use plain language:</strong> No jargon, no technical terms without definitions. 
-          If we say "EBITDA," we explain it in parentheses.
+          If we say &quot;EBITDA,&quot; we explain it in parentheses.
         </li>
         <li>
           <strong>Confidence indicators:</strong> For predictions or suggestions, we show confidence 
-          levels. "High confidence" means we have clean, complete data. "Low confidence" means 
+          levels. &quot;High confidence&quot; means we have clean, complete data. &quot;"Low confidence&quot; means 
           there are gaps or anomalies.
         </li>
       </ul>
@@ -224,11 +224,11 @@ export default function Page() {
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>
           <strong>Human-in-the-loop always:</strong> AI generates a draft. A human reviews, edits, 
-          and approves. The "submit" button is only enabled after human verification.
+          and approves. The &quot;submit&quot; button is only enabled after human verification.
         </li>
         <li>
           <strong>Field-level confidence scoring:</strong> For each field the AI fills, we track 
-          confidence. Low-confidence fields are highlighted in yellow: "Please verify this."
+          confidence. Low-confidence fields are highlighted in yellow: &quot;Please verify this.&quot;
         </li>
         <li>
           <strong>Validation rules:</strong> Even if the AI suggests something, the system validates 
@@ -316,7 +316,7 @@ export default function Page() {
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>
           <strong>Start with the hard problems.</strong> Multi-tenant isolation, cost tracking, 
-          observability — build these first, even if they feel like "infrastructure work" that 
+          observability — build these first, even if they feel like &quot;infrastructure work&quot; that 
           doesn&apos;t ship features.
         </li>
         <li>
