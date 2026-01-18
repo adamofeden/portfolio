@@ -25,7 +25,7 @@ export default function Page() {
       </h1>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Everyone wants to build "the next Jarvis." Call a number, talk naturally, and get intelligent 
+        Everyone wants to build &quot;the next Jarvis.&quot; Call a number, talk naturally, and get intelligent 
         responses. It sounds simple — until you try to build it.
       </p>
 
@@ -56,8 +56,8 @@ export default function Page() {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         These aren&apos;t AI problems — they&apos;re <strong>engineering problems</strong>. The underlying LLM 
-        is perfectly capable of understanding and responding. But the infrastructure between "user 
-        speaks" and "bot responds" is where everything falls apart.
+        is perfectly capable of understanding and responding. But the infrastructure between &quot;user 
+        speaks&quot; and &quot;bot responds&quot; is where everything falls apart.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">The Stack That Actually Works</h2>
@@ -116,8 +116,8 @@ export default function Page() {
         dramatically reduces perceived latency.</li>
         <li><strong>Short prompts:</strong> Voice conversations need concise responses. A 300-word 
         response that reads well on paper takes 90 seconds to speak — way too long.</li>
-        <li><strong>Function calling:</strong> For actions like "schedule an appointment" or "look up 
-        an order," use function calling to trigger backend APIs instead of making the LLM do everything.</li>
+        <li><strong>Function calling:</strong> For actions like &quot;schedule an appointment&quot; or &quot;look up 
+        an order,&quot; use function calling to trigger backend APIs instead of making the LLM do everything.</li>
       </ul>
 
       <h2 className="mt-10 text-2xl font-semibold">The Architecture: How It All Connects</h2>
@@ -174,7 +174,7 @@ export default function Page() {
         <li><strong>Start speaking early:</strong> As soon as you have the first sentence from the 
         LLM, convert it to speech and start playing. The user hears a response while the rest is 
         still generating.</li>
-        <li><strong>Pre-cache common responses:</strong> For frequent queries ("What are your hours?"), 
+        <li><strong>Pre-cache common responses:</strong> For frequent queries (&quot;What are your hours?&quot;), 
         pre-generate and cache the audio. Serve it instantly.</li>
         <li><strong>Use faster models when possible:</strong> GPT-4o-mini has 3-5x lower latency than 
         GPT-4 for first token. Use it for simple queries.</li>
@@ -184,8 +184,8 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">2. Handling Interruptions</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        In human conversation, we interrupt each other all the time. "Can I schedule an appoint—" 
-        "Sure, what day works for you?"
+        In human conversation, we interrupt each other all the time. &quot;Can I schedule an appoint—&quot; 
+        &quot;Sure, what day works for you?&quot;
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Most voice AI doesn&apos;t handle this. The bot keeps talking even when you start speaking. It&apos;s 
@@ -200,7 +200,7 @@ export default function Page() {
         If speech is detected above a threshold, immediately stop the TTS playback.</li>
         <li><strong>Clear the buffers:</strong> Cancel any pending TTS and LLM streaming. Don&apos;t let 
         old content leak into the new turn.</li>
-        <li><strong>Acknowledge the interruption:</strong> Optional, but human-like: "Oh, sorry—go ahead."</li>
+        <li><strong>Acknowledge the interruption:</strong> Optional, but human-like: &quot;Oh, sorry—go ahead.&quot;</li>
         <li><strong>Context preservation:</strong> Keep the conversation history so the bot knows what 
         it was about to say, in case it&apos;s relevant.</li>
       </ul>
@@ -221,12 +221,12 @@ export default function Page() {
         If you need to convey more, break it into back-and-forth.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Bad: "Thanks for calling! I can help you schedule an appointment, check your order status, 
+        Bad: &quot;Thanks for calling! I can help you schedule an appointment, check your order status, 
         update your account information, or answer general questions about our products and services. 
-        What would you like to do today?"
+        What would you like to do today?&quot;
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Good: "Hi! How can I help you today?"
+        Good: &quot;Hi! How can I help you today?&quot;
       </p>
 
       <h4 className="mt-6 text-lg font-semibold">Clarify Ambiguity Early</h4>
@@ -235,12 +235,12 @@ export default function Page() {
         you&apos;re not sure what the user said, <strong>ask for confirmation</strong>.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Example: "Did you say Tuesday at 2pm, or Thursday at 2pm?"
+        Example: &quot;Did you say Tuesday at 2pm, or Thursday at 2pm?&quot;
       </p>
 
       <h4 className="mt-6 text-lg font-semibold">Provide Escape Hatches</h4>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Always give users a way out. "If you&apos;d like to speak to a human, just say &apos;agent&apos; or press 0."
+        Always give users a way out. &quot;If you&apos;d like to speak to a human, just say &apos;agent&apos; or press 0.&quot;
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Nothing destroys trust faster than trapping someone in a bot loop with no way to escalate.
@@ -248,8 +248,8 @@ export default function Page() {
 
       <h4 className="mt-6 text-lg font-semibold">Use Filler Words Strategically</h4>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Humans say "um," "let me see," "just a moment" to fill silence while thinking. Bots should too. 
-        If you need to query a database or call an API, have the bot say "Let me check that for you" 
+        Humans say &quot;um,&quot; &quot;let me see,&quot; &quot;just a moment&quot; to fill silence while thinking. Bots should too. 
+        If you need to query a database or call an API, have the bot say &quot;Let me check that for you&quot; 
         while the request is in flight. It makes latency feel intentional, not broken.
       </p>
 
@@ -280,12 +280,12 @@ export default function Page() {
         </li>
         <li>
           <strong>Contextual hints:</strong> If you know the domain (e.g., scheduling appointments), 
-          provide a phrase list to Azure STT to boost recognition of specific terms like "Tuesday," 
-          "2pm," doctor names, etc.
+          provide a phrase list to Azure STT to boost recognition of specific terms like &quot;Tuesday,&quot; 
+          &quot;2pm,&quot; doctor names, etc.
         </li>
         <li>
           <strong>Fallback to spelling:</strong> For critical info (names, email addresses), ask users 
-          to spell it out. "Can you spell your last name for me?"
+          to spell it out. &quot;Can you spell your last name for me?&quot;
         </li>
       </ul>
 
@@ -337,8 +337,8 @@ export default function Page() {
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>Streaming everything: latency stayed under 1.5 seconds for most turns</li>
         <li>Pre-cached greetings and FAQs: instant responses for common questions</li>
-        <li>Clear escalation path: "If you need immediate help, I&apos;ll transfer you now"</li>
-        <li>Conversational function calling: "Let me check the calendar" → query Google Calendar API</li>
+        <li>Clear escalation path: &quot;If you need immediate help, I&apos;ll transfer you now&quot;</li>
+        <li>Conversational function calling: &quot;Let me check the calendar&quot; → query Google Calendar API</li>
         <li>Call recording + transcript logging: useful for debugging and training</li>
       </ul>
 
@@ -360,7 +360,7 @@ export default function Page() {
 
       <h3 className="mt-6 text-lg font-semibold">Good Use Cases:</h3>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
-        <li><strong>High-volume, low-complexity queries:</strong> "What are your hours?" "Where&apos;s my order?"</li>
+        <li><strong>High-volume, low-complexity queries:</strong> &quot;What are your hours?&quot; &quot;Where&apos;s my order?&quot;</li>
         <li><strong>After-hours support:</strong> Handle calls when humans aren&apos;t available</li>
         <li><strong>Appointment scheduling:</strong> Voice is more natural than form-filling</li>
         <li><strong>Triage and routing:</strong> Figure out what the caller needs, then route appropriately</li>
@@ -371,7 +371,7 @@ export default function Page() {
         <li><strong>Complex, sensitive issues:</strong> Healthcare diagnosis, legal advice, financial 
         planning — these need humans</li>
         <li><strong>High-emotion situations:</strong> Angry customers, emergencies — escalate immediately</li>
-        <li><strong>Tasks requiring visual elements:</strong> "Fill out this form" works better on web/app</li>
+        <li><strong>Tasks requiring visual elements:</strong> &quot;Fill out this form&quot; works better on web/app</li>
         <li><strong>Long-form content:</strong> Don&apos;t read a 10-minute policy over the phone</li>
       </ul>
 

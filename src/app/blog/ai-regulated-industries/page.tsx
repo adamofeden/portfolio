@@ -25,7 +25,7 @@ export default function Page() {
       </h1>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        "Move fast and break things" works great — until you&apos;re dealing with protected health 
+        &quot;Move fast and break things&quot; works great — until you&apos;re dealing with protected health 
         information, financial records, or personally identifiable data. In regulated industries, 
         breaking things isn&apos;t a learning opportunity. It&apos;s a compliance violation, a breach 
         notification, or a lawsuit.
@@ -63,12 +63,12 @@ export default function Page() {
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         In <em>SOA Assist Pro</em>, we process Medicare forms where documentation is legally required. 
         Every step — from data ingestion to AI-generated suggestions to final submission — is logged 
-        with timestamps, user IDs, and input/output pairs. If an auditor asks "Why did you submit 
-        this form this way?", we can reconstruct the entire decision chain in seconds.
+        with timestamps, user IDs, and input/output pairs. If an auditor asks &quot;Why did you submit 
+        this form this way?&quot;, we can reconstruct the entire decision chain in seconds.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         <strong>Why it makes you better:</strong> Auditability forces you to think about your system 
-        as a series of discrete, traceable steps. No mysterious black boxes. No "it just works." 
+        as a series of discrete, traceable steps. No mysterious black boxes. No &quot;it just works.&quot; 
         Every decision is explicit, logged, and explainable. This clarity makes debugging faster, 
         onboarding easier, and compliance trivial.
       </p>
@@ -96,19 +96,19 @@ export default function Page() {
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>Setting temperature to 0 for factual outputs</li>
         <li>Caching AI responses keyed by input hash</li>
-        <li>Separating AI "suggestions" from deterministic "calculations"</li>
+        <li>Separating AI &quot;suggestions&quot; from deterministic &quot;calculations&quot;</li>
         <li>Always showing users what data the AI used and how it reached conclusions</li>
       </ul>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         <strong>Why it makes you better:</strong> Designing for determinism forces you to separate 
-        "facts" from "interpretation." This makes your system easier to test, easier to trust, and 
+        &quot;facts&quot; from &quot;interpretation.&quot; This makes your system easier to test, easier to trust, and 
         far less likely to surprise you in production.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">3. Secure Data Boundaries: Trust Nothing, Encrypt Everything</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         If you&apos;re handling PHI (Protected Health Information) or financial data, encryption isn&apos;t 
-        a nice-to-have. It&apos;s the law. And it&apos;s not just "encrypt at rest" — it&apos;s encrypt in transit, 
+        a nice-to-have. It&apos;s the law. And it&apos;s not just &quot;encrypt at rest&quot; — it&apos;s encrypt in transit, 
         encrypt in memory when possible, and <em>never</em> send sensitive data where it doesn&apos;t belong.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -124,7 +124,7 @@ export default function Page() {
       </ul>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         But here&apos;s the key insight: <strong>secure boundaries make your architecture clearer.</strong> 
-        When you&apos;re forced to think "Can this Lambda access patient data? Should it?" you naturally 
+        When you&apos;re forced to think &quot;Can this Lambda access patient data? Should it?&quot; you naturally 
         end up with cleaner separation of concerns. Services that don&apos;t need sensitive data don&apos;t 
         get it. Tight boundaries. Minimal exposure.
       </p>
@@ -145,8 +145,8 @@ export default function Page() {
         suggestions, but humans review, edit, and approve before anything is committed.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        In <em>BalancingIQ</em>, the AI analyzes financial data and generates insights: "Your 
-        revenue is down 15% vs last quarter." But it doesn&apos;t auto-email the client. A human 
+        In <em>BalancingIQ</em>, the AI analyzes financial data and generates insights: &quot;Your 
+        revenue is down 15% vs last quarter.&quot; But it doesn&apos;t auto-email the client. A human 
         reviews, edits, and approves. In <em>SOA Assist Pro</em>, AI pre-fills Medicare forms, 
         but agents verify every field before submission.
       </p>
@@ -155,14 +155,14 @@ export default function Page() {
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>Showing AI suggestions in an editable UI, not locked fields</li>
-        <li>Providing "Accept" / "Edit" / "Reject" actions for every AI output</li>
+        <li>Providing &quot;Accept&quot; / &quot;Edit&quot; / &quot;Reject&quot; actions for every AI output</li>
         <li>Logging what the AI suggested vs what the human approved</li>
         <li>Making it faster to approve good suggestions than to type from scratch</li>
       </ul>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         <strong>Why it makes you better:</strong> Designing for human oversight forces you to 
         build transparent, explainable AI. No one trusts a black box. But if you show your work — 
-        "Here&apos;s the data, here&apos;s the logic, here&apos;s the suggestion" — humans can validate, learn, 
+        &quot;Here&apos;s the data, here&apos;s the logic, here&apos;s the suggestion&quot; — humans can validate, learn, 
         and improve the system over time.
       </p>
 
@@ -218,15 +218,15 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">1. You Think in Systems, Not Features</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        When every decision needs to be auditable, you stop thinking about "adding a feature" 
-        and start thinking about "how does this fit into the system?" Where does data flow? 
+        When every decision needs to be auditable, you stop thinking about &quot;adding a feature&quot; 
+        and start thinking about &quot;how does this fit into the system?&quot; Where does data flow? 
         What are the boundaries? How do I test this? How do I prove it works?
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">2. You Write Code That Future You Will Thank You For</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Deterministic workflows and auditability force you to write clear, explicit, well-documented 
-        code. No clever tricks. No hidden state. No "it works on my machine." Six months later, 
+        code. No clever tricks. No hidden state. No &quot;it works on my machine.&quot; Six months later, 
         when you need to debug or audit, you&apos;ll thank yourself.
       </p>
 
@@ -255,8 +255,8 @@ export default function Page() {
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Engineers who understand how to build AI systems that are <strong>auditable, deterministic, 
         secure, and human-centered</strong> will be in high demand. These aren&apos;t skills you pick 
-        up overnight — they require a mindset shift from "move fast" to "move carefully, but still 
-        ship."
+        up overnight — they require a mindset shift from &quot;move fast&quot; to &quot;move carefully, but still 
+        ship.&quot;
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
