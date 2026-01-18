@@ -103,7 +103,7 @@ export default function Page() {
         {sorted.map((p) => (
           <article
             key={p.slug}
-            className="rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur p-6 hover:shadow-md transition-shadow"
+            className="rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur p-6 hover:shadow-md transition-shadow"
           >
             <div className="flex items-start justify-between gap-4">
               <h2 className="text-lg sm:text-xl font-semibold tracking-tight">
