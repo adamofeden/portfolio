@@ -88,7 +88,7 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">4. Observability From Day One</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Logging, metrics, traces — these aren&apos;t "nice to haves" you bolt on later. They&apos;re the difference 
+        Logging, metrics, traces — these aren&apos;t &quot;nice to haves&quot; you bolt on later. They&apos;re the difference 
         between debugging a production issue in 10 minutes vs 10 hours.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">

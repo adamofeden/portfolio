@@ -58,7 +58,7 @@ export default function Page() {
       <h3 className="mt-8 text-xl font-semibold">What Journalism Taught Me About Engineering</h3>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        <strong>1. Start with "Why?"</strong>
+        <strong>1. Start with &quot;Why?&quot;</strong>
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
         Good journalism isn&apos;t about what happened — it&apos;s about why it matters. The same is true 
