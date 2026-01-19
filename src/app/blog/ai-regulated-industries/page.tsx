@@ -33,7 +33,7 @@ export default function Page() {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         I&apos;ve spent the last few years building AI systems in exactly these environments: 
-        <em> BalancingIQ</em> handles financial data for small businesses, and <em>SOA Assist Pro</em> 
+        <em> BalancingIQ</em> handles financial data for small businesses, and <em>SOA Assist Pro </em> 
         automates Medicare compliance workflows. Both operate under strict regulatory frameworks, 
         financial regulations for one, HIPAA for the other.
       </p>
@@ -94,7 +94,7 @@ export default function Page() {
         We achieve this by:
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
-        <li>Setting temperature to 0 for factual outputs</li>
+        <li>Adjusting temperature for factual outputs</li>
         <li>Caching AI responses keyed by input hash</li>
         <li>Separating AI &quot;suggestions&quot; from deterministic &quot;calculations&quot;</li>
         <li>Always showing users what data the AI used and how it reached conclusions</li>
@@ -117,13 +117,13 @@ export default function Page() {
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>Encrypt all data at rest using AWS KMS with customer-managed keys</li>
-        <li>Encrypt all data in transit using TLS 1.3</li>
+        <li>Encrypt all data in transit using TLS</li>
         <li>Minimize data sent to third-party APIs (including LLM providers)</li>
         <li>Implement access controls so users only see their own patients</li>
         <li>Log every access, every query, every export</li>
       </ul>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        But here&apos;s the key insight: <strong>secure boundaries make your architecture clearer.</strong> 
+        But here&apos;s the key insight: <strong>secure boundaries make your architecture clearer. </strong> 
         When you&apos;re forced to think &quot;Can this Lambda access patient data? Should it?&quot; you naturally 
         end up with cleaner separation of concerns. Services that don&apos;t need sensitive data don&apos;t 
         get it. Tight boundaries. Minimal exposure.
@@ -148,7 +148,7 @@ export default function Page() {
         In <em>BalancingIQ</em>, the AI analyzes financial data and generates insights: &quot;Your 
         revenue is down 15% vs last quarter.&quot; But it doesn&apos;t auto-email the client. A human 
         reviews, edits, and approves. In <em>SOA Assist Pro</em>, AI pre-fills Medicare forms, 
-        but agents verify every field before submission.
+        but agents verify every field.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         We make this easy by:
@@ -193,8 +193,8 @@ export default function Page() {
           user action is logged to CloudWatch with structured JSON. No manual instrumentation required.
         </li>
         <li>
-          <strong>Human review is the happy path:</strong> In <em>SOA Assist Pro</em>, reviewing 
-          and approving an AI-generated form is faster than filling it out manually. Compliance 
+          <strong>Human review is the happy path:</strong> In <em>SOA Assist Pro</em>, reviewin 
+          an AI-generated form is faster than filling it out manually. Compliance 
           is the path of least resistance.
         </li>
         <li>
@@ -205,7 +205,7 @@ export default function Page() {
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        When you design this way, compliance isn&apos;t a burden — it&apos;s invisible. Security isn&apos;t an 
+        When you design this way, compliance isn&apos;t a burden, it&apos;s invisible. Security isn&apos;t an 
         afterthought, it&apos;s the foundation.
       </p>
 
