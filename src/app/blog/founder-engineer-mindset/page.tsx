@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "How Being Both a Founder and Engineer Changed How I Write Software — Adam Dugan",
+  title: "How Being Both a Founder and Engineer Changed How I Write Software - Adam Dugan",
   description:
     "Wearing both hats taught me to ask four critical questions about every feature: Who uses this? What happens when it breaks at 2am? Can this scale? Does this reduce cognitive load? Here's what that dual perspective reveals.",
 };
@@ -46,19 +46,19 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">1. Who Actually Uses This?</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Not &quot;who might use this someday&quot; or &quot;what if a user wants to…&quot; — but <strong>who, right now, 
+        Not &quot;who might use this someday&quot; or &quot;what if a user wants to…&quot; but <strong>who, right now, 
         is asking for this?</strong> If I can&apos;t name a specific customer or use case, I don&apos;t build it.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         As an engineer, I used to build features because they were interesting or because they made 
         the architecture more &quot;complete.&quot; As a founder, I realized that every feature has a carrying 
         cost: maintenance, documentation, support burden, cognitive overhead. If no one&apos;s asking for 
-        it, it&apos;s not a feature — it&apos;s tech debt I&apos;m paying interest on.
+        it, it&apos;s not a feature, it&apos;s tech debt I&apos;m paying interest on.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Example: Early on in <em>BalancingIQ</em>, I wanted to build a sophisticated role-based 
         permissions system with granular controls. But when I talked to customers, they just needed 
-        &quot;admin&quot; and &quot;viewer.&quot; We shipped the simple version in a day. Six months later, still no one 
+        &quot;admin&quot; and &quot;viewer.&quot; We shipped the simple version in a day. Months later, still no one 
         has asked for more. That&apos;s weeks of engineering time saved.
       </p>
 
@@ -74,7 +74,7 @@ export default function Page() {
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         This mindset has made me ruthless about observability and simplicity. Clever code that saves 
-        10 lines but makes debugging impossible isn&apos;t clever — it&apos;s a liability. Boring, explicit, 
+        10 lines but makes debugging impossible isn&apos;t clever, it&apos;s a liability. Boring, explicit, 
         well-logged code that I can fix half-asleep is gold.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -91,7 +91,7 @@ export default function Page() {
         yourself into a corner either.</strong>
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        As a founder, I can&apos;t afford to rewrite the system every six months. So I think ahead — not 
+        As a founder, I can&apos;t afford to rewrite the system every six months. So I think ahead, not 
         about hypothetical millions of users, but about whether this design will handle 10x growth 
         without fundamental changes.
       </p>
@@ -101,7 +101,7 @@ export default function Page() {
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Example: In <em>BalancingIQ</em>, we partition customer data by organization ID from day one. 
-        It&apos;s a simple pattern — every DynamoDB table has `orgId` as the partition key — but it means 
+        It&apos;s a simple pattern, every DynamoDB table has `orgId` as the partition key, but it means 
         we can scale horizontally forever. No sharding rewrites, no migration scripts, just add capacity.
       </p>
 
@@ -142,19 +142,19 @@ export default function Page() {
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         I used to build systems that could handle any use case. Now I build systems that handle 
-        <em>this</em> use case really well. If requirements change, I&apos;ll refactor. But I won&apos;t carry 
+        <em> this</em> use case really well. If requirements change, I&apos;ll refactor. But I won&apos;t carry 
         the weight of hypothetical futures that never arrive.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">Shiny Abstractions</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        New frameworks, new patterns, new paradigms — they&apos;re exciting. But they&apos;re also risky. Every 
+        New frameworks, new patterns, new paradigms, they&apos;re exciting. But they&apos;re also risky. Every 
         time you adopt a shiny new abstraction, you&apos;re betting that it&apos;ll still be maintained, documented, 
         and supported when you need to fix a bug at 2am.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         I now favor boring, battle-tested tools. AWS Lambda, DynamoDB, S3. Next.js, React, TypeScript. 
-        Python, Pandas. These aren&apos;t the newest or coolest, but they&apos;re reliable, well-documented, and 
+        Python, Rust. These aren&apos;t the newest or coolest, but they&apos;re reliable, well-documented, and 
         have massive communities. When something breaks, I can find answers in minutes, not days.
       </p>
 
@@ -164,7 +164,7 @@ export default function Page() {
         &quot;What if we need to handle billions of records?&quot;
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        These are valid questions — <em>if</em> they&apos;re grounded in reality. But most of the time, 
+        These are valid questions, <em>if</em> they&apos;re grounded in reality. But most of the time, 
         they&apos;re just fear-driven engineering. You spend weeks building abstractions for problems you 
         don&apos;t have, and when the real problems arrive, they look nothing like what you planned for.
       </p>
@@ -202,28 +202,6 @@ export default function Page() {
         Clever vs maintainable. And the answer is almost always: <strong>boring, reliable, and shippable 
         beats clever every time.</strong>
       </p>
-
-      <h2 className="mt-10 text-2xl font-semibold">Key Takeaways</h2>
-      <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70">
-        <li>
-          Wearing both founder and engineer hats forces you to ask: <strong>Does this actually matter?</strong>
-        </li>
-        <li>
-          Four critical questions: Who uses this? What happens at 2am? Can this scale? Does this reduce 
-          cognitive load?
-        </li>
-        <li>
-          Be ruthless about cutting over-engineering, shiny abstractions, and &quot;future-proofing&quot; that 
-          never arrives.
-        </li>
-        <li>
-          No one cares how clever your code is. They care that it works, scales, and can be fixed when 
-          it breaks.
-        </li>
-        <li>
-          Boring, reliable, and shippable beats clever every single time.
-        </li>
-      </ul>
 
       <div className="mt-12 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur">
         <p className="text-sm text-black/70 dark:text-white/70">
