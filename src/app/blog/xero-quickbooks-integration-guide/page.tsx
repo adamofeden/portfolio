@@ -147,7 +147,7 @@ const encrypted = await kms.encrypt({
 await db.put({
   orgId: organization.id,
   encryptedTokens: encrypted.CiphertextBlob,
-  provider: &apos;xero&apos;, // or &apos;quickbooks&apos;
+  provider: 'xero', // or 'quickbooks'
   expiresAt: new Date(Date.now() + 30 * 60 * 1000) // 30 min
 });`}</pre>
       </div>
@@ -163,10 +163,10 @@ await db.put({
       <div className="mt-4 p-4 rounded-lg bg-black/5 dark:bg-white/5 font-mono text-sm overflow-x-auto">
         <pre>{`// Scheduled Lambda that runs every 15 minutes
 const tokensExpiringSoon = await db.query({
-  IndexName: &apos;expiresAt-index&apos;,
-  KeyConditionExpression: &apos;expiresAt < :soon&apos;,
+  IndexName: 'expiresAt-index',
+  KeyConditionExpression: 'expiresAt < :soon',
   ExpressionAttributeValues: {
-    &apos;:soon&apos;: Date.now() + 10 * 60 * 1000 // 10 min buffer
+    ':soon': Date.now() + 10 * 60 * 1000 // 10 min buffer
   }
 });
 
@@ -218,7 +218,7 @@ interface Invoice {
   tax: number;
   total: number;
   amountDue: number;
-  status: &apos;draft&apos; | &apos;submitted&apos; | &apos;paid&apos; | &apos;voided&apos;;
+  status: 'draft' | 'submitted' | 'paid' | 'voided';
 }`}</pre>
       </div>
 
@@ -249,7 +249,7 @@ interface Invoice {
 
 class QuickBooksAdapter {
   async getInvoices(orgId: string): Promise<Invoice[]> {
-    const raw = await qboClient.query(&apos;SELECT * FROM Invoice&apos;);
+    const raw = await qboClient.query('SELECT * FROM Invoice');
     return raw.map(this.normalizeInvoice);
   }
 
@@ -273,11 +273,11 @@ class QuickBooksAdapter {
       <h3 className="mt-8 text-xl font-semibold">Use a Factory Pattern</h3>
 
       <div className="mt-4 p-4 rounded-lg bg-black/5 dark:bg-white/5 font-mono text-sm overflow-x-auto">
-        <pre>{`function getAccountingAdapter(provider: &apos;xero&apos; | &apos;quickbooks&apos;) {
+        <pre>{`function getAccountingAdapter(provider: 'xero' | 'quickbooks') {
   switch (provider) {
-    case &apos;xero&apos;:
+    case 'xero':
       return new XeroAdapter();
-    case &apos;quickbooks&apos;:
+    case 'quickbooks':
       return new QuickBooksAdapter();
     default:
       throw new Error(\`Unknown provider: \${provider}\`);
@@ -415,34 +415,6 @@ const invoices = await adapter.getInvoices(org.id);`}</pre>
         <li><strong>Scope tokens appropriately</strong> — request only the permissions you need</li>
         <li><strong>Log access</strong> — who accessed what data when (for audit trails)</li>
         <li><strong>Monitor for revoked tokens</strong> — handle 401s gracefully and notify users</li>
-      </ul>
-
-      <h2 className="mt-10 text-2xl font-semibold">Key Takeaways</h2>
-      <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70">
-        <li>
-          Accounting APIs are <strong>far more complex</strong> than they initially appear. Budget 
-          2-3x the time you think you&apos;ll need.
-        </li>
-        <li>
-          <strong>OAuth token management</strong> is critical. Encrypt tokens, refresh proactively, 
-          handle rotation correctly.
-        </li>
-        <li>
-          Build an <strong>abstraction layer</strong> to normalize differences between Xero and 
-          QuickBooks. Don&apos;t scatter if/else logic throughout your codebase.
-        </li>
-        <li>
-          <strong>Rate limits</strong> are real. Implement exponential backoff, cache aggressively, 
-          and batch operations.
-        </li>
-        <li>
-          <strong>Test with real data</strong> in sandbox environments. Edge cases (multi-currency, 
-          tax, tracking categories) will break your assumptions.
-        </li>
-        <li>
-          <strong>Sync in the background</strong>, cache results, and serve from your database. 
-          Don&apos;t make users wait for API calls.
-        </li>
       </ul>
 
       <div className="mt-12 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur">
