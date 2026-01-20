@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "The Hard Part Isn't the Model: Real Challenges in Production AI Systems — Adam Dugan",
+  title: "The Hard Part Isn't the Model: Real Challenges in Production AI Systems - Adam Dugan",
   description:
     "After building multiple AI-powered products, I've learned the hard way: the model is the easy part. The real challenges are multi-tenant isolation, cost control, explainability, and guardrails. Here's what actually matters in production.",
 };
@@ -25,7 +25,7 @@ export default function Page() {
       </h1>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        I&apos;ve been building AI-powered systems for a few years now — from <em>BalancingIQ</em> 
+        I&apos;ve been building AI-powered systems for a few years now, from <em>BalancingIQ </em> 
         (financial advisory platform) to <em>SOA Assist Pro</em> (Medicare compliance automation) 
         to smaller tools for court filing and handyman services. And here&apos;s what I&apos;ve learned the 
         hard way:
@@ -37,7 +37,7 @@ export default function Page() {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Getting ChatGPT to return a useful response? That&apos;s the easy part. You tune the prompt, 
-        adjust the temperature, maybe add a system message — and you&apos;re 80% there in a few hours.
+        adjust the temperature, maybe add a system message, and you&apos;re 80% there in a few hours.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -59,7 +59,7 @@ export default function Page() {
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         If you&apos;re building a SaaS product, you have multiple customers (tenants) using the same 
         infrastructure. That means Customer A&apos;s data needs to stay completely separate from 
-        Customer B&apos;s — not just logically, but <em>provably, auditibly, at every layer</em>.
+        Customer B&apos;s, not just logically, but <em>provably, auditibly, at every layer</em>.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -96,14 +96,14 @@ export default function Page() {
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        This isn&apos;t just security theater — it&apos;s about building systems where data leakage is 
-        <em>architecturally impossible</em>, not just &quot;unlikely.&quot;
+        This isn&apos;t just security theater, it&apos;s about building systems where data leakage is 
+        <em> architecturally impossible</em>, not just &quot;unlikely.&quot;
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">2. Cost Control Under Unpredictable Usage</h3>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        LLM APIs are expensive. At $0.01–0.10 per 1K tokens, costs can spiral fast. And unlike 
+        LLM APIs are expensive, costs can spiral fast. And unlike 
         traditional compute where you know roughly what resources a request will use, AI usage 
         is wildly unpredictable:
       </p>
@@ -124,7 +124,7 @@ export default function Page() {
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>
           <strong>Aggressive caching:</strong> Hash the input (prompt + context) and cache the 
-          response. If the same query comes in again — from any user in that tenant — serve from 
+          response. If the same query comes in again (from any user in that tenant), serve from 
           cache. This cuts costs by 60–80% in practice.
         </li>
         <li>
@@ -149,19 +149,19 @@ export default function Page() {
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Cost control isn&apos;t just about saving money — it&apos;s about making AI economically viable at scale.
+        Cost control isn&apos;t just about saving money, it&apos;s about making AI economically viable at scale.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">3. Making AI Outputs Explainable to Non-Technical Users</h3>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Here&apos;s a hard truth: <strong>Most users don&apos;t trust black boxes.</strong> If the AI spits 
-        out an answer with no context, no citations, no way to verify — people won&apos;t use it, or 
+        out an answer with no context, no citations, no way to verify; people won&apos;t use it, or 
         worse, they&apos;ll use it incorrectly.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        In <em>BalancingIQ</em>, we&apos;re generating financial insights for small business owners — 
+        In <em>BalancingIQ</em>, we&apos;re generating financial insights for small business owners, 
         people who aren&apos;t accountants. If we just said &quot;Your profit margin is concerning,&quot; they&apos;d 
         have no idea what to do with that. Are we talking about gross margin? Net margin? Compared 
         to what?
@@ -175,10 +175,10 @@ export default function Page() {
           <strong>Show the data sources:</strong> Every AI insight shows exactly which numbers it 
           used. &quot;Based on your October revenue ($50K) vs September ($58K), revenue is down 13.8%.&quot;
         </li>
-        <li>
+        {/*<li>
           <strong>Link to source documents:</strong> Users can click through to see the original 
           invoice, transaction, or report the AI analyzed.
-        </li>
+        </li>*/}
         <li>
           <strong>Explain the reasoning:</strong> Instead of just conclusions, we show the logic. 
           &quot;Your cost of goods sold increased by 22%, while revenue only grew 5%, which is why 
@@ -196,7 +196,7 @@ export default function Page() {
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Explainability isn&apos;t just a nice feature — it&apos;s what turns AI from a novelty into a tool 
+        Explainability isn&apos;t just a nice feature, it&apos;s what turns AI from a novelty into a tool 
         people actually rely on.
       </p>
 
@@ -209,8 +209,8 @@ export default function Page() {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         In <em>SOA Assist Pro</em>, we automate Medicare form processing. The AI reads patient 
-        data, fills out forms, and prepares them for submission. But if the AI makes a mistake — 
-        wrong patient ID, wrong diagnosis code — that&apos;s not just a bug. It&apos;s a compliance violation 
+        data, fills out forms, and prepares them for submission. But if the AI makes a mistake 
+        (wrong patient ID, wrong diagnosis code), that&apos;s not just a bug. It&apos;s a compliance violation 
         and potentially a lawsuit.
       </p>
 
@@ -235,7 +235,7 @@ export default function Page() {
           it against known rules. Invalid Medicare IDs? Blocked. Date in the future? Blocked.
         </li>
         <li>
-          <strong>Audit trail:</strong> Every change is logged — what the AI suggested, what the 
+          <strong>Audit trail:</strong> Every change is logged, what the AI suggested, what the 
           human changed, when, and why. If something goes wrong, we can reconstruct the entire 
           decision chain.
         </li>
@@ -246,7 +246,7 @@ export default function Page() {
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Guardrails aren&apos;t about limiting AI — they&apos;re about building systems that people can trust, 
+        Guardrails aren&apos;t about limiting AI, they&apos;re about building systems that people can trust, 
         even when the stakes are high.
       </p>
 
@@ -286,7 +286,7 @@ export default function Page() {
       <h2 className="mt-10 text-2xl font-semibold">Balancing Speed and Safety</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        I get it — there&apos;s pressure to ship fast. AI is moving quickly, and if you spend three 
+        I get it, there&apos;s pressure to ship fast. AI is moving quickly, and if you spend three 
         months building perfect infrastructure, your competitors might beat you to market.
       </p>
 
@@ -306,7 +306,7 @@ export default function Page() {
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        The teams that win aren&apos;t the ones that ship first — they&apos;re the ones that ship systems 
+        The teams that win aren&apos;t the ones that ship first, they&apos;re the ones that ship systems 
         that work, that scale, that people trust, and that don&apos;t explode your budget.
       </p>
 
@@ -316,7 +316,7 @@ export default function Page() {
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>
           <strong>Start with the hard problems.</strong> Multi-tenant isolation, cost tracking, 
-          observability — build these first, even if they feel like &quot;infrastructure work&quot; that 
+          observability, build these first, even if they feel like &quot;infrastructure work&quot; that 
           doesn&apos;t ship features.
         </li>
         <li>
@@ -329,35 +329,7 @@ export default function Page() {
         </li>
         <li>
           <strong>Design for trust from day one.</strong> Explainability, human oversight, audit 
-          trails — these aren&apos;t optional at scale.
-        </li>
-      </ul>
-
-      <h2 className="mt-10 text-2xl font-semibold">Key Takeaways</h2>
-      <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70">
-        <li>
-          <strong>The model is the easy part.</strong> The hard challenges are multi-tenant isolation, 
-          cost control, explainability, and guardrails.
-        </li>
-        <li>
-          Multi-tenant data isolation must be <strong>architecturally enforced</strong>, not just 
-          logically separated.
-        </li>
-        <li>
-          Cost control requires <strong>caching, rate limiting, smart truncation, and per-request 
-          tracking</strong> from day one.
-        </li>
-        <li>
-          Non-technical users need <strong>explainable AI</strong> — show data sources, reasoning, 
-          and confidence levels.
-        </li>
-        <li>
-          Guardrails like <strong>human-in-the-loop, validation rules, and audit trails</strong> 
-          prevent automation from breaking trust.
-        </li>
-        <li>
-          Cutting corners on infrastructure saves time now but costs you weeks (or months) later. 
-          Build solid foundations first.
+          trails, these aren&apos;t optional at scale.
         </li>
       </ul>
 
