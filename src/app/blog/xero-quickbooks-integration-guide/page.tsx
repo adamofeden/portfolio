@@ -1,6 +1,7 @@
 // src/app/blog/xero-quickbooks-integration-guide/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CodeTabs } from "@/components/CodeTabs";
 
 export const metadata: Metadata = {
   title: "Integrating with Xero and QuickBooks: A Developer's Guide to Accounting APIs — Adam Dugan",
@@ -136,7 +137,54 @@ export default function Page() {
         In <em>BalancingIQ</em>, we use AWS KMS with unique encryption contexts per organization:
       </p>
 
-      <div className="mt-4 p-4 rounded-lg bg-black/5 dark:bg-white/5 font-mono text-sm overflow-x-auto">
+      <CodeTabs
+        tabs={[
+          {
+            label: "JavaScript",
+            language: "javascript",
+            code: `// Encrypt before storing
+const encrypted = await kms.encrypt({
+  KeyId: process.env.KMS_KEY_ID,
+  Plaintext: Buffer.from(JSON.stringify(tokens)),
+  EncryptionContext: { orgId: organization.id }
+});
+
+await db.put({
+  orgId: organization.id,
+  encryptedTokens: encrypted.CiphertextBlob,
+  provider: 'xero', // or 'quickbooks'
+  expiresAt: new Date(Date.now() + 30 * 60 * 1000) // 30 min
+});`
+          },
+          {
+            label: "Python",
+            language: "python",
+            code: `# Encrypt before storing
+import boto3
+import json
+from datetime import datetime, timedelta
+
+kms_client = boto3.client('kms')
+
+encrypted = kms_client.encrypt(
+    KeyId=os.environ['KMS_KEY_ID'],
+    Plaintext=json.dumps(tokens).encode('utf-8'),
+    EncryptionContext={'orgId': organization.id}
+)
+
+await db.put_item(
+    Item={
+        'orgId': organization.id,
+        'encryptedTokens': encrypted['CiphertextBlob'],
+        'provider': 'xero',  # or 'quickbooks'
+        'expiresAt': datetime.now() + timedelta(minutes=30)
+    }
+)`
+          }
+        ]}
+      />
+
+      {/*<div className="mt-4 p-4 rounded-lg bg-black/5 dark:bg-white/5 font-mono text-sm overflow-x-auto">
         <pre>{`// Encrypt before storing
 const encrypted = await kms.encrypt({
   KeyId: process.env.KMS_KEY_ID,
@@ -150,7 +198,7 @@ await db.put({
   provider: 'xero', // or 'quickbooks'
   expiresAt: new Date(Date.now() + 30 * 60 * 1000) // 30 min
 });`}</pre>
-      </div>
+      </div>*/}
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         <strong>2. Refresh tokens proactively, not reactively</strong>
@@ -160,8 +208,12 @@ await db.put({
         that runs every 15 minutes and refreshes any tokens expiring in the next 10 minutes.
       </p>
 
-      <div className="mt-4 p-4 rounded-lg bg-black/5 dark:bg-white/5 font-mono text-sm overflow-x-auto">
-        <pre>{`// Scheduled Lambda that runs every 15 minutes
+      <CodeTabs
+        tabs={[
+          {
+            label: "JavaScript",
+            language: "javascript",
+            code: `// Scheduled Lambda that runs every 15 minutes
 const tokensExpiringSoon = await db.query({
   IndexName: 'expiresAt-index',
   KeyConditionExpression: 'expiresAt < :soon',
@@ -172,8 +224,27 @@ const tokensExpiringSoon = await db.query({
 
 for (const record of tokensExpiringSoon) {
   await refreshTokens(record.orgId, record.provider);
-}`}</pre>
-      </div>
+}`
+          },
+          {
+            label: "Python",
+            language: "python",
+            code: `# Scheduled Lambda that runs every 15 minutes
+from datetime import datetime, timedelta
+
+tokens_expiring_soon = await db.query(
+    IndexName='expiresAt-index',
+    KeyConditionExpression='expiresAt < :soon',
+    ExpressionAttributeValues={
+        ':soon': int((datetime.now() + timedelta(minutes=10)).timestamp() * 1000)
+    }
+)
+
+for record in tokens_expiring_soon['Items']:
+    await refresh_tokens(record['orgId'], record['provider'])`
+          }
+        ]}
+      />
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         <strong>3. Handle refresh token rotation correctly</strong>
@@ -196,8 +267,12 @@ for (const record of tokensExpiringSoon) {
 
       <h3 className="mt-8 text-xl font-semibold">Define a Common Interface</h3>
 
-      <div className="mt-4 p-4 rounded-lg bg-black/5 dark:bg-white/5 font-mono text-sm overflow-x-auto">
-        <pre>{`// Common interface for invoices
+      <CodeTabs
+        tabs={[
+          {
+            label: "TypeScript",
+            language: "typescript",
+            code: `// Common interface for invoices
 interface Invoice {
   id: string;
   number: string;
@@ -219,13 +294,54 @@ interface Invoice {
   total: number;
   amountDue: number;
   status: 'draft' | 'submitted' | 'paid' | 'voided';
-}`}</pre>
-      </div>
+}`
+          },
+          {
+            label: "Python",
+            language: "python",
+            code: `# Common interface for invoices
+from dataclasses import dataclass
+from datetime import date
+from typing import List, Literal
+
+@dataclass
+class LineItem:
+    description: str
+    quantity: float
+    unit_price: float
+    total: float
+    account_code: str
+
+@dataclass
+class Customer:
+    id: str
+    name: str
+
+@dataclass
+class Invoice:
+    id: str
+    number: str
+    date: date
+    due_date: date
+    customer: Customer
+    line_items: List[LineItem]
+    subtotal: float
+    tax: float
+    total: float
+    amount_due: float
+    status: Literal['draft', 'submitted', 'paid', 'voided']`
+          }
+        ]}
+      />
 
       <h3 className="mt-8 text-xl font-semibold">Implement Provider-Specific Adapters</h3>
 
-      <div className="mt-4 p-4 rounded-lg bg-black/5 dark:bg-white/5 font-mono text-sm overflow-x-auto">
-        <pre>{`class XeroAdapter {
+      <CodeTabs
+        tabs={[
+          {
+            label: "TypeScript",
+            language: "typescript",
+            code: `class XeroAdapter {
   async getInvoices(orgId: string): Promise<Invoice[]> {
     const raw = await xeroClient.invoices.list();
     return raw.map(this.normalizeInvoice);
@@ -267,13 +383,72 @@ class QuickBooksAdapter {
       status: this.normalizeStatus(qboInvoice.Status)
     };
   }
-}`}</pre>
-      </div>
+}`
+          },
+          {
+            label: "Python",
+            language: "python",
+            code: `from abc import ABC, abstractmethod
+from typing import List
+
+class AccountingAdapter(ABC):
+    @abstractmethod
+    async def get_invoices(self, org_id: str) -> List[Invoice]:
+        pass
+    
+    @abstractmethod
+    def normalize_invoice(self, raw_invoice) -> Invoice:
+        pass
+
+class XeroAdapter(AccountingAdapter):
+    async def get_invoices(self, org_id: str) -> List[Invoice]:
+        raw = await self.xero_client.invoices.list()
+        return [self.normalize_invoice(inv) for inv in raw]
+    
+    def normalize_invoice(self, xero_invoice) -> Invoice:
+        return Invoice(
+            id=xero_invoice['InvoiceID'],
+            number=xero_invoice['InvoiceNumber'],
+            date=datetime.fromisoformat(xero_invoice['Date']).date(),
+            due_date=datetime.fromisoformat(xero_invoice['DueDate']).date(),
+            customer=Customer(
+                id=xero_invoice['Contact']['ContactID'],
+                name=xero_invoice['Contact']['Name']
+            ),
+            # ... map other fields
+            status=self.normalize_status(xero_invoice['Status'])
+        )
+
+class QuickBooksAdapter(AccountingAdapter):
+    async def get_invoices(self, org_id: str) -> List[Invoice]:
+        raw = await self.qbo_client.query('SELECT * FROM Invoice')
+        return [self.normalize_invoice(inv) for inv in raw]
+    
+    def normalize_invoice(self, qbo_invoice) -> Invoice:
+        return Invoice(
+            id=qbo_invoice['Id'],
+            number=qbo_invoice['DocNumber'],
+            date=datetime.strptime(qbo_invoice['TxnDate'], '%Y-%m-%d').date(),
+            due_date=datetime.strptime(qbo_invoice['DueDate'], '%Y-%m-%d').date(),
+            customer=Customer(
+                id=qbo_invoice['CustomerRef']['value'],
+                name=qbo_invoice['CustomerRef']['name']
+            ),
+            # ... map other fields
+            status=self.normalize_status(qbo_invoice['Status'])
+        )`
+          }
+        ]}
+      />
 
       <h3 className="mt-8 text-xl font-semibold">Use a Factory Pattern</h3>
 
-      <div className="mt-4 p-4 rounded-lg bg-black/5 dark:bg-white/5 font-mono text-sm overflow-x-auto">
-        <pre>{`function getAccountingAdapter(provider: 'xero' | 'quickbooks') {
+      <CodeTabs
+        tabs={[
+          {
+            label: "TypeScript",
+            language: "typescript",
+            code: `function getAccountingAdapter(provider: 'xero' | 'quickbooks') {
   switch (provider) {
     case 'xero':
       return new XeroAdapter();
@@ -286,8 +461,26 @@ class QuickBooksAdapter {
 
 // Usage
 const adapter = getAccountingAdapter(org.provider);
-const invoices = await adapter.getInvoices(org.id);`}</pre>
-      </div>
+const invoices = await adapter.getInvoices(org.id);`
+          },
+          {
+            label: "Python",
+            language: "python",
+            code: `def get_accounting_adapter(provider: Literal['xero', 'quickbooks']) -> AccountingAdapter:
+    match provider:
+        case 'xero':
+            return XeroAdapter()
+        case 'quickbooks':
+            return QuickBooksAdapter()
+        case _:
+            raise ValueError(f'Unknown provider: {provider}')
+
+# Usage
+adapter = get_accounting_adapter(org.provider)
+invoices = await adapter.get_invoices(org.id)`
+          }
+        ]}
+      />
 
       <h2 className="mt-10 text-2xl font-semibold">Rate Limits and Pagination</h2>
 
@@ -301,8 +494,12 @@ const invoices = await adapter.getInvoices(org.id);`}</pre>
         backoff with jitter:
       </p>
 
-      <div className="mt-4 p-4 rounded-lg bg-black/5 dark:bg-white/5 font-mono text-sm overflow-x-auto">
-        <pre>{`async function fetchWithRetry(fn, maxRetries = 3) {
+      <CodeTabs
+        tabs={[
+          {
+            label: "JavaScript",
+            language: "javascript",
+            code: `async function fetchWithRetry(fn, maxRetries = 3) {
   for (let i = 0; i < maxRetries; i++) {
     try {
       return await fn();
@@ -315,8 +512,27 @@ const invoices = await adapter.getInvoices(org.id);`}</pre>
       throw error;
     }
   }
-}`}</pre>
-      </div>
+}`
+          },
+          {
+            label: "Python",
+            language: "python",
+            code: `import asyncio
+import random
+
+async def fetch_with_retry(fn, max_retries=3):
+    for i in range(max_retries):
+        try:
+            return await fn()
+        except Exception as error:
+            if hasattr(error, 'status_code') and error.status_code == 429 and i < max_retries - 1:
+                delay = min(1000 * (2 ** i) + random.random() * 1000, 10000) / 1000
+                await asyncio.sleep(delay)
+                continue
+            raise error`
+          }
+        ]}
+      />
 
       <h3 className="mt-8 text-xl font-semibold">Pagination</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
