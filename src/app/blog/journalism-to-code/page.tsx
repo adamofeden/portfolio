@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "From Journalism to Code: Why Non-Traditional Backgrounds Make Better Engineers — Adam Dugan",
+  title: "From Journalism to Code: Why Non-Traditional Backgrounds Make Better Engineers - Adam Dugan",
   description:
     "Most engineers start with CS degrees. I started by interviewing strangers in Istanbul cafes. Here's why non-traditional paths create more empathetic, user-focused engineers who build products people actually want.",
 };
@@ -25,14 +25,14 @@ export default function Page() {
       </h1>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        I didn&apos;t write my first line of code until my late twenties. Before that, I was a journalist 
+        I didn&apos;t write my first line of code until my mid twenties. Before that, I was a journalist 
         chasing stories across four continents, a manufacturing engineer building custom surfboards, 
         and someone who thought &quot;API&quot; was a typo.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Today, I build AI-powered systems, architect cloud infrastructure, and run a software company. 
-        And here&apos;s what I&apos;ve learned: <strong>My &quot;unconventional&quot; path wasn&apos;t a detour — it was the 
+        Today, I build large scale software solutions, architect cloud infrastructure, design AI systems, and run a software company. 
+        And here&apos;s what I&apos;ve learned: <strong>My &quot;unconventional&quot; path wasn&apos;t a detour, it was the 
         foundation.</strong>
       </p>
 
@@ -61,7 +61,7 @@ export default function Page() {
         <strong>1. Start with &quot;Why?&quot;</strong>
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
-        Good journalism isn&apos;t about what happened — it&apos;s about why it matters. The same is true 
+        Good journalism isn&apos;t only about what happened, it&apos;s about why it matters. The same is true 
         in software. Before I write any code, I ask: Why does this feature exist? Why does the 
         user need this? Why now?
       </p>
@@ -79,22 +79,22 @@ export default function Page() {
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
         That skill translates directly to user research. When I talk to customers about 
-        <em> BalancingIQ</em> or <em>SOA Assist Pro</em>, I&apos;m not pitching features — I&apos;m listening 
+        <em> BalancingIQ</em> or <em>SOA Assist Pro</em>, I&apos;m not pitching features, I&apos;m listening 
         for pain points, frustrations, and workflows. The best product ideas come from what users 
-        <em>don&apos;t</em> say out loud.
+        <em> don&apos;t</em> say out loud.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         <strong>3. Clarity Over Cleverness</strong>
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
-        In journalism, the goal isn&apos;t to impress readers with your vocabulary — it&apos;s to communicate 
+        In journalism, the goal isn&apos;t to impress readers with your vocabulary, it&apos;s to communicate 
         clearly. Complex ideas need simple language.
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
         The same applies to code. The best code isn&apos;t the cleverest one-liner or the most abstract 
         architecture. It&apos;s code that another human can read six months later and understand immediately. 
-        Documentation, variable names, API design — it&apos;s all about communication.
+        Documentation, variable names, API design, it&apos;s all about communication.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -107,7 +107,7 @@ export default function Page() {
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
         Journalism taught me to frame technical work in human terms. Not &quot;We implemented a Lambda-based 
-        event-driven architecture&quot; — but &quot;Now when a customer uploads their financial data, it processes 
+        event-driven architecture&quot;, but &quot;Now when a customer uploads their financial data, it processes 
         in the background so they don&apos;t have to wait.&quot;
       </p>
 
@@ -116,11 +116,11 @@ export default function Page() {
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         After journalism, I spent two years at The Shuler Group designing and manufacturing custom 
         surfboards. CAD software, CNC machines, hot-wire foam cutting systems. My job was to turn 
-        digital designs into physical products — managing tolerances, materials, and constraints.
+        digital designs into physical products, managing tolerances, materials, and constraints.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        I didn&apos;t realize it then, but I was learning <strong>systems thinking</strong> — how 
+        I didn&apos;t realize it then, but I was learning <strong>systems thinking</strong>, how 
         everything connects, where bottlenecks emerge, and how small decisions compound.
       </p>
 
@@ -136,7 +136,7 @@ export default function Page() {
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
         Software has the same constraints: latency, memory, cost, time. The best engineers don&apos;t 
-        fight constraints — they design around them. I learned to ask &quot;What&apos;s actually possible 
+        fight constraints, they design around them. I learned to ask &quot;What&apos;s actually possible 
         here?&quot; before &quot;What would be ideal?&quot;
       </p>
 
@@ -144,7 +144,7 @@ export default function Page() {
         <strong>2. Everything Is a System</strong>
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
-        Making a surfboard isn&apos;t just shaping foam — it&apos;s a system. CAD design → CNC routing → 
+        Making a surfboard isn&apos;t just shaping foam, it&apos;s a system. CAD design → CNC routing → 
         hand-shaping → glassing → finishing. Each step affects the next. Miss a tolerance in step 
         one, and step five is impossible.
       </p>
@@ -163,14 +163,14 @@ export default function Page() {
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
         Software gives you the illusion of infinite undo. But in production, mistakes are still 
-        expensive — they just cost time, trust, and revenue instead of materials. Manufacturing 
+        expensive, they just cost time, trust, and revenue instead of materials. Manufacturing 
         taught me to <strong>think before I ship</strong>, not just ship and iterate blindly.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">The International Years: Understanding Users Across Cultures</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Spending years abroad — New Zealand, Australia, Asia, Turkey — fundamentally changed how 
+        Spending years abroad (New Zealand, Australia, Asia, Turkey) fundamentally changed how 
         I think about users. Not &quot;the user&quot; as an abstract persona, but <em>actual humans</em> with 
         different contexts, assumptions, and mental models.
       </p>
@@ -181,8 +181,8 @@ export default function Page() {
         <strong>1. Your Assumptions Are Local</strong>
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
-        In New Zealand, I learned that &quot;next week&quot; means genuinely next week, not &quot;maybe in a month.&quot; 
-        In Turkey, I learned that tea isn&apos;t a beverage — it&apos;s a social ritual. Context shapes everything.
+        In New Zealand, I learned that people expect straightforward communication without excessive formality. 
+        In Turkey, I learned that tea isn&apos;t a beverage, it&apos;s a social ritual. Context shapes everything.
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
         The same is true in software. What feels &quot;intuitive&quot; to you is often just familiar <em>to you</em>. 
@@ -213,14 +213,14 @@ export default function Page() {
       </p>
       <p className="mt-2 text-black/70 dark:text-white/70 leading-relaxed">
         Building software is the same. Requirements change. APIs break. Users do unexpected things. 
-        The engineers who succeed aren&apos;t the ones with perfect plans — they&apos;re the ones who adapt 
+        The engineers who succeed aren&apos;t the ones with perfect plans, they&apos;re the ones who adapt 
         quickly and keep moving forward.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">The &quot;Beginner&apos;s Mind&quot; Advantage</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        When I started learning to code in my late twenties, I was surrounded by people who&apos;d been 
+        When I started learning to code in my mid twenties, I was surrounded by people who&apos;d been 
         programming since they were twelve. I felt behind. I <em>was</em> behind, technically.
       </p>
 
@@ -235,7 +235,7 @@ export default function Page() {
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Those frustrations aren&apos;t weaknesses — they&apos;re insights. Every time I struggled to understand 
+        Those frustrations aren&apos;t weaknesses, they&apos;re insights. Every time I struggled to understand 
         something, I remembered: <strong>If this is hard for me, it&apos;s probably hard for users too.</strong>
       </p>
 
@@ -267,14 +267,14 @@ export default function Page() {
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>
           <strong>Understand humans first, code second.</strong> Former teachers, journalists, 
-          healthcare workers — they know how to communicate, empathize, and simplify.
+          healthcare workers, tradespeople, etc.; they know how to communicate, empathize, and simplify.
         </li>
         <li>
           <strong>Bring domain expertise.</strong> Building fintech? You want someone who understands 
           accounting. Building healthcare tools? You want someone who&apos;s worked in a clinic.
         </li>
         <li>
-          <strong>Think in systems, not just features.</strong> Manufacturing, logistics, operations — 
+          <strong>Think in systems, not just features.</strong> Manufacturing, logistics, and operations, 
           these fields teach systems thinking that translates directly to software architecture.
         </li>
         <li>
@@ -286,18 +286,18 @@ export default function Page() {
       <h2 className="mt-10 text-2xl font-semibold">What I&apos;d Tell My Younger Self</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        If I could go back to 2018 — when I was learning Python basics while friends were already 
-        senior engineers — here&apos;s what I&apos;d say:
+        If I could go back to 2018, when I was learning Python basics while friends were already 
+        senior engineers, here&apos;s what I&apos;d say:
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         <strong>Your &quot;detour&quot; wasn&apos;t a detour.</strong> The years you spent interviewing people, 
-        building physical products, living abroad — those weren&apos;t wasted. They gave you perspective 
+        building physical products, living abroad, those weren&apos;t wasted. They gave you perspective 
         that most engineers never develop.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        <strong>You&apos;ll never catch up technically — and that&apos;s okay.</strong> There will always be 
+        <strong>You&apos;ll never catch up technically, and that&apos;s okay.</strong> There will always be 
         someone who knows algorithms better, who can code faster, who&apos;s read more books. But there 
         aren&apos;t many engineers who can <em>also</em> interview customers, write documentation that 
         doesn&apos;t suck, and design workflows that normal humans understand.
@@ -319,7 +319,7 @@ export default function Page() {
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        None of these products would exist if I&apos;d taken the traditional path. They exist <em>because</em> 
+        None of these products would exist if I&apos;d taken the traditional path. They exist <em>because </em> 
         I didn&apos;t.
       </p>
 
@@ -333,38 +333,6 @@ export default function Page() {
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Your background isn&apos;t baggage. It&apos;s your unfair advantage.
       </p>
-
-      <h2 className="mt-10 text-2xl font-semibold">Key Takeaways</h2>
-      <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70">
-        <li>
-          <strong>Non-traditional backgrounds aren&apos;t detours</strong> — they&apos;re foundations. The skills 
-          you learned in other fields translate directly to better engineering.
-        </li>
-        <li>
-          <strong>Journalism teaches you to ask the right questions,</strong> listen deeply, and 
-          communicate clearly — all critical for product development.
-        </li>
-        <li>
-          <strong>Manufacturing teaches systems thinking,</strong> working within constraints, and 
-          understanding how everything connects.
-        </li>
-        <li>
-          <strong>International experience teaches cultural awareness,</strong> adaptability, and 
-          humility — essential for designing products that work for diverse users.
-        </li>
-        <li>
-          <strong>The &quot;beginner&apos;s mind&quot; is an advantage,</strong> not a weakness. Fresh eyes spot 
-          problems that veterans have stopped noticing.
-        </li>
-        <li>
-          <strong>Tech needs more diversity of experience,</strong> not just diversity of demographics. 
-          Different paths create different perspectives, which create better products.
-        </li>
-        <li>
-          <strong>Your difference is your advantage.</strong> Don&apos;t try to be like everyone else — 
-          lean into what makes you unique.
-        </li>
-      </ul>
 
       <div className="mt-12 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur">
         <p className="text-sm text-black/70 dark:text-white/70">
