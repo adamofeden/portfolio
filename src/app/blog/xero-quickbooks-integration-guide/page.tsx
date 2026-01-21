@@ -4,7 +4,7 @@ import Link from "next/link";
 import { CodeTabs } from "@/components/CodeTabs";
 
 export const metadata: Metadata = {
-  title: "Integrating with Xero and QuickBooks: A Developer's Guide to Accounting APIs — Adam Dugan",
+  title: "Integrating with Xero and QuickBooks: A Developer's Guide to Accounting APIs - Adam Dugan",
   description:
     "Building BalancingIQ taught me that accounting APIs are deceptively complex. Here's everything I learned about OAuth flows, data models, rate limits, and making Xero and QuickBooks integrations production-ready.",
 };
@@ -66,7 +66,7 @@ export default function Page() {
         <li><strong>Invoices</strong> with line items, tax rates, discounts, partial payments</li>
         <li><strong>Bills</strong> (accounts payable) that track what you owe</li>
         <li><strong>Bank transactions</strong> that need to be reconciled against invoices/bills</li>
-        <li><strong>Chart of Accounts</strong> (COA) — the backbone of all financial data</li>
+        <li><strong>Chart of Accounts</strong> (COA) the backbone of all financial data</li>
         <li><strong>Tracking categories</strong> (departments, projects, locations)</li>
         <li><strong>Journal entries</strong> for manual adjustments</li>
         <li><strong>Multi-currency</strong> with exchange rates and gains/losses</li>
@@ -183,22 +183,6 @@ await db.put_item(
           }
         ]}
       />
-
-      {/*<div className="mt-4 p-4 rounded-lg bg-black/5 dark:bg-white/5 font-mono text-sm overflow-x-auto">
-        <pre>{`// Encrypt before storing
-const encrypted = await kms.encrypt({
-  KeyId: process.env.KMS_KEY_ID,
-  Plaintext: Buffer.from(JSON.stringify(tokens)),
-  EncryptionContext: { orgId: organization.id }
-});
-
-await db.put({
-  orgId: organization.id,
-  encryptedTokens: encrypted.CiphertextBlob,
-  provider: 'xero', // or 'quickbooks'
-  expiresAt: new Date(Date.now() + 30 * 60 * 1000) // 30 min
-});`}</pre>
-      </div>*/}
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         <strong>2. Refresh tokens proactively, not reactively</strong>
@@ -560,7 +544,7 @@ async def fetch_with_retry(fn, max_retries=3):
       <h3 className="mt-8 text-xl font-semibold">3. Multi-Currency Complications</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         If a business uses multiple currencies, every amount needs a currency code. Exchange rates 
-        change daily. Don&apos;t try to convert everything to USD — store amounts in their original currency.
+        change daily. Don&apos;t try to convert everything to USD, store amounts in their original currency.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">4. Chart of Accounts Variations</h3>
@@ -626,11 +610,11 @@ async def fetch_with_retry(fn, max_retries=3):
 
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li><strong>Encrypt tokens at rest</strong> using AWS KMS or equivalent</li>
-        <li><strong>Use HTTPS everywhere</strong> — never send tokens over HTTP</li>
+        <li><strong>Use HTTPS everywhere</strong>, never send tokens over HTTP</li>
         <li><strong>Implement PKCE</strong> for OAuth to prevent authorization code interception</li>
-        <li><strong>Scope tokens appropriately</strong> — request only the permissions you need</li>
-        <li><strong>Log access</strong> — who accessed what data when (for audit trails)</li>
-        <li><strong>Monitor for revoked tokens</strong> — handle 401s gracefully and notify users</li>
+        <li><strong>Scope tokens appropriately</strong>, request only the permissions you need</li>
+        <li><strong>Log access</strong>, who accessed what data when (for audit trails)</li>
+        <li><strong>Monitor for revoked tokens</strong>, handle 401s gracefully and notify users</li>
       </ul>
 
       <div className="mt-12 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur">
