@@ -16,13 +16,21 @@ type Post = {
 };
 
 const posts: Post[] = [
+  // Add this to the posts array in src/app/blog/page.tsx
   {
+    slug: "rust-vs-python-backend",
+    title: "Rust for Backend Engineers: When and Why I Choose It Over Python",
+    description: "I love both Rust and Python for different reasons. Here's how I decide which to use for Lambda functions, APIs, and backend services based on cold starts, team dynamics, and long-term maintainability.",
+    date: "2026-01-23",
+    tags: ["Rust", "Python", "Backend", "AWS Lambda", "Performance", "Engineering"],
+  },
+  /*{
     slug: "voice-ai-production",
     title: "Building Voice AI That Doesn't Suck: Real-Time Conversational Interfaces in Production",
     description: "Everyone wants to build 'the next Jarvis,' but most voice AI feels clunky. Here's what I learned about latency, interruptions, and conversation design using Twilio, OpenAI, and Azure Speech.",
     date: "2026-01-22",
     tags: ["Voice AI", "Twilio", "Azure", "OpenAI", "Real-time", "TTS", "STT"],
-  },
+  },*/
   {
     slug: "journalism-to-code",
     title: "From Journalism to Code: Why Non-Traditional Backgrounds Make Better Engineers",

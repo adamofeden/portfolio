@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Building Voice AI That Doesn't Suck: Real-Time Conversational Interfaces in Production — Adam Dugan",
+  title: "Building Voice AI That Doesn't Suck: Real-Time Conversational Interfaces in Production - Adam Dugan",
   description:
     "Everyone wants to build 'the next Jarvis,' but most voice AI feels clunky and frustrating. Here's what I learned building production voice systems with Twilio, OpenAI, and Azure Speech.",
 };
@@ -26,7 +26,7 @@ export default function Page() {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Everyone wants to build &quot;the next Jarvis.&quot; Call a number, talk naturally, and get intelligent 
-        responses. It sounds simple — until you try to build it.
+        responses. It sounds simple, until you try to build it.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -55,7 +55,7 @@ export default function Page() {
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        These aren&apos;t AI problems — they&apos;re <strong>engineering problems</strong>. The underlying LLM 
+        These aren&apos;t AI problems, they&apos;re <strong>engineering problems</strong>. The underlying LLM 
         is perfectly capable of understanding and responding. But the infrastructure between &quot;user 
         speaks&quot; and &quot;bot responds&quot; is where everything falls apart.
       </p>
@@ -103,8 +103,8 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">OpenAI (or Claude) for Conversational Intelligence</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        For the <strong>conversational logic</strong> — understanding intent, generating responses, 
-        maintaining context — I use <strong>OpenAI&apos;s GPT-4</strong> or <strong>Anthropic&apos;s Claude</strong>, 
+        For the <strong>conversational logic</strong> (understanding intent, generating responses, 
+        maintaining context), I use <strong>OpenAI&apos;s GPT-4</strong> or <strong>Anthropic&apos;s Claude</strong>, 
         depending on the use case.
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -115,7 +115,7 @@ export default function Page() {
         output, which you can start converting to speech before the full response is done. This 
         dramatically reduces perceived latency.</li>
         <li><strong>Short prompts:</strong> Voice conversations need concise responses. A 300-word 
-        response that reads well on paper takes 90 seconds to speak — way too long.</li>
+        response that reads well on paper takes 90 seconds to speak, way too long.</li>
         <li><strong>Function calling:</strong> For actions like &quot;schedule an appointment&quot; or &quot;look up 
         an order,&quot; use function calling to trigger backend APIs instead of making the LLM do everything.</li>
       </ul>
@@ -184,7 +184,7 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">2. Handling Interruptions</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        In human conversation, we interrupt each other all the time. &quot;Can I schedule an appoint—&quot; 
+        In human conversation, we interrupt each other all the time. &quot;Can I schedule an appoint-&quot; 
         &quot;Sure, what day works for you?&quot;
       </p>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -200,7 +200,7 @@ export default function Page() {
         If speech is detected above a threshold, immediately stop the TTS playback.</li>
         <li><strong>Clear the buffers:</strong> Cancel any pending TTS and LLM streaming. Don&apos;t let 
         old content leak into the new turn.</li>
-        <li><strong>Acknowledge the interruption:</strong> Optional, but human-like: &quot;Oh, sorry—go ahead.&quot;</li>
+        <li><strong>Acknowledge the interruption:</strong> Optional, but human-like: &quot;Oh, sorry-go ahead.&quot;</li>
         <li><strong>Context preservation:</strong> Keep the conversation history so the bot knows what 
         it was about to say, in case it&apos;s relevant.</li>
       </ul>
@@ -369,8 +369,8 @@ export default function Page() {
       <h3 className="mt-6 text-lg font-semibold">Bad Use Cases:</h3>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li><strong>Complex, sensitive issues:</strong> Healthcare diagnosis, legal advice, financial 
-        planning — these need humans</li>
-        <li><strong>High-emotion situations:</strong> Angry customers, emergencies — escalate immediately</li>
+        planning, these need humans</li>
+        <li><strong>High-emotion situations:</strong> Angry customers, emergencies, these escalate immediately</li>
         <li><strong>Tasks requiring visual elements:</strong> &quot;Fill out this form&quot; works better on web/app</li>
         <li><strong>Long-form content:</strong> Don&apos;t read a 10-minute policy over the phone</li>
       </ul>
