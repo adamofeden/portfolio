@@ -16,7 +16,13 @@ type Post = {
 };
 
 const posts: Post[] = [
-  // Add this to the posts array in src/app/blog/page.tsx
+  /*{
+    slug: "llm-cost-comparison",
+    title: "The Real Cost of LLMs in Production: A Model Comparison for Finished Products",
+    description: "Everyone talks about LLM capabilities, but nobody talks about the bills. Here's what AI actually costs in production across GPT-4, Claude, and other models, with real numbers from BalancingIQ, Handyman AI, and voice systems.",
+    date: "2026-01-24",
+    tags: ["AI", "Cost Optimization", "LLMs", "OpenAI", "Claude", "Production"],
+  },*/
   {
     slug: "rust-vs-python-backend",
     title: "Rust for Backend Engineers: When and Why I Choose It Over Python",
@@ -104,7 +110,7 @@ export default function Page() {
 
       <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Blog</h1>
       <p className="mt-3 text-black/70 dark:text-white/70">
-        Notes on building secure, intelligent software: Next.js, AWS, Python, AI, and more.
+        Notes on building secure, intelligent software: Next.js, AWS, Rust, Python, AI, and more.
       </p>
 
       <div className="mt-10 space-y-4">
