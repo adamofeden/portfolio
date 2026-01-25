@@ -75,7 +75,8 @@ export default function Page() {
         Add instructions to your system prompt telling the LLM when to include action codes:
       </p>
 
-      <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+      <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+        <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
         <pre className="text-black/80 dark:text-white/80">{`SYSTEM_PROMPT = """
 You are a financial advisory AI assistant for small businesses.
 
@@ -100,7 +101,8 @@ and don't need to be explained to the user.
         After getting the LLM&apos;s response, scan for action codes:
       </p>
 
-      <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+      <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+        <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
         <pre className="text-black/80 dark:text-white/80">{`def find_run_actions(bot_response, messages, system_prompt, user_email):
     """Detect and dispatch actions based on string codes in LLM response."""
     
@@ -132,7 +134,8 @@ and don't need to be explained to the user.
         Dispatch them synchronously or asynchronously and move on.
       </p>
 
-      <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+      <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+        <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
         <pre className="text-black/80 dark:text-white/80">{`import boto3
 import json
 
@@ -175,7 +178,8 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
         The action codes are internal signals. Remove them before showing the response to users:
       </p>
 
-      <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+      <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+        <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
         <pre className="text-black/80 dark:text-white/80">{`def handler(event, context):
     # Get LLM response
     bot_response = ask_chatbot(messages=messages, system_prompt=system_prompt)
@@ -203,7 +207,8 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
         The action dispatcher Lambda handles the actual execution:
       </p>
 
-      <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+      <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+        <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
         <pre className="text-black/80 dark:text-white/80">{`def handler(event, context):
     """Action dispatcher Lambda - handles background actions."""
     arguments = event.get('arguments', {})
@@ -245,7 +250,8 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
         Here&apos;s the email action handler:
       </p>
 
-      <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+      <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+        <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
         <pre className="text-black/80 dark:text-white/80">{`def send_email_action(bot_response, messages, system_prompt, recipient):
     """Generate and send formatted email based on conversation."""
     
@@ -295,7 +301,8 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
         I can switch between OpenAI, Claude, and Gemini by changing one line:
       </p>
 
-      <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+      <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+        <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
         <pre className="text-black/80 dark:text-white/80">{`def ask_chatbot(messages, system_prompt):
     """Unified LLM interface - swap providers easily."""
     
@@ -349,7 +356,8 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
         If an action fails (bad JSON, API timeout, whatever), the chat experience isn&apos;t broken:
       </p>
 
-      <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+      <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+        <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
         <pre className="text-black/80 dark:text-white/80">{`def dispatch_action(action, **kwargs):
     try:
         lambda_client.invoke(
@@ -547,7 +555,8 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
 
       <h3 className="mt-8 text-xl font-semibold">1. Define Your Actions</h3>
 
-      <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+      <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+        <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
         <pre className="text-black/80 dark:text-white/80">{`ACTIONS = {
     "send_email_user_action_code": {
         "description": "Send formatted email to user",
@@ -566,7 +575,8 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
 
       <h3 className="mt-8 text-xl font-semibold">2. Update System Prompt</h3>
 
-      <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+      <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+        <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
         <pre className="text-black/80 dark:text-white/80">{`action_instructions = "\\n".join([
     f"- Include '{code}' when: {info['description']}"
     for code, info in ACTIONS.items()
@@ -584,7 +594,8 @@ Always respond naturally to the user. Action codes are background signals.
 
       <h3 className="mt-8 text-xl font-semibold">3. Create Action Detector</h3>
 
-      <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+      <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+        <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
         <pre className="text-black/80 dark:text-white/80">{`def find_run_actions(bot_response, context):
     """Scan response for action codes and dispatch."""
     for action_code, action_info in ACTIONS.items():
@@ -597,7 +608,8 @@ Always respond naturally to the user. Action codes are background signals.
 
       <h3 className="mt-8 text-xl font-semibold">4. Implement Async Dispatch</h3>
 
-      <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+      <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+        <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
         <pre className="text-black/80 dark:text-white/80">{`def dispatch_action(action, context):
     """Fire-and-forget Lambda invocation."""
     try:
@@ -617,7 +629,8 @@ Always respond naturally to the user. Action codes are background signals.
 
       <h3 className="mt-8 text-xl font-semibold">5. Create Dispatcher Lambda</h3>
 
-      <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+      <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+        <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
         <pre className="text-black/80 dark:text-white/80">{`def handler(event, context):
     """Action dispatcher - routes to appropriate handler."""
     action = event.get('action')
@@ -638,7 +651,8 @@ Always respond naturally to the user. Action codes are background signals.
         You can chain multiple LLM calls for complex actions:
       </p>
 
-      <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+      <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
+        <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
         <pre className="text-black/80 dark:text-white/80">{`def send_email_action(context):
     """Multi-step action: analyze → format → send."""
     
