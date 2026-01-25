@@ -16,6 +16,13 @@ type Post = {
 };
 
 const posts: Post[] = [
+  {
+    slug: "llm-action-handler-pattern",
+    title: "The String-Based LLM Action Pattern: How to Make Any AI Model Execute Code Reliably",
+    description: "Function calling APIs are provider-specific and break when you switch models. Here's a dead-simple pattern using string codes that works with any LLM, never blocks responses, and handles failures gracefully.",
+    date: "2026-01-25",
+    tags: ["AI", "LLMs", "Architecture", "System Design", "AWS Lambda", "OpenAI", "Claude", "Gemini"],
+  },
   /*{
     slug: "llm-cost-comparison",
     title: "The Real Cost of LLMs in Production: A Model Comparison for Finished Products",
