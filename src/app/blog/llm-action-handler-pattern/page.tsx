@@ -164,7 +164,7 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
       </div>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        <code className="px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10">InvocationType="Event"</code> means 
+        <code className="px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10">InvocationType=&quot;Event&quot;</code> means 
         the Lambda invocation returns immediately. The action runs in the background while your chat 
         response goes back to the user.
       </p>

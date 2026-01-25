@@ -408,7 +408,7 @@ export default function Page() {
             <li>High-volume, low-complexity tasks</li>
             <li>Following instructions (not reasoning)</li>
             <li>Summarization, formatting, extraction</li>
-            <li>You&apos;re cost-sensitive and quality is "good enough"</li>
+            <li>You&apos;re cost-sensitive and quality is &quot;good enough&quot;</li>
           </ul>
         </div>
 
