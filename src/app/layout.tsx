@@ -35,6 +35,24 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Adam Dugan",
+              url: "https://adamdugan.com",
+              jobTitle: "Software Engineer",
+              description: "Builder of BalancingIQ & SOA Assist Pro. Specializing in AWS, Next.js, Python, Rust, and AI systems.",
+              sameAs: [
+                // Add your LinkedIn, GitHub, etc. if you want
+              ],
+            }),
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
