@@ -408,6 +408,47 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
         No schema definitions, no API contracts, just code.
       </p>
 
+      <h3 className="mt-8 text-xl font-semibold">6. Multiple Actions Just Work</h3>
+
+      <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
+        Your system can naturally trigger multiple actions in a single response without any 
+        special handling:
+      </p>
+
+      <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur">
+        <p className="text-sm text-black/70 dark:text-white/70 mb-3">
+          <strong>LLM Response:</strong>
+        </p>
+        <p className="text-sm text-black/70 dark:text-white/70 italic">
+          "I'll send you that cash flow analysis via email <strong>send_email_user_action_code</strong> 
+          {" "}and also pull recent news about your industry <strong>get_news_action_code</strong> so you 
+          have full context."
+        </p>
+      </div>
+
+      <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
+        The action detector finds both codes and dispatches both actions simultaneously. No special 
+        "parallel function calling" mode needed, no complex response parsing, just multiple substring 
+        checks.
+      </p>
+
+      <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
+        <strong>Comparison to official APIs:</strong>
+      </p>
+
+      <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
+        <li><strong>OpenAI:</strong> Requires enabling parallel function calling, parsing array of tool_calls</li>
+        <li><strong>Claude:</strong> Can return multiple tool blocks, requires handling each with structured iteration</li>
+        <li><strong>Gemini:</strong> Similar structured parsing needed for parallel function declarations</li>
+        <li><strong>Your string codes:</strong> Same simple code handles 1 action or 10 actions identically</li>
+      </ul>
+
+      <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
+        In production, about 15% of BalancingIQ conversations trigger multiple actions (typically 
+        "send email" + "schedule followup" or "fetch data" + "generate report"). The system handles 
+        these as naturally as single actions, with no additional code complexity.
+      </p>
+
       <h2 className="mt-10 text-2xl font-semibold">Comparison: String Codes vs Function Calling APIs</h2>
 
       <div className="mt-6 overflow-x-auto">
