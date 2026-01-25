@@ -73,13 +73,6 @@ const posts: Post[] = [
     tags: ["AI", "Infrastructure", "Security", "Multi-tenant", "Cost Optimization"],
   },
   {
-    slug: "ai-regulated-industries",
-    title: "AI in Regulated Industries: Why Constraints Lead to Better Engineering",
-    description: "Building AI for healthcare, finance, and regulated spaces requires auditability, deterministic workflows, secure data boundaries, and human oversight. Here's why these constraints make you a better engineer.",
-    date: "2026-01-18",
-    tags: ["AI", "Compliance", "Security", "HIPAA", "Healthcare", "Finance"],
-  },
-  {
     slug: "founder-engineer-mindset",
     title: "How Being Both a Founder and Engineer Changed How I Write Software",
     description: "Wearing both hats taught me to ask four critical questions about every feature, and made me ruthless about over-engineering, shiny abstractions, and false future-proofing.",
@@ -87,17 +80,24 @@ const posts: Post[] = [
     tags: ["Engineering", "Startup", "Product", "Leadership"],
   },
   {
+    slug: "ai-regulated-industries",
+    title: "AI in Regulated Industries: Why Constraints Lead to Better Engineering",
+    description: "Building AI for healthcare, finance, and regulated spaces requires auditability, deterministic workflows, secure data boundaries, and human oversight. Here's why these constraints make you a better engineer.",
+    date: "2026-01-17",
+    tags: ["AI", "Compliance", "Security", "HIPAA", "Healthcare", "Finance"],
+  },
+  {
     slug: "cloud-ai-architecture",
     title: "Why Architecture Matters More Than Your Model Choice in Cloud + AI Systems",
     description: "Early architectural decisions compound faster than model improvements. Learn why event-driven workflows, data partitioning, encryption boundaries, and observability matter more than which model you choose.",
-    date: "2026-01-17",
+    date: "2026-01-16",
     tags: ["Architecture", "AI", "Cloud", "AWS", "System Design"],
   },
   {
     slug: "seoaeogeo",
     title: "SEO / AEO / GEO",
     description: "Quick primer on Search, Answer, and Generative Engine Optimization.",
-    date: "2025-10-22",
+    date: "2025-10-21",
     tags: ["SEO", "AEO", "GEO"],
   },
   // Add more posts here as you create them

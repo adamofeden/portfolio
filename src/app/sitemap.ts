@@ -13,10 +13,10 @@ const posts: Post[] = [
   { slug: "journalism-to-code", date: "2026-01-21" },
   { slug: "xero-quickbooks-integration-guide", date: "2026-01-20" },
   { slug: "ai-infrastructure-challenges", date: "2026-01-19" },
-  { slug: "ai-regulated-industries", date: "2026-01-18" },
   { slug: "founder-engineer-mindset", date: "2026-01-18" },
-  { slug: "cloud-ai-architecture", date: "2026-01-17" },
-  { slug: "seoaeogeo", date: "2025-10-22" },
+  { slug: "ai-regulated-industries", date: "2026-01-17" },
+  { slug: "cloud-ai-architecture", date: "2026-01-16" },
+  { slug: "seoaeogeo", date: "2025-10-21" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
