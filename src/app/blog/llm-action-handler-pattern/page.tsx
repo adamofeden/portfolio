@@ -428,15 +428,15 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
           <strong>LLM Response:</strong>
         </p>
         <p className="text-sm text-black/70 dark:text-white/70 italic">
-          "I'll send you that cash flow analysis via email <strong>send_email_user_action_code</strong> 
+        &quot;I&apos;ll send you that cash flow analysis via email <strong>send_email_user_action_code</strong> 
           {" "}and also pull recent news about your industry <strong>get_news_action_code</strong> so you 
-          have full context."
+          have full context.&quot;
         </p>
       </div>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         The action detector finds both codes and dispatches both actions simultaneously. No special 
-        "parallel function calling" mode needed, no complex response parsing, just multiple substring 
+        &quot;parallel function calling&quot; mode needed, no complex response parsing, just multiple substring 
         checks.
       </p>
 
@@ -453,7 +453,7 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         In production, about 15% of BalancingIQ conversations trigger multiple actions (typically 
-        "send email" + "schedule followup" or "fetch data" + "generate report"). The system handles 
+        &quot;send email&quot; + &quot;schedule followup&quot; or &quot;fetch data&quot; + &quot;generate report&quot;). The system handles 
         these as naturally as single actions, with no additional code complexity.
       </p>
 
