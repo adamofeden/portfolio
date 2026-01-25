@@ -100,7 +100,7 @@ export default function Page() {
       <h3 className="mt-8 text-xl font-semibold">What is PKCE?</h3>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        PKCE (pronounced &quot;pixy&quot;) is an extension to OAuth 2.0 that protects against 
+        PKCE is an extension to OAuth 2.0 that protects against 
         malicious apps intercepting authorization codes. It works by:
       </p>
 
@@ -306,7 +306,7 @@ export async function GET(request: NextRequest) {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         This authenticates your application to the provider. Never expose your client secret in 
-        frontend code — always do token exchange server-side.
+        frontend code, always do token exchange server-side.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">Step 3: Secure Token Storage with KMS Encryption</h2>
@@ -737,7 +737,7 @@ except:
 }`}</pre>
       </div>
 
-      <h2 className="mt-10 text-2xl font-semibold">Testing OAuth Flows</h2>
+      {/*<h2 className="mt-10 text-2xl font-semibold">Testing OAuth Flows</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         OAuth is hard to test because it requires real user interaction with external services. 
@@ -813,7 +813,7 @@ def test_token_refresh(mock_post):
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Use these for integration testing without affecting real customer data.
-      </p>
+      </p>*/}
 
       <h2 className="mt-10 text-2xl font-semibold">Monitoring and Debugging</h2>
 
@@ -957,7 +957,7 @@ def test_token_refresh(mock_post):
       <h3 className="mt-8 text-xl font-semibold">2. Not Using PKCE</h3>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        &quot;But I&apos;m using a client secret&quot; — doesn&apos;t matter. PKCE protects against 
+        &quot;But I&apos;m using a client secret&quot;, doesn&apos;t matter. PKCE protects against 
         authorization code interception. Always use it, even with confidential clients.
       </p>
 
@@ -979,7 +979,7 @@ def test_token_refresh(mock_post):
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Users can revoke access at any time. When refresh fails with <code className="px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10">invalid_grant</code>, 
-        delete the integration and notify the user — don&apos;t keep retrying forever.
+        delete the integration and notify the user, don&apos;t keep retrying forever.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">Conclusion</h2>
@@ -1007,7 +1007,7 @@ def test_token_refresh(mock_post):
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         The complexity is worth it. Once you have this foundation, adding new OAuth providers is 
-        straightforward — just implement the provider-specific endpoints and you&apos;re done.
+        straightforward, just implement the provider-specific endpoints and you&apos;re done.
       </p>
 
       <div className="mt-10 p-6 rounded-2xl border border-black/10 dark:border-white/20 bg-gradient-to-br from-indigo-50 to-emerald-50 dark:from-indigo-950/30 dark:to-emerald-950/30">
