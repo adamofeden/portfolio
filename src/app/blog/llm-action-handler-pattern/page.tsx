@@ -26,25 +26,25 @@ export default function Page() {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Every LLM provider has their own function calling API. OpenAI has one format. Anthropic has 
-        another. Google has a third. If you build on OpenAI's function calling and then want to 
-        switch to Claude or Gemini, you're rewriting your entire integration.
+        another. Google has a third. If you build on OpenAI&apos;s function calling and then want to 
+        switch to Claude or Gemini, you&apos;re rewriting your entire integration.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        I built a different pattern for <strong>BalancingIQ</strong> that's embarrassingly simple: 
+        I built a different pattern for <strong>BalancingIQ</strong> that&apos;s embarrassingly simple: 
         <strong> just have the LLM include special text codes in its response, detect those codes 
         with string matching, and dispatch actions asynchronously</strong>.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         This works with <em>any</em> LLM (OpenAI, Claude, Gemini, Llama, anything), never blocks 
-        the chat response, and gracefully handles failures. Here's how it works.
+        the chat response, and gracefully handles failures. Here&apos;s how it works.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">The Problem: Function Calling Is Provider-Specific</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Most LLMs support "function calling" or "tool use" where the model can trigger predefined 
+        Most LLMs support &quot;function calling&quot; or &quot;tool use&quot; where the model can trigger predefined 
         functions. Great in theory. In practice:
       </p>
 
@@ -54,7 +54,7 @@ export default function Page() {
         Google uses <code className="px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10">function_declarations</code></li>
         <li><strong>Different formats:</strong> Parameter schemas, response structures, all different</li>
         <li><strong>Different reliability:</strong> Some models are better at function calling than others</li>
-        <li><strong>Vendor lock-in:</strong> If you build on one provider's API, switching is painful</li>
+        <li><strong>Vendor lock-in:</strong> If you build on one provider&apos;s API, switching is painful</li>
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -91,13 +91,13 @@ and don't need to be explained to the user.
       </div>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        That's it. No JSON schemas, no function definitions, just plain English instructions.
+        That&apos;s it. No JSON schemas, no function definitions, just plain English instructions.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">Step 2: Detect Actions with Simple String Matching</h3>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        After getting the LLM's response, scan for action codes:
+        After getting the LLM&apos;s response, scan for action codes:
       </p>
 
       <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
@@ -122,13 +122,13 @@ and don't need to be explained to the user.
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Dead simple. No parsing, no validation, just substring matching. This works with 
-        <em> any</em> LLM because it's just text.
+        <em> any</em> LLM because it&apos;s just text.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">Step 3: Dispatch Actions Synchronously or Asynchronously (Fire-and-Forget)</h3>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        The key insight: <strong>don't block the chat response waiting for actions to complete that don't need to be synchronous</strong>. 
+        The key insight: <strong>don&apos;t block the chat response waiting for actions to complete that don&apos;t need to be synchronous</strong>. 
         Dispatch them synchronously or asynchronously and move on.
       </p>
 
@@ -242,7 +242,7 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
       </ol>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Here's the email action handler:
+        Here&apos;s the email action handler:
       </p>
 
       <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
@@ -310,7 +310,7 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
       </div>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        The action detection doesn't care which LLM generated the response. It's just looking for 
+        The action detection doesn&apos;t care which LLM generated the response. It&apos;s just looking for 
         substrings. This means:
       </p>
 
@@ -339,14 +339,14 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        With fire-and-forget dispatch, the user's chat response comes back in &lt;500ms. The email 
+        With fire-and-forget dispatch, the user&apos;s chat response comes back in &lt;500ms. The email 
         arrives 2-3 seconds later, which feels instant.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">3. Fault-Tolerant: Actions Can Fail Safely</h3>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        If an action fails (bad JSON, API timeout, whatever), the chat experience isn't broken:
+        If an action fails (bad JSON, API timeout, whatever), the chat experience isn&apos;t broken:
       </p>
 
       <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
@@ -365,7 +365,7 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
       </div>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        The user still gets their chat response. The action failure is logged, but doesn't break 
+        The user still gets their chat response. The action failure is logged, but doesn&apos;t break 
         the conversation. You can monitor failures and fix them without users even noticing.
       </p>
 
@@ -394,10 +394,10 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
 
       <ol className="mt-4 list-decimal list-inside space-y-3 text-black/70 dark:text-white/70 ml-4">
         <li>
-          <strong>Update system prompt:</strong> "When the user asks for X, include 'new_action_code' in your response."
+          <strong>Update system prompt:</strong> &quot;When the user asks for X, include &apos;new_action_code&apos; in your response.&quot;
         </li>
         <li>
-          <strong>Add detection:</strong> <code className="px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10">if "new_action_code" in bot_response: dispatch_action("new_action_code", ...)</code>
+          <strong>Add detection:</strong> <code className="px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10">if &quot;new_action_code&quot; in bot_response: dispatch_action(&quot;new_action_code&quot;, ...)</code>
         </li>
         <li>
           <strong>Implement handler:</strong> Add the action logic to the dispatcher Lambda
@@ -465,7 +465,7 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li><strong>Multi-provider systems:</strong> You want to switch between LLMs easily</li>
         <li><strong>Async actions:</strong> Actions can happen in the background (email, notifications, logging)</li>
-        <li><strong>Simple triggers:</strong> "Send email," "fetch news," "schedule task"</li>
+        <li><strong>Simple triggers:</strong> &quot;Send email,&quot; &quot;fetch news,&quot; &quot;schedule task&quot;</li>
         <li><strong>Rapid prototyping:</strong> Add actions in minutes, not hours</li>
         <li><strong>Cost optimization:</strong> Route to cheapest model that can handle string codes</li>
       </ul>
@@ -494,14 +494,14 @@ def dispatch_action(action, *, bot_response, messages, system_prompt, user_email
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        The system is rock-solid. I've switched between Gemini, Claude, and OpenAI multiple times 
+        The system is rock-solid. I&apos;ve switched between Gemini, Claude, and OpenAI multiple times 
         without touching the action handler code.
       </p>*/}
 
       <h2 className="mt-10 text-2xl font-semibold">Implementation Guide</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Here's how to implement this in your system:
+        Here&apos;s how to implement this in your system:
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">1. Define Your Actions</h3>
@@ -631,19 +631,19 @@ Always respond naturally to the user. Action codes are background signals.
           background while users get immediate feedback.
         </li>
         <li>
-          <strong>Failures are isolated.</strong> If an action fails, the chat experience isn't 
+          <strong>Failures are isolated.</strong> If an action fails, the chat experience isn&apos;t 
           broken. Log, alert, fix later.
         </li>
         <li>
           <strong>Setup is trivial.</strong> Add action codes to system prompt, detect with substring 
-          matching, dispatch async. That's it.
+          matching, dispatch async. That&apos;s it.
         </li>
         <li>
           <strong>Extensibility is built-in.</strong> New actions take minutes to add, not hours 
           of schema design.
         </li>
         <li>
-          <strong>99.7% accuracy in production.</strong> Simple patterns work. Don't overcomplicate.
+          <strong>99.7% accuracy in production.</strong> Simple patterns work. Don&apos;t overcomplicate.
         </li>
         <li>
           Use function calling APIs when you need typed parameters and synchronous responses. Use 
@@ -653,7 +653,7 @@ Always respond naturally to the user. Action codes are background signals.
 
       <div className="mt-12 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur">
         <p className="text-sm text-black/70 dark:text-white/70">
-          <strong>Building LLM-powered actions?</strong> I'd love to hear about your implementation 
+          <strong>Building LLM-powered actions?</strong> I&apos;d love to hear about your implementation 
           challenges, multi-provider systems, or action reliability issues. Reach out at{" "}
           <a href="mailto:adamdugan6@gmail.com" className="underline hover:opacity-80">
             adamdugan6@gmail.com

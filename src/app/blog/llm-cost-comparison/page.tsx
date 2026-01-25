@@ -29,21 +29,21 @@ export default function Page() {
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        I've shipped multiple AI products: <strong>BalancingIQ</strong> (financial advisory platform), 
+        I&apos;ve shipped multiple AI products: <strong>BalancingIQ</strong> (financial advisory platform), 
         <strong> Handyman AI</strong> (image-based repair planning), and <strong>AI Administrative 
         Assistant</strong> (voice-enabled phone system). Every single one hit the same wall: 
-        <strong> LLM costs can destroy your margins if you're not careful</strong>.
+        <strong> LLM costs can destroy your margins if you&apos;re not careful</strong>.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Here's what AI actually costs in production, broken down by real usage patterns, and how to 
+        Here&apos;s what AI actually costs in production, broken down by real usage patterns, and how to 
         make it economically viable.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">The Models: Pricing Breakdown (January 2026)</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        First, let's establish the baseline costs. All prices are per 1 million tokens.
+        First, let&apos;s establish the baseline costs. All prices are per 1 million tokens.
       </p>
 
       <div className="mt-6 overflow-x-auto">
@@ -117,7 +117,7 @@ export default function Page() {
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
         <li>User connects their accounting software (one-time)</li>
         <li>System syncs financial data (monthly, automated)</li>
-        <li>User requests analysis: "How's my cash flow?" or "What should I focus on?"</li>
+        <li>User requests analysis: &quot;How&apos;s my cash flow?&quot; or &quot;What should I focus on?&quot;</li>
         <li>LLM processes 3-6 months of transactions, generates insights</li>
         <li>User asks follow-up questions</li>
       </ul>
@@ -211,7 +211,7 @@ export default function Page() {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         <strong>Reality check:</strong> If users pay $5 per analysis, GPT-4 Turbo takes 3.6% of 
-        revenue. GPT-4o takes 1%. At scale (1,000 requests/month), that's $180 vs $50.
+        revenue. GPT-4o takes 1%. At scale (1,000 requests/month), that&apos;s $180 vs $50.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -222,7 +222,7 @@ export default function Page() {
       <h3 className="mt-8 text-xl font-semibold">Example 3: AI Administrative Assistant (Voice)</h3>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Voice AI is expensive. You're paying for TTS, STT, <em>and</em> LLM inference, all in real-time.
+        Voice AI is expensive. You&apos;re paying for TTS, STT, <em>and</em> LLM inference, all in real-time.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -246,8 +246,8 @@ export default function Page() {
       </div>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        <strong>Reality check:</strong> If you're running a customer support line with 500 calls/day, 
-        that's $158/day with GPT-4o-mini or $264/day with GPT-4 Turbo. Over a month: $4,740 vs $7,920.
+        <strong>Reality check:</strong> If you&apos;re running a customer support line with 500 calls/day, 
+        that&apos;s $158/day with GPT-4o-mini or $264/day with GPT-4 Turbo. Over a month: $4,740 vs $7,920.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -258,12 +258,12 @@ export default function Page() {
       <h2 className="mt-10 text-2xl font-semibold">Hidden Costs: Embeddings, Fine-Tuning, and Storage</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        LLM inference isn't the only cost. Here are the hidden expenses:
+        LLM inference isn&apos;t the only cost. Here are the hidden expenses:
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">Embeddings</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        If you're using RAG (retrieval-augmented generation), you need embeddings for semantic search.
+        If you&apos;re using RAG (retrieval-augmented generation), you need embeddings for semantic search.
       </p>
 
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
@@ -273,7 +273,7 @@ export default function Page() {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         <strong>Example:</strong> Embedding a 100-page document (≈75K tokens) costs $0.0015 (small) 
-        or $0.01 (large). If you're indexing thousands of documents, this adds up.
+        or $0.01 (large). If you&apos;re indexing thousands of documents, this adds up.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">Vector Database Storage</h3>
@@ -297,23 +297,23 @@ export default function Page() {
       </ul>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        <strong>When it's worth it:</strong> If you need very specific behavior and prompt engineering 
-        isn't enough. But usually, <strong>better prompts + RAG is cheaper</strong> than fine-tuning.
+        <strong>When it&apos;s worth it:</strong> If you need very specific behavior and prompt engineering 
+        isn&apos;t enough. But usually, <strong>better prompts + RAG is cheaper</strong> than fine-tuning.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">Cost Optimization Strategies That Actually Work</h2>
 
       <h3 className="mt-8 text-xl font-semibold">1. Aggressive Caching</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        The cheapest LLM call is the one you don't make.
+        The cheapest LLM call is the one you don&apos;t make.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         <strong>What I cache:</strong>
       </p>
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
-        <li><strong>FAQ responses:</strong> "What are your hours?" → cached answer, zero cost</li>
-        <li><strong>Common analyses:</strong> "Show me cash flow" for similar businesses</li>
+        <li><strong>FAQ responses:</strong> &quot;What are your hours?&quot; → cached answer, zero cost</li>
+        <li><strong>Common analyses:</strong> &quot;Show me cash flow&quot; for similar businesses</li>
         <li><strong>Embeddings:</strong> Never re-embed the same document</li>
         <li><strong>Voice audio:</strong> Pre-generated TTS for greetings and common phrases</li>
       </ul>
@@ -344,7 +344,7 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">3. Shorter Context Windows</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Input tokens cost money. Don't send more context than you need.
+        Input tokens cost money. Don&apos;t send more context than you need.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -363,7 +363,7 @@ export default function Page() {
 
       <h3 className="mt-8 text-xl font-semibold">4. Batch Processing</h3>
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        For non-urgent tasks, use OpenAI's Batch API: <strong>50% discount</strong>, 24-hour turnaround.
+        For non-urgent tasks, use OpenAI&apos;s Batch API: <strong>50% discount</strong>, 24-hour turnaround.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -408,7 +408,7 @@ export default function Page() {
             <li>High-volume, low-complexity tasks</li>
             <li>Following instructions (not reasoning)</li>
             <li>Summarization, formatting, extraction</li>
-            <li>You're cost-sensitive and quality is "good enough"</li>
+            <li>You&apos;re cost-sensitive and quality is "good enough"</li>
           </ul>
         </div>
 
@@ -448,7 +448,7 @@ export default function Page() {
       <h2 className="mt-10 text-2xl font-semibold">Real Cost Analysis: A $50/Month SaaS Product</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Let's say you're building a SaaS product with a $50/month subscription. How much can you 
+        Let&apos;s say you&apos;re building a SaaS product with a $50/month subscription. How much can you 
         afford to spend on LLM costs?
       </p>
 
@@ -467,12 +467,12 @@ export default function Page() {
       </div>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        If users make 20 requests per month at $0.05 each (GPT-4o), that's $1/month. Comfortable margin.
+        If users make 20 requests per month at $0.05 each (GPT-4o), that&apos;s $1/month. Comfortable margin.
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        If users make 100 requests per month at $0.30 each (GPT-4 Turbo), that's $30/month. 
-        <strong>You're losing money on every customer.</strong>
+        If users make 100 requests per month at $0.30 each (GPT-4 Turbo), that&apos;s $30/month. 
+        <strong>You&apos;re losing money on every customer.</strong>
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -483,7 +483,7 @@ export default function Page() {
       <h2 className="mt-10 text-2xl font-semibold">Monitoring and Cost Tracking</h2>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        You can't optimize what you don't measure. Here's what I track:
+        You can&apos;t optimize what you don&apos;t measure. Here&apos;s what I track:
       </p>
 
       <ul className="mt-4 list-disc list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
@@ -516,7 +516,7 @@ export default function Page() {
         </li>
         <li>
           <strong>Caching is your best friend:</strong> 40-60% of requests can be cached. The 
-          cheapest LLM call is the one you don't make.
+          cheapest LLM call is the one you don&apos;t make.
         </li>
         <li>
           <strong>Voice AI is expensive:</strong> $0.23-0.53 per 5-minute call adds up fast. Cache 
@@ -538,7 +538,7 @@ export default function Page() {
 
       <div className="mt-12 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur">
         <p className="text-sm text-black/70 dark:text-white/70">
-          <strong>Building an AI product and worried about costs?</strong> I'd love to hear about 
+          <strong>Building an AI product and worried about costs?</strong> I&apos;d love to hear about 
           your cost optimization challenges, model selection, or pricing strategy. Reach out at{" "}
           <a href="mailto:adamdugan6@gmail.com" className="underline hover:opacity-80">
             adamdugan6@gmail.com
