@@ -17,6 +17,13 @@ type Post = {
 
 const posts: Post[] = [
   {
+    slug: "oauth2-production-guide",
+    title: "OAuth 2.0 in Production: Building Secure Integrations with Xero, QuickBooks, and Microsoft",
+    description: "Everyone implements OAuth, but most do it insecurely. Here's how to build production-ready OAuth 2.0 with PKCE, KMS encryption, automatic token refresh, and multi-tenant isolation based on real implementations.",
+    date: "2026-01-26",
+    tags: ["OAuth", "Security", "AWS", "API Integration", "Xero", "QuickBooks", "Microsoft", "KMS"],
+  },
+  {
     slug: "llm-action-handler-pattern",
     title: "The String-Based LLM Action Pattern: How to Make Any AI Model Execute Code Reliably",
     description: "Function calling APIs are provider-specific and break when you switch models. Here's a dead-simple pattern using string codes that works with any LLM, never blocks responses, and handles failures gracefully.",
