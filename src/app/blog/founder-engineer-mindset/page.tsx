@@ -17,17 +17,60 @@ export default function Page() {
     author: {
       "@type": "Person",
       name: "Adam Dugan",
+      url: "https://adamdugan.com",
+      jobTitle: "Software Engineer",
+      knowsAbout: ["Founder", "Engineer", "Product", "Leadership", "Software Development"]
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Adam Dugan",
       url: "https://adamdugan.com"
     },
     datePublished: "2026-01-18",
     dateModified: "2026-01-18",
     url: "https://adamdugan.com/blog/founder-engineer-mindset",
+    keywords: ["Founder", "Engineer", "Product", "Leadership", "Software Development"],
+    articleSection: "Engineering",
+    inLanguage: "en-US",
+    isAccessibleForFree: true,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://adamdugan.com/blog/founder-engineer-mindset"
+    }
+  };
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://adamdugan.com"
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://adamdugan.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "How Being Both a Founder and Engineer Changed How I Write Software",
+        item: "https://adamdugan.com/blog/founder-engineer-mindset"
+      }
+    ]
   };
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
       />
       <main className="mx-auto w-full max-w-3xl px-6 sm:px-8 py-16">
         <nav className="mb-8">

@@ -17,17 +17,60 @@ export default function Page() {
     author: {
       "@type": "Person",
       name: "Adam Dugan",
+      url: "https://adamdugan.com",
+      jobTitle: "Software Engineer",
+      knowsAbout: ["AI", "Regulated Industries", "Compliance", "Security", "Data Boundaries", "Human Override Paths"]
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Adam Dugan",
       url: "https://adamdugan.com"
     },
     datePublished: "2026-01-17",
     dateModified: "2026-01-17",
     url: "https://adamdugan.com/blog/ai-regulated-industries",
+    keywords: ["AI", "Regulated Industries", "Compliance", "Security", "Data Boundaries", "Human Override Paths"],
+    articleSection: "Engineering",
+    inLanguage: "en-US",
+    isAccessibleForFree: true,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://adamdugan.com/blog/ai-regulated-industries"
+    }
+  };
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://adamdugan.com"
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://adamdugan.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "AI in Regulated Industries: Why Constraints Lead to Better Engineering",
+        item: "https://adamdugan.com/blog/ai-regulated-industries"
+      }
+    ]
   };
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
       />
       <main className="mx-auto w-full max-w-3xl px-6 sm:px-8 py-16">
         <nav className="mb-8">
