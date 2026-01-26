@@ -18,17 +18,60 @@ export default function Page() {
     author: {
       "@type": "Person",
       name: "Adam Dugan",
+      url: "https://adamdugan.com",
+      jobTitle: "Software Engineer",
+      knowsAbout: ["Xero", "QuickBooks", "Accounting", "API Integration", "OAuth", "AWS", "System Architecture"]
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Adam Dugan",
       url: "https://adamdugan.com"
     },
     datePublished: "2026-01-20",
     dateModified: "2026-01-20",
     url: "https://adamdugan.com/blog/xero-quickbooks-integration-guide",
+    keywords: ["Xero", "QuickBooks", "Accounting", "API Integration", "OAuth", "AWS", "System Architecture"],
+    articleSection: "Engineering",
+    inLanguage: "en-US",
+    isAccessibleForFree: true,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://adamdugan.com/blog/xero-quickbooks-integration-guide"
+    }
+  };
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://adamdugan.com"
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://adamdugan.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Integrating with Xero and QuickBooks: A Developer's Guide to Accounting APIs",
+        item: "https://adamdugan.com/blog/xero-quickbooks-integration-guide"
+      }
+    ]
   };
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
       />
       <main className="mx-auto w-full max-w-3xl px-6 sm:px-8 py-16">
         <nav className="mb-8">

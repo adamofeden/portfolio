@@ -17,17 +17,60 @@ export default function Page() {
     author: {
       "@type": "Person",
       name: "Adam Dugan",
+      url: "https://adamdugan.com",
+      jobTitle: "Software Engineer",
+      knowsAbout: ["AI", "Infrastructure", "Security", "Multi-tenant", "Cost Optimization"]
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Adam Dugan",
       url: "https://adamdugan.com"
     },
     datePublished: "2026-01-19",
     dateModified: "2026-01-19",
     url: "https://adamdugan.com/blog/ai-infrastructure-challenges",
+    keywords: ["AI", "Infrastructure", "Security", "Multi-tenant", "Cost Optimization"],
+    articleSection: "Engineering",
+    inLanguage: "en-US",
+    isAccessibleForFree: true,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://adamdugan.com/blog/ai-infrastructure-challenges"
+    }
+  };
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://adamdugan.com"
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://adamdugan.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "The Hard Part Isn't the Model: Real Challenges in Production AI Systems",
+        item: "https://adamdugan.com/blog/ai-infrastructure-challenges"
+      }
+    ]
   };
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
       />
       <main className="mx-auto w-full max-w-3xl px-6 sm:px-8 py-16">
         <nav className="mb-8">
