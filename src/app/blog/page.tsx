@@ -30,13 +30,13 @@ const posts: Post[] = [
     date: "2026-01-25",
     tags: ["AI", "LLMs", "Architecture", "System Design", "AWS Lambda", "OpenAI", "Claude", "Gemini"],
   },
-  /*{
+  {
     slug: "llm-cost-comparison",
     title: "The Real Cost of LLMs in Production: A Model Comparison for Finished Products",
     description: "Everyone talks about LLM capabilities, but nobody talks about the bills. Here's what AI actually costs in production across GPT-4, Claude, and other models, with real numbers from BalancingIQ, Handyman AI, and voice systems.",
     date: "2026-01-24",
     tags: ["AI", "Cost Optimization", "LLMs", "OpenAI", "Claude", "Production"],
-  },*/
+  },
   {
     slug: "rust-vs-python-backend",
     title: "Rust for Backend Engineers: When and Why I Choose It Over Python",
@@ -44,13 +44,13 @@ const posts: Post[] = [
     date: "2026-01-23",
     tags: ["Rust", "Python", "Backend", "AWS Lambda", "Performance", "Engineering"],
   },
-  /*{
+  {
     slug: "voice-ai-production",
     title: "Building Voice AI That Doesn't Suck: Real-Time Conversational Interfaces in Production",
     description: "Everyone wants to build 'the next Jarvis,' but most voice AI feels clunky. Here's what I learned about latency, interruptions, and conversation design using Twilio, OpenAI, and Azure Speech.",
     date: "2026-01-22",
     tags: ["Voice AI", "Twilio", "Azure", "OpenAI", "Real-time", "TTS", "STT"],
-  },*/
+  },
   {
     slug: "journalism-to-code",
     title: "From Journalism to Code: Why Non-Traditional Backgrounds Make Better Engineers",
