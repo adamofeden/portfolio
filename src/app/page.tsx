@@ -215,7 +215,7 @@ export default function Page() {
               Contact
             </a>
             <Link
-              href="/AdamDugan_Resume.pdf"
+              href="/adam_dugan_resume.pdf"
               className="rounded-xl border border-black/5 dark:border-white/10 px-3 py-1.5 hover:bg-black/5 dark:hover:bg-white/10"
             >
               Résumé
@@ -288,7 +288,7 @@ export default function Page() {
                   Contact
                 </a>
                 <Link
-                  href="/AdamDugan_Resume.pdf"
+                  href="/adam_dugan_resume.pdf"
                   className="px-3 py-2 rounded-lg border border-black/10 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/10 text-center"
                 >
                   Résumé
