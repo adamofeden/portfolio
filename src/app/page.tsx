@@ -62,15 +62,15 @@ export default function Page() {
 
   const projects = [
     {
-      title: "BalancingIQ",
-      desc: "AI-powered financial advisory platform for SMBs — automates Xero/QBO data ingestion, generates KPI packs, and delivers actionable insights.",
+      title: "MyBalancingIQ",
+      desc: "AI-powered financial advisory platform for SMBs, automates Xero/QBO data ingestion, generates KPI packs, and delivers actionable insights.",
       img: "/projects/balancingiq.png",
       href: "https://mybalancingiq.com",
       tags: ["Next.js", "AWS", "Xero/QBO", "LLM"],
     },
     {
       title: "SOA Assist Pro",
-      desc: "End-to-end Medicare compliance automation — manages SOA forms, maintains audit trails, and streamlines agent scheduling.",
+      desc: "End-to-end Medicare compliance automation, manages SOA forms, maintains audit trails, and streamlines agent scheduling.",
       img: "/projects/soa.png",
       href: "https://soaassistpro.com/",
       tags: ["Python", "Azure", "HIPAA", "TTS"],
@@ -110,16 +110,15 @@ export default function Page() {
   const experiences = [
     {
       company: "Versytech",
-      role: "Founder & Full-Stack Engineer",
+      role: "Automation Engineer",
       period: "2023 — Present",
       points: [
-        "Architected and deployed multi-tenant SaaS on AWS (Amplify Gen2, CDK, Lambda, DynamoDB, S3, KMS).",
-        "Developed encrypted Xero/QBO integrations, KPI pipelines, and REST APIs powering BalancingIQ.",
-        "Built secure bookkeeping integrations with Xero/QBO OAuth and encrypted token storage.",
-        "Shipped BalancingIQ and SOA Assist Pro — led full lifecycle from architecture to UX and GTM.",
-        "Shipped SOA Assist Pro, automating compliance workflows and reducing form processing time by 90%.",
-        "Designed secure deployment pipelines with GitHub Actions and CI/CD automation.",
-        "Built voice-enabled AI assistants using Twilio, OpenAI, and Azure Speech.",
+        "Automated Medicare compliance workflows: reduced form processing time by 90% with HIPAA-compliant CRM and encrypted document handling (SOA Assist Pro).",
+        "Built AI-powered financial advisory platform: automated SMB bookkeeping analysis with QuickBooks/Xero integration and LLM driven insights, GDPR compliance (MyBalancingIQ).",
+        "Engineered Python RPA solution: automated court case filing workflows using Selenium and Tkinter for GUI.",
+        "Architected multi-tenant SaaS infrastructure on AWS with CDK-based IaC, Lambda functions, DynamoDB, S3, and KMS encryption.",
+        "Developed voice-enabled AI assistant, automating customer service workflows with OpenAI + Twilio integration and Azure Speech Services.",
+        "Automated deployment pipelines with GitHub Actions and YAML-based CI/CD, reducing deployment time from hours to minutes.",
       ],
     },
     {
@@ -127,12 +126,11 @@ export default function Page() {
       role: "Software Engineer",
       period: "2024 — Present",
       points: [
-        "Automated back-office operations using Azure and Python",
-        "Created real-time conversational AI bots leveraging OpenAI, ElevenLabs, and Unity.",
-        "Worked directly with Metality Lab leadership to prioritize roadmaps and ship on schedule.",
-        "Converted a large-scale project from WebGL and WebXR to Android. ",
-        "Owned Android/Quest delivery: APK/OBB packaging, SideQuest distribution, and tester sideloading flows.",
-        "Implemented UI/UX and scene orchestration for inteliMuseum edutainment modules.",
+        "Automated back-office operations: reduced manual processing time by 60% using Python scripts, Azure Serverless Functions, and scheduled workflows.",
+        "Developed real-time conversational AI avatars for VR experiences with OpenAI integrations, ElevenLabs text-to-speech, and Unity character controllers.",
+        "Built avatar generation web app by converting user photos to realistic 3D digital avatars using computer vision and Azure Blob Storage.",
+        "Led Android/Quest port of a large-scale WebXR project: reduced app size by 70% with APK/OBB packaging, Addressables, SideQuest distribution, and optimized performance for mobile VR hardware.",
+        "Designed adaptive UI systems and multi-user networking for educational VR modules using Photon networking, responsive layouts, and session management.",
       ],
     },
     {
@@ -140,10 +138,10 @@ export default function Page() {
       role: "Co-Founder & Lead Engineer",
       period: "2020 — 2024",
       points: [
-        "Designed engaging experiences using Unity, C#, Photon networking, custom shaders, and performance optimization.",
-        "Created a recursive C# algorithm generating 1,000+ hours of adaptive learning content.",
-        "Delivered user-centric interfaces, economy systems, and analytics pipelines for live Quest titles.",
-        "Deployed secure APIs on Azure for dynamic content delivery.",
+        "Co-founded and engineered a top 3 language learning app on the Meta Quest Store, reached hundreds of thousands of users across 100+ countries, successfully acquired in 2025.",
+        "Automated content generation with recursive C# algorithms, produced 1,000+ hours of adaptive, procedurally-generated learning scenarios.",
+        "Built scalable backend infrastructure on Azure, PlayFab integration for analytics, real-time leaderboards, in-app purchases, and user progression tracking.",
+        "Managed international development team of 10 developers and over 30 translators through product lifecycle, live operations, feature releases, content updates, and platform migrations.",
       ],
     },
     {
@@ -151,11 +149,10 @@ export default function Page() {
       role: "Unity/C# Developer",
       period: "2019 — 2020",
       points: [
-        "Used C# and Unity to create a medieval Robin Hood style game for Oculus Quest 1 and 2.",
-        "Built dynamic NPC AI Systems using NavMesh, raycasting and state machines.",
-        "Used Unity Profiler, occlusion culling, and light baking to improve performance on standalone devices’ slow computation speed.",
-        "Used Unity’s XR Interaction Toolkit with AutoHand to create an immersive experience within the virtual world.",
-        "Completed the project from start to finish within a 6-month period."
+        "Developed medieval VR combat game for Oculus Quest from concept to production in 6 months.",
+        "Engineered dynamic NPC AI systems, NavMesh pathfinding, state machines, raycasting-based decision trees for realistic enemy behaviors.",
+        "Optimized VR performance for standalone hardware, maintained 72 FPS on Quest through Unity Profiler analysis, occlusion culling, and lightmap baking.",
+        "Implemented immersive VR mechanics using XR Interaction Toolkit and AutoHand, physics-based interactions, grabbing, throwing, archery systems.",
       ]
     },
     {
@@ -303,13 +300,13 @@ export default function Page() {
       <Section className="pt-14 sm:pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight">Building secure, intelligent software solutions</h1>
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight">Automating complex workflows</h1>
             <p className="mt-6 text-base sm:text-lg leading-relaxed text-black/70 dark:text-white/70">
-              I design and deliver scalable software products end-to-end from <strong> Python</strong> based <strong>AI</strong>,
-              <strong> Rust</strong> backend systems, and data services, to <strong>AWS</strong>{" "}cloud infrastructures and
-              <strong> Next.js</strong> front ends. My work includes <em>BalancingIQ</em> {" "}
-              (AI powered financial advisory platform), <em>SOA Assist Pro</em> (Medicare compliance automation suite), automated court case filing,
-              and immersive Unity experiences.
+              I specialize in automating complex workflows across education, healthcare, finance, and legal sectors. 
+              My work includes reducing Medicare compliance processing by 90% (SOA Assist Pro), 
+              AI-powered financial analysis platforms (MyBalancingIQ), Python-based RPA systems for 
+              legal case filing, and voice-enabled AI assistants, all built on secure, HIPAA/GDPR-compliant 
+              AWS and Azure architectures.
             </p>
             <p className="mt-6 text-base sm:text-lg leading-relaxed text-black/70 dark:text-white/70">
               Co-founded and lead the engineering team at Language Lab, a top performing VR language education platform that was successfully acquired in 2025.
@@ -525,11 +522,11 @@ export default function Page() {
         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Skills</h2>
         <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {[
-            { icon: <Code2 className="h-4 w-4" />, label: "Full-Stack Development" },
-            { icon: <Cloud className="h-4 w-4" />, label: "Cloud Architecture" },
-            { icon: <Cog className="h-4 w-4" />, label: "Secure Automation" },
+            { icon: <Globe className="h-4 w-4" />, label: "Process Automation" },
             { icon: <Cpu className="h-4 w-4" />, label: "AI Integration" },
+            { icon: <Cloud className="h-4 w-4" />, label: "Cloud Architecture" },
             { icon: <ShieldCheck className="h-4 w-4" />, label: "Security & Compliance" },
+            { icon: <Code2 className="h-4 w-4" />, label: "Full-Stack Development" },
             { icon: <Cuboid className="h-4 w-4" />, label: "Manufacturing & CAD" },
           ].map((s, i) => (
             <Card key={i} className="flex items-center gap-2 py-3">
