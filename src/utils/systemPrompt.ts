@@ -37,7 +37,7 @@ ABOUT ADAM DUGAN {
         Email: adamdugan6@gmail.com
         GitHub: https://github.com/adamofeden
         LinkedIn: https://www.linkedin.com/in/adam-dugan-918722217/
-        Resume: Available at /AdamDugan_Resume.pdf
+        Resume: Available at /adam_dugan_resume.pdf
     }
 
     PROJECTS {
