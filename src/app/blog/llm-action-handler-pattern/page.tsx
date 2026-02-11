@@ -140,17 +140,17 @@ export default function Page() {
         <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
           <pre className="text-black/80 dark:text-white/80">{`SYSTEM_PROMPT = """
-  You are a financial advisory AI assistant for small businesses.
+You are a financial advisory AI assistant for small businesses.
 
-  When the user asks you to send them something via email, include the text 
-  "send_email_user_action_code" somewhere in your response.
+When the user asks you to send them something via email, include the text 
+"send_email_user_action_code" somewhere in your response.
 
-  When the user asks for recent news about their industry, include the text 
-  "get_news_action_code" in your response.
+When the user asks for recent news about their industry, include the text 
+"get_news_action_code" in your response.
 
-  Always respond naturally to the user. The action codes are internal signals 
-  and don't need to be explained to the user.
-  """`}</pre>
+Always respond naturally to the user. The action codes are internal signals 
+and don't need to be explained to the user.
+"""`}</pre>
         </div>
 
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -166,22 +166,22 @@ export default function Page() {
         <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
           <pre className="text-black/80 dark:text-white/80">{`def find_run_actions(bot_response, messages, system_prompt, user_email):
-      """Detect and dispatch actions based on string codes in LLM response."""
-      
-      if "send_email_user_action_code" in bot_response:
-          dispatch_action(
-              action="send_email_user_action_code",
-              bot_response=bot_response,
-              messages=messages,
-              system_prompt=system_prompt,
-              user_email=user_email,
-          )
-      
-      if "get_news_action_code" in bot_response:
-          dispatch_action(
-              action="get_news_action_code",
-              # ... params
-          )`}</pre>
+    """Detect and dispatch actions based on string codes in LLM response."""
+    
+    if "send_email_user_action_code" in bot_response:
+        dispatch_action(
+            action="send_email_user_action_code",
+            bot_response=bot_response,
+            messages=messages,
+            system_prompt=system_prompt,
+            user_email=user_email,
+        )
+    
+    if "get_news_action_code" in bot_response:
+        dispatch_action(
+            action="get_news_action_code",
+            # ... params
+        )`}</pre>
         </div>
 
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -199,33 +199,33 @@ export default function Page() {
         <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
           <pre className="text-black/80 dark:text-white/80">{`import boto3
-  import json
+import json
 
-  lambda_client = boto3.client('lambda')
-  ACTION_DISPATCHER_FUNCTION = 'action-dispatcher-lambda'
+lambda_client = boto3.client('lambda')
+ACTION_DISPATCHER_FUNCTION = 'action-dispatcher-lambda'
 
-  def dispatch_action(action, *, bot_response, messages, system_prompt, user_email):
-      """Fire-and-forget invoke; never block or crash caller."""
-      try:
-          payload = {
-              "arguments": {
-                  "action": action,
-                  "bot_response": bot_response,
-                  "messages": messages,
-                  "system_prompt": system_prompt,
-                  "user_email": user_email,
-              }
-          }
-          
-          lambda_client.invoke(
-              FunctionName=ACTION_DISPATCHER_FUNCTION,
-              InvocationType="Event",  # async, fire-and-forget
-              Payload=json.dumps(payload).encode("utf-8"),
-          )
-          print(f"Dispatched action: {action}")
-      except Exception as e:
-          # Log and move on; core chat response should not fail
-          print(f"Dispatch failed for {action}: {e}")`}</pre>
+def dispatch_action(action, *, bot_response, messages, system_prompt, user_email):
+    """Fire-and-forget invoke; never block or crash caller."""
+    try:
+        payload = {
+            "arguments": {
+                "action": action,
+                "bot_response": bot_response,
+                "messages": messages,
+                "system_prompt": system_prompt,
+                "user_email": user_email,
+            }
+        }
+        
+        lambda_client.invoke(
+            FunctionName=ACTION_DISPATCHER_FUNCTION,
+            InvocationType="Event",  # async, fire-and-forget
+            Payload=json.dumps(payload).encode("utf-8"),
+        )
+        print(f"Dispatched action: {action}")
+    except Exception as e:
+        # Log and move on; core chat response should not fail
+        print(f"Dispatch failed for {action}: {e}")`}</pre>
         </div>
 
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -243,24 +243,24 @@ export default function Page() {
         <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
           <pre className="text-black/80 dark:text-white/80">{`def handler(event, context):
-      # Get LLM response
-      bot_response = ask_chatbot(messages=messages, system_prompt=system_prompt)
-      
-      # Detect and dispatch actions
-      find_run_actions(
-          bot_response=bot_response,
-          messages=messages,
-          system_prompt=system_prompt,
-          user_email=user_email
-      )
-      
-      # Clean up response before returning to user
-      clean_response = bot_response.replace("send_email_user_action_code", "")
-      clean_response = clean_response.replace("get_news_action_code", "")
-      
-      return {
-          "message": clean_response.strip()
-      }`}</pre>
+    # Get LLM response
+    bot_response = ask_chatbot(messages=messages, system_prompt=system_prompt)
+    
+    # Detect and dispatch actions
+    find_run_actions(
+        bot_response=bot_response,
+        messages=messages,
+        system_prompt=system_prompt,
+        user_email=user_email
+    )
+    
+    # Clean up response before returning to user
+    clean_response = bot_response.replace("send_email_user_action_code", "")
+    clean_response = clean_response.replace("get_news_action_code", "")
+    
+    return {
+        "message": clean_response.strip()
+    }`}</pre>
         </div>
 
         <h3 className="mt-8 text-xl font-semibold">Step 5: Execute Actions in a Separate Lambda</h3>
@@ -272,26 +272,26 @@ export default function Page() {
         <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
           <pre className="text-black/80 dark:text-white/80">{`def handler(event, context):
-      """Action dispatcher Lambda - handles background actions."""
-      arguments = event.get('arguments', {})
-      action = arguments.get('action', '')
-      bot_response = arguments.get('bot_response', '')
-      messages = arguments.get('messages', [])
-      system_prompt = arguments.get('system_prompt', '')
-      user_email = arguments.get('user_email', '')
-      
-      if action == 'send_email_user_action_code':
-          send_email_action(
-              bot_response=bot_response,
-              messages=messages,
-              system_prompt=system_prompt,
-              recipient=user_email
-          )
-      
-      elif action == 'get_news_action_code':
-          fetch_news_action(messages=messages, user_email=user_email)
-      
-      return {"message": "Actions dispatched successfully"}`}</pre>
+    """Action dispatcher Lambda - handles background actions."""
+    arguments = event.get('arguments', {})
+    action = arguments.get('action', '')
+    bot_response = arguments.get('bot_response', '')
+    messages = arguments.get('messages', [])
+    system_prompt = arguments.get('system_prompt', '')
+    user_email = arguments.get('user_email', '')
+    
+    if action == 'send_email_user_action_code':
+        send_email_action(
+            bot_response=bot_response,
+            messages=messages,
+            system_prompt=system_prompt,
+            recipient=user_email
+        )
+    
+    elif action == 'get_news_action_code':
+        fetch_news_action(messages=messages, user_email=user_email)
+    
+    return {"message": "Actions dispatched successfully"}`}</pre>
         </div>
 
         <h2 className="mt-10 text-2xl font-semibold">Real Example: Email Action</h2>
@@ -315,39 +315,39 @@ export default function Page() {
         <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
           <pre className="text-black/80 dark:text-white/80">{`def send_email_action(bot_response, messages, system_prompt, recipient):
-      """Generate and send formatted email based on conversation."""
-      
-      # Make a second LLM call with specialized prompt for email formatting
-      email_prompt = """
-      You are preparing a professional email based on the prior conversation.
-      Return ONLY a JSON object with this structure:
-      {
-        "subject": "5-9 word subject line",
-        "body": "Professional email body with 1-sentence summary, value, and next steps",
-        "vega_spec": null or Vega-Lite chart spec if visualization was requested
-      }
-      
-      Keep JSON under 5KB. Use double quotes. No markdown.
-      """
-      
-      # Get structured email data from LLM
-      email_response = ask_chatbot(messages=messages, system_prompt=email_prompt)
-      
-      # Parse JSON response
-      email_data = json.loads(email_response)
-      subject = email_data["subject"]
-      body = email_data["body"]
-      vega_spec = email_data.get("vega_spec")
-      
-      # Validate and send
-      if subject and body:
-          send_email_via_graph_api(
-              recipient=recipient,
-              subject=subject,
-              body=body,
-              chart=vega_spec
-          )
-          print(f"Email sent to {recipient}")`}</pre>
+    """Generate and send formatted email based on conversation."""
+    
+    # Make a second LLM call with specialized prompt for email formatting
+    email_prompt = """
+    You are preparing a professional email based on the prior conversation.
+    Return ONLY a JSON object with this structure:
+    {
+      "subject": "5-9 word subject line",
+      "body": "Professional email body with 1-sentence summary, value, and next steps",
+      "vega_spec": null or Vega-Lite chart spec if visualization was requested
+    }
+    
+    Keep JSON under 5KB. Use double quotes. No markdown.
+    """
+    
+    # Get structured email data from LLM
+    email_response = ask_chatbot(messages=messages, system_prompt=email_prompt)
+    
+    # Parse JSON response
+    email_data = json.loads(email_response)
+    subject = email_data["subject"]
+    body = email_data["body"]
+    vega_spec = email_data.get("vega_spec")
+    
+    # Validate and send
+    if subject and body:
+        send_email_via_graph_api(
+            recipient=recipient,
+            subject=subject,
+            body=body,
+            chart=vega_spec
+        )
+        print(f"Email sent to {recipient}")`}</pre>
         </div>
 
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -366,16 +366,16 @@ export default function Page() {
         <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
           <pre className="text-black/80 dark:text-white/80">{`def ask_chatbot(messages, system_prompt):
-      """Unified LLM interface - swap providers easily."""
-      
-      # Currently using Gemini
-      return ask_gemini(messages, system_prompt)
-      
-      # Uncomment to switch to Claude
-      # return ask_bedrock(messages, system_prompt)
-      
-      # Uncomment to switch to OpenAI
-      # return ask_openai(messages, system_prompt)`}</pre>
+    """Unified LLM interface - swap providers easily."""
+    
+    # Currently using Gemini
+    return ask_gemini(messages, system_prompt)
+    
+    # Uncomment to switch to Claude
+    # return ask_bedrock(messages, system_prompt)
+    
+    # Uncomment to switch to OpenAI
+    # return ask_openai(messages, system_prompt)`}</pre>
         </div>
 
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -421,17 +421,17 @@ export default function Page() {
         <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
           <pre className="text-black/80 dark:text-white/80">{`def dispatch_action(action, **kwargs):
-      try:
-          lambda_client.invoke(
-              FunctionName=ACTION_DISPATCHER_FUNCTION,
-              InvocationType="Event",
-              Payload=json.dumps({"action": action, **kwargs})
-          )
-      except Exception as e:
-          # Log the error but don't crash
-          print(f"Action dispatch failed: {e}")
-          # Could also send to error tracking service
-          # sentry.capture_exception(e)`}</pre>
+    try:
+        lambda_client.invoke(
+            FunctionName=ACTION_DISPATCHER_FUNCTION,
+            InvocationType="Event",
+            Payload=json.dumps({"action": action, **kwargs})
+        )
+    except Exception as e:
+        # Log the error but don't crash
+        print(f"Action dispatch failed: {e}")
+        # Could also send to error tracking service
+        # sentry.capture_exception(e)`}</pre>
         </div>
 
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -620,19 +620,19 @@ export default function Page() {
         <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
           <pre className="text-black/80 dark:text-white/80">{`ACTIONS = {
-      "send_email_user_action_code": {
-          "description": "Send formatted email to user",
-          "handler": send_email_action,
-      },
-      "get_news_action_code": {
-          "description": "Fetch recent industry news",
-          "handler": fetch_news_action,
-      },
-      "schedule_followup_action_code": {
-          "description": "Schedule follow-up task",
-          "handler": schedule_followup_action,
-      },
-  }`}</pre>
+    "send_email_user_action_code": {
+        "description": "Send formatted email to user",
+        "handler": send_email_action,
+    },
+    "get_news_action_code": {
+        "description": "Fetch recent industry news",
+        "handler": fetch_news_action,
+    },
+    "schedule_followup_action_code": {
+        "description": "Schedule follow-up task",
+        "handler": schedule_followup_action,
+    },
+}`}</pre>
         </div>
 
         <h3 className="mt-8 text-xl font-semibold">2. Update System Prompt</h3>
@@ -640,18 +640,18 @@ export default function Page() {
         <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
           <pre className="text-black/80 dark:text-white/80">{`action_instructions = "\\n".join([
-      f"- Include '{code}' when: {info['description']}"
-      for code, info in ACTIONS.items()
-  ])
+        f"- Include '{code}' when: {info['description']}"
+        for code, info in ACTIONS.items()
+    ])
 
-  system_prompt = f"""
-  You are a helpful AI assistant.
+    system_prompt = f"""
+    You are a helpful AI assistant.
 
-  Action Codes (internal use):
-  {action_instructions}
+    Action Codes (internal use):
+    {action_instructions}
 
-  Always respond naturally to the user. Action codes are background signals.
-  """`}</pre>
+    Always respond naturally to the user. Action codes are background signals.
+    """`}</pre>
         </div>
 
         <h3 className="mt-8 text-xl font-semibold">3. Create Action Detector</h3>
@@ -659,13 +659,13 @@ export default function Page() {
         <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
           <pre className="text-black/80 dark:text-white/80">{`def find_run_actions(bot_response, context):
-      """Scan response for action codes and dispatch."""
-      for action_code, action_info in ACTIONS.items():
-          if action_code in bot_response:
-              dispatch_action(
-                  action=action_code,
-                  context=context,
-              )`}</pre>
+    """Scan response for action codes and dispatch."""
+    for action_code, action_info in ACTIONS.items():
+        if action_code in bot_response:
+            dispatch_action(
+                action=action_code,
+                context=context,
+            )`}</pre>
         </div>
 
         <h3 className="mt-8 text-xl font-semibold">4. Implement Async Dispatch</h3>
@@ -673,20 +673,20 @@ export default function Page() {
         <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
           <pre className="text-black/80 dark:text-white/80">{`def dispatch_action(action, context):
-      """Fire-and-forget Lambda invocation."""
-      try:
-          lambda_client.invoke(
-              FunctionName=os.environ['ACTION_DISPATCHER_LAMBDA'],
-              InvocationType="Event",  # async
-              Payload=json.dumps({
-                  "action": action,
-                  "context": context,
-              }).encode("utf-8"),
-          )
-          print(f"Dispatched: {action}")
-      except Exception as e:
-          print(f"Dispatch failed: {action}, error: {e}")
-          # Don't raise - keep chat working`}</pre>
+    """Fire-and-forget Lambda invocation."""
+    try:
+        lambda_client.invoke(
+            FunctionName=os.environ['ACTION_DISPATCHER_LAMBDA'],
+            InvocationType="Event",  # async
+            Payload=json.dumps({
+                "action": action,
+                "context": context,
+            }).encode("utf-8"),
+        )
+        print(f"Dispatched: {action}")
+    except Exception as e:
+        print(f"Dispatch failed: {action}, error: {e}")
+        # Don't raise - keep chat working`}</pre>
         </div>
 
         <h3 className="mt-8 text-xl font-semibold">5. Create Dispatcher Lambda</h3>
@@ -694,17 +694,17 @@ export default function Page() {
         <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
           <pre className="text-black/80 dark:text-white/80">{`def handler(event, context):
-      """Action dispatcher - routes to appropriate handler."""
-      action = event.get('action')
-      context = event.get('context')
-      
-      if action in ACTIONS:
-          handler_func = ACTIONS[action]['handler']
-          handler_func(context)
-      else:
-          print(f"Unknown action: {action}")
-      
-      return {"status": "complete"}`}</pre>
+    """Action dispatcher - routes to appropriate handler."""
+    action = event.get('action')
+    context = event.get('context')
+    
+    if action in ACTIONS:
+        handler_func = ACTIONS[action]['handler']
+        handler_func(context)
+    else:
+        print(f"Unknown action: {action}")
+    
+    return {"status": "complete"}`}</pre>
         </div>
 
         <h2 className="mt-10 text-2xl font-semibold">Advanced: Multi-Step Actions</h2>
@@ -716,25 +716,25 @@ export default function Page() {
         <div className="mt-6 p-6 rounded-2xl border border-black/20 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <div className="text-xs text-black/40 dark:text-white/40 mb-2">Python</div>
           <pre className="text-black/80 dark:text-white/80">{`def send_email_action(context):
-      """Multi-step action: analyze → format → send."""
-      
-      # Step 1: Analyze conversation for key points
-      analysis_prompt = "Summarize the key points discussed."
-      summary = ask_chatbot(context['messages'], analysis_prompt)
-      
-      # Step 2: Format as professional email
-      email_prompt = f"Turn this into a professional email: {summary}"
-      email_data = ask_chatbot(context['messages'], email_prompt)
-      
-      # Step 3: Parse and validate
-      parsed = json.loads(email_data)
-      
-      # Step 4: Send via API
-      send_email_via_api(
-          recipient=context['user_email'],
-          subject=parsed['subject'],
-          body=parsed['body']
-      )`}</pre>
+    """Multi-step action: analyze → format → send."""
+    
+    # Step 1: Analyze conversation for key points
+    analysis_prompt = "Summarize the key points discussed."
+    summary = ask_chatbot(context['messages'], analysis_prompt)
+    
+    # Step 2: Format as professional email
+    email_prompt = f"Turn this into a professional email: {summary}"
+    email_data = ask_chatbot(context['messages'], email_prompt)
+    
+    # Step 3: Parse and validate
+    parsed = json.loads(email_data)
+    
+    # Step 4: Send via API
+    send_email_via_api(
+        recipient=context['user_email'],
+        subject=parsed['subject'],
+        body=parsed['body']
+    )`}</pre>
         </div>
 
         {/*<h2 className="mt-10 text-2xl font-semibold">Key Takeaways</h2>
@@ -786,6 +786,9 @@ export default function Page() {
             </a>.
           </p>
         </div>
+        <p className="mt-8 text-sm text-black/60 dark:text-white/60 italic text-center">
+          I (Adam Dugan) used LLMs while writing this article.
+        </p>
       </main>
     </>
   );

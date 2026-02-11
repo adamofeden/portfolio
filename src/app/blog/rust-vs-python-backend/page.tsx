@@ -489,6 +489,9 @@ export default function Page() {
             </a>.
           </p>
         </div>
+        <p className="mt-8 text-sm text-black/60 dark:text-white/60 italic text-center">
+          I (Adam Dugan) used LLMs while writing this article.
+        </p>
       </main>
     </>
   );
