@@ -86,6 +86,10 @@ export default function Page() {
           AI in Regulated Industries: Why Constraints Lead to Better Engineering
         </h1>
 
+        <p className="mt-2 text-sm text-black/60 dark:text-white/60">
+          Adam Dugan • January 14, 2026
+        </p>
+
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
           &quot;Move fast and break things&quot; works great, until you&apos;re dealing with protected health 
           information, financial records, or personally identifiable data. In regulated industries, 
@@ -371,7 +375,7 @@ export default function Page() {
           </p>
         </div>
         <p className="mt-8 text-sm text-black/60 dark:text-white/60 italic text-center">
-          I (Adam Dugan) used LLMs while writing this article.
+          LLMs were used to help with research and article structure.
         </p>
       </main>
     </>

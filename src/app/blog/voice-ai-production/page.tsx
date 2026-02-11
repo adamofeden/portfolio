@@ -24,6 +24,10 @@ export default function Page() {
         Building Voice AI That Doesn&apos;t Suck: Real-Time Conversational Interfaces in Production
       </h1>
 
+      <p className="mt-2 text-sm text-black/60 dark:text-white/60">
+        Adam Dugan • February 02, 2026
+      </p>
+
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Everyone wants to build &quot;the next Jarvis.&quot; Call a number, talk naturally, and get intelligent 
         responses. It sounds simple, until you try to build it.
@@ -426,7 +430,7 @@ export default function Page() {
         </p>
       </div>
       <p className="mt-8 text-sm text-black/60 dark:text-white/60 italic text-center">
-        I (Adam Dugan) used LLMs while writing this article.
+        LLMs were used to help with research and article structure.
       </p>
     </main>
   );

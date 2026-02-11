@@ -86,6 +86,10 @@ export default function Page() {
           Rust for Backend Engineers: When and Why I Choose It Over Python
         </h1>
 
+        <p className="mt-2 text-sm text-black/60 dark:text-white/60">
+          Adam Dugan • January 28, 2026
+        </p>
+
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
           I use both Rust and Python in production. Not because I&apos;m a language zealot, but because 
           they&apos;re good at different things.
@@ -490,7 +494,7 @@ export default function Page() {
           </p>
         </div>
         <p className="mt-8 text-sm text-black/60 dark:text-white/60 italic text-center">
-          I (Adam Dugan) used LLMs while writing this article.
+          LLMs were used to help with research and article structure.
         </p>
       </main>
     </>

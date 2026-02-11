@@ -86,6 +86,10 @@ export default function Page() {
           How Being Both a Founder and Engineer Changed How I Write Software
         </h1>
 
+        <p className="mt-2 text-sm text-black/60 dark:text-white/60">
+          Adam Dugan • January 16, 2026
+        </p>
+
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
           There&apos;s something clarifying about wearing both the founder and engineer hats. When you&apos;re 
           the one who has to sell the product, support the customer, and debug the outage at 2am, your 
@@ -284,7 +288,7 @@ export default function Page() {
           </p>
         </div>
         <p className="mt-8 text-sm text-black/60 dark:text-white/60 italic text-center">
-          I (Adam Dugan) used LLMs while writing this article.
+          LLMs were used to help with research and article structure.
         </p>
       </main>
     </>

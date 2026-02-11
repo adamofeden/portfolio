@@ -86,6 +86,10 @@ export default function Page() {
           From Journalism to Code: Why Non-Traditional Backgrounds Make Better Engineers
         </h1>
 
+        <p className="mt-2 text-sm text-black/60 dark:text-white/60">
+          Adam Dugan • January 26, 2026
+        </p>
+
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
           I didn&apos;t write my first line of code until my mid twenties. Before that, I was a journalist 
           chasing stories across four continents, a manufacturing engineer building custom surfboards, 
@@ -415,7 +419,7 @@ export default function Page() {
           </p>
         </div>
         <p className="mt-8 text-sm text-black/60 dark:text-white/60 italic text-center">
-          I (Adam Dugan) used LLMs while writing this article.
+          LLMs were used to help with article structure.
         </p>
       </main>
     </>

@@ -86,6 +86,10 @@ export default function Page() {
           OAuth 2.0 in Production: Building Secure Integrations with Xero, QuickBooks, and Microsoft
         </h1>
 
+        <p className="mt-2 text-sm text-black/60 dark:text-white/60">
+          Adam Dugan • January 30, 2026
+        </p>
+
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
           Most OAuth 2.0 tutorials show you how to get an access token and stop there. That&apos;s 
           maybe 20% of what you need for production. The other 80% is handling token refresh, 
@@ -186,52 +190,52 @@ export default function Page() {
 
         <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <pre className="text-black/80 dark:text-white/80">{`import { randomBytes, createHash } from 'crypto';
-  import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-  function base64url(buf: Buffer) {
-    return buf.toString('base64')
-      .replace(/=/g, '')
-      .replace(/\\+/g, '-')
-      .replace(/\\//g, '_');
-  }
+function base64url(buf: Buffer) {
+  return buf.toString('base64')
+    .replace(/=/g, '')
+    .replace(/\\+/g, '-')
+    .replace(/\\//g, '_');
+}
 
-  export async function GET(request: NextRequest) {
-    const businessId = request.nextUrl.searchParams.get('businessId');
-    
-    // Generate PKCE parameters
-    const state = base64url(randomBytes(16));          // CSRF protection
-    const codeVerifier = base64url(randomBytes(32));   // PKCE secret
-    const codeChallenge = base64url(
-      createHash('sha256').update(codeVerifier).digest()
-    );
-    
-    // Store PKCE data in httpOnly cookie (expires in 10 minutes)
-    const response = NextResponse.redirect(authorizationUrl);
-    response.cookies.set({
-      name: 'xero_pkce',
-      value: JSON.stringify({ state, codeVerifier, businessId }),
-      httpOnly: true,
-      secure: true,
-      sameSite: 'lax',
-      path: '/',
-      maxAge: 600,  // 10 minutes
-      domain: '.mybalancingiq.com',
-    });
-    
-    // Build authorization URL
-    const params = new URLSearchParams({
-      response_type: 'code',
-      client_id: process.env.XERO_CLIENT_ID!,
-      redirect_uri: process.env.XERO_REDIRECT_URI!,
-      scope: 'openid profile email accounting.transactions',
-      state: state,
-      code_challenge: codeChallenge,
-      code_challenge_method: 'S256',
-    });
-    
-    const authUrl = \`https://login.xero.com/identity/connect/authorize?\${params}\`;
-    return NextResponse.redirect(authUrl);
-  }`}</pre>
+export async function GET(request: NextRequest) {
+  const businessId = request.nextUrl.searchParams.get('businessId');
+  
+  // Generate PKCE parameters
+  const state = base64url(randomBytes(16));          // CSRF protection
+  const codeVerifier = base64url(randomBytes(32));   // PKCE secret
+  const codeChallenge = base64url(
+    createHash('sha256').update(codeVerifier).digest()
+  );
+  
+  // Store PKCE data in httpOnly cookie (expires in 10 minutes)
+  const response = NextResponse.redirect(authorizationUrl);
+  response.cookies.set({
+    name: 'xero_pkce',
+    value: JSON.stringify({ state, codeVerifier, businessId }),
+    httpOnly: true,
+    secure: true,
+    sameSite: 'lax',
+    path: '/',
+    maxAge: 600,  // 10 minutes
+    domain: '.mybalancingiq.com',
+  });
+  
+  // Build authorization URL
+  const params = new URLSearchParams({
+    response_type: 'code',
+    client_id: process.env.XERO_CLIENT_ID!,
+    redirect_uri: process.env.XERO_REDIRECT_URI!,
+    scope: 'openid profile email accounting.transactions',
+    state: state,
+    code_challenge: codeChallenge,
+    code_challenge_method: 'S256',
+  });
+  
+  const authUrl = \`https://login.xero.com/identity/connect/authorize?\${params}\`;
+  return NextResponse.redirect(authUrl);
+}`}</pre>
         </div>
 
         <h3 className="mt-8 text-xl font-semibold">Key Security Decisions</h3>
@@ -269,87 +273,87 @@ export default function Page() {
         <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <pre className="text-black/80 dark:text-white/80">{`import { NextRequest, NextResponse } from 'next/server';
 
-  export async function GET(request: NextRequest) {
-    const code = request.nextUrl.searchParams.get('code');
-    const state = request.nextUrl.searchParams.get('state');
-    
-    // 1. Retrieve PKCE data from cookie
-    const pkceCookie = request.cookies.get('xero_pkce');
-    if (!pkceCookie) {
-      return NextResponse.redirect(
-        \`\${process.env.AMPLIFY_APP_ORIGIN}/error?message=pkce_missing\`
-      );
+export async function GET(request: NextRequest) {
+  const code = request.nextUrl.searchParams.get('code');
+  const state = request.nextUrl.searchParams.get('state');
+  
+  // 1. Retrieve PKCE data from cookie
+  const pkceCookie = request.cookies.get('xero_pkce');
+  if (!pkceCookie) {
+    return NextResponse.redirect(
+      \`\${process.env.AMPLIFY_APP_ORIGIN}/error?message=pkce_missing\`
+    );
+  }
+  
+  const { state: savedState, codeVerifier, businessId } = 
+    JSON.parse(pkceCookie.value);
+  
+  // 2. Validate state (CSRF protection)
+  if (state !== savedState) {
+    console.error('State mismatch - possible CSRF attack');
+    return NextResponse.redirect(
+      \`\${process.env.AMPLIFY_APP_ORIGIN}/error?message=invalid_state\`
+    );
+  }
+  
+  // 3. Exchange authorization code for tokens
+  const tokenResponse = await fetch(
+    'https://identity.xero.com/connect/token',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': \`Basic \${Buffer.from(
+          \`\${XERO_CLIENT_ID}:\${XERO_CLIENT_SECRET}\`
+        ).toString('base64')}\`
+      },
+      body: new URLSearchParams({
+        grant_type: 'authorization_code',
+        code: code!,
+        redirect_uri: REDIRECT_URI,
+        code_verifier: codeVerifier  // PKCE proof
+      })
     }
-    
-    const { state: savedState, codeVerifier, businessId } = 
-      JSON.parse(pkceCookie.value);
-    
-    // 2. Validate state (CSRF protection)
-    if (state !== savedState) {
-      console.error('State mismatch - possible CSRF attack');
-      return NextResponse.redirect(
-        \`\${process.env.AMPLIFY_APP_ORIGIN}/error?message=invalid_state\`
-      );
+  );
+  
+  const tokens = await tokenResponse.json();
+  
+  // 4. Get tenant/organization info
+  const connectionResponse = await fetch(
+    'https://api.xero.com/connections',
+    {
+      headers: {
+        'Authorization': \`Bearer \${tokens.access_token}\`,
+        'Content-Type': 'application/json'
+      }
     }
-    
-    // 3. Exchange authorization code for tokens
-    const tokenResponse = await fetch(
-      'https://identity.xero.com/connect/token',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Authorization': \`Basic \${Buffer.from(
-            \`\${XERO_CLIENT_ID}:\${XERO_CLIENT_SECRET}\`
-          ).toString('base64')}\`
-        },
-        body: new URLSearchParams({
-          grant_type: 'authorization_code',
-          code: code!,
-          redirect_uri: REDIRECT_URI,
-          code_verifier: codeVerifier  // PKCE proof
-        })
-      }
-    );
-    
-    const tokens = await tokenResponse.json();
-    
-    // 4. Get tenant/organization info
-    const connectionResponse = await fetch(
-      'https://api.xero.com/connections',
-      {
-        headers: {
-          'Authorization': \`Bearer \${tokens.access_token}\`,
-          'Content-Type': 'application/json'
-        }
-      }
-    );
-    
-    const connections = await connectionResponse.json();
-    const tenant = connections[0];  // First connected organization
-    
-    // 5. Store tokens securely (invoke Lambda via GraphQL)
-    const integrationData = {
-      businessId,
-      provider: 'xero',
-      tenantId: tenant.tenantId,
-      orgName: tenant.tenantName,
-      accessToken: tokens.access_token,
-      refreshToken: tokens.refresh_token,
-      expiresIn: tokens.expires_in,
-      scopes: tokens.scope,
-    };
-    
-    await storeTokens(integrationData);
-    
-    // 6. Clear PKCE cookie
-    const response = NextResponse.redirect(
-      \`\${process.env.AMPLIFY_APP_ORIGIN}/businessprofile?connected=xero\`
-    );
-    response.cookies.delete('xero_pkce');
-    
-    return response;
-  }`}</pre>
+  );
+  
+  const connections = await connectionResponse.json();
+  const tenant = connections[0];  // First connected organization
+  
+  // 5. Store tokens securely (invoke Lambda via GraphQL)
+  const integrationData = {
+    businessId,
+    provider: 'xero',
+    tenantId: tenant.tenantId,
+    orgName: tenant.tenantName,
+    accessToken: tokens.access_token,
+    refreshToken: tokens.refresh_token,
+    expiresIn: tokens.expires_in,
+    scopes: tokens.scope,
+  };
+  
+  await storeTokens(integrationData);
+  
+  // 6. Clear PKCE cookie
+  const response = NextResponse.redirect(
+    \`\${process.env.AMPLIFY_APP_ORIGIN}/businessprofile?connected=xero\`
+  );
+  response.cookies.delete('xero_pkce');
+  
+  return response;
+}`}</pre>
         </div>
 
         <h3 className="mt-8 text-xl font-semibold">Why Basic Auth for Token Exchange?</h3>
@@ -387,53 +391,53 @@ export default function Page() {
 
         <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <pre className="text-black/80 dark:text-white/80">{`import boto3
-  import base64
-  from datetime import datetime
+import base64
+from datetime import datetime
 
-  kms_client = boto3.client('kms')
-  dynamodb = boto3.resource('dynamodb')
-  table = dynamodb.Table(os.environ['BOOKKEEPING_INTEGRATIONS_TABLE'])
+kms_client = boto3.client('kms')
+dynamodb = boto3.resource('dynamodb')
+table = dynamodb.Table(os.environ['BOOKKEEPING_INTEGRATIONS_TABLE'])
 
-  def handler(event, context):
-      data = json.loads(event['arguments']['data'])
-      
-      business_id = data['businessId']
-      provider = data['provider']
-      tenant_id = data['tenantId']
-      refresh_token = data['refreshToken']
-      
-      # Encrypt refresh token with KMS
-      encrypted_response = kms_client.encrypt(
-          KeyId=os.environ['APP_KMS_KEY_ID'],
-          Plaintext=refresh_token.encode('utf-8')
-      )
-      
-      refresh_ciphertext = base64.b64encode(
-          encrypted_response['CiphertextBlob']
-      ).decode('utf-8')
-      
-      # Calculate token expiration
-      now = int(datetime.utcnow().timestamp())
-      expires_at = now + int(data['expiresIn']) - 30  # 30s buffer
-      
-      # Store in DynamoDB
-      sort_key = f"{provider}#{tenant_id}"
-      
-      table.put_item(Item={
-          'businessId': business_id,        # Partition key
-          'sortKey': sort_key,               # Sort key: provider#tenantId
-          'provider': provider,
-          'tenantId': tenant_id,
-          'orgName': data['orgName'],
-          'scopes': data['scopes'],
-          'refreshCiphertext': refresh_ciphertext,  # Encrypted!
-          'accessToken': data['accessToken'],        # Short-lived, less sensitive
-          'accessTokenExpiresAt': expires_at,
-          'createdAt': now,
-          'updatedAt': now,
-      })
-      
-      return {'success': True}`}</pre>
+def handler(event, context):
+    data = json.loads(event['arguments']['data'])
+    
+    business_id = data['businessId']
+    provider = data['provider']
+    tenant_id = data['tenantId']
+    refresh_token = data['refreshToken']
+    
+    # Encrypt refresh token with KMS
+    encrypted_response = kms_client.encrypt(
+        KeyId=os.environ['APP_KMS_KEY_ID'],
+        Plaintext=refresh_token.encode('utf-8')
+    )
+    
+    refresh_ciphertext = base64.b64encode(
+        encrypted_response['CiphertextBlob']
+    ).decode('utf-8')
+    
+    # Calculate token expiration
+    now = int(datetime.utcnow().timestamp())
+    expires_at = now + int(data['expiresIn']) - 30  # 30s buffer
+    
+    # Store in DynamoDB
+    sort_key = f"{provider}#{tenant_id}"
+    
+    table.put_item(Item={
+        'businessId': business_id,        # Partition key
+        'sortKey': sort_key,               # Sort key: provider#tenantId
+        'provider': provider,
+        'tenantId': tenant_id,
+        'orgName': data['orgName'],
+        'scopes': data['scopes'],
+        'refreshCiphertext': refresh_ciphertext,  # Encrypted!
+        'accessToken': data['accessToken'],        # Short-lived, less sensitive
+        'accessTokenExpiresAt': expires_at,
+        'createdAt': now,
+        'updatedAt': now,
+    })
+    
+    return {'success': True}`}</pre>
         </div>
 
         <h3 className="mt-8 text-xl font-semibold">Multi-Tenant Data Model</h3>
@@ -481,93 +485,93 @@ export default function Page() {
 
         <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <pre className="text-black/80 dark:text-white/80">{`import boto3
-  import base64
-  from datetime import datetime
+import base64
+from datetime import datetime
 
-  kms_client = boto3.client('kms')
-  dynamodb = boto3.resource('dynamodb')
+kms_client = boto3.client('kms')
+dynamodb = boto3.resource('dynamodb')
 
-  def refresh_if_needed_xero(business_id, auth_record):
-      """Check if access token needs refresh, refresh if needed"""
-      now = int(datetime.utcnow().timestamp())
-      expires_at = int(auth_record.get('accessTokenExpiresAt', 0))
-      access_token = auth_record.get('accessToken', '')
-      
-      # If token is valid for >60 seconds, use it
-      if now < (expires_at - 60) and access_token:
-          print(f"Token valid for {expires_at - now} more seconds")
-          return access_token, auth_record['tenantId']
-      
-      print("Token expired or expiring soon, refreshing...")
-      
-      # Decrypt refresh token
-      cipher_blob = base64.b64decode(auth_record['refreshCiphertext'])
-      decrypted = kms_client.decrypt(
-          CiphertextBlob=cipher_blob,
-          KeyId=os.environ['APP_KMS_KEY_ID']
-      )
-      refresh_token = decrypted['Plaintext'].decode('utf-8')
-      
-      # Call token endpoint
-      token_response = requests.post(
-          'https://identity.xero.com/connect/token',
-          headers={
-              'Content-Type': 'application/x-www-form-urlencoded',
-              'Authorization': f'Basic {get_basic_auth_header()}'
-          },
-          data={
-              'grant_type': 'refresh_token',
-              'refresh_token': refresh_token
-          }
-      )
-      
-      tokens = token_response.json()
-      
-      # Update stored tokens
-      new_access = tokens['access_token']
-      new_refresh = tokens.get('refresh_token', refresh_token)  # Some providers rotate
-      new_expires_at = now + int(tokens.get('expires_in', 1800)) - 30
-      
-      save_refreshed_tokens(
-          business_id, 
-          auth_record, 
-          new_access, 
-          new_refresh, 
-          new_expires_at
-      )
-      
-      return new_access, auth_record['tenantId']
+def refresh_if_needed_xero(business_id, auth_record):
+    """Check if access token needs refresh, refresh if needed"""
+    now = int(datetime.utcnow().timestamp())
+    expires_at = int(auth_record.get('accessTokenExpiresAt', 0))
+    access_token = auth_record.get('accessToken', '')
+    
+    # If token is valid for >60 seconds, use it
+    if now < (expires_at - 60) and access_token:
+        print(f"Token valid for {expires_at - now} more seconds")
+        return access_token, auth_record['tenantId']
+    
+    print("Token expired or expiring soon, refreshing...")
+    
+    # Decrypt refresh token
+    cipher_blob = base64.b64decode(auth_record['refreshCiphertext'])
+    decrypted = kms_client.decrypt(
+        CiphertextBlob=cipher_blob,
+        KeyId=os.environ['APP_KMS_KEY_ID']
+    )
+    refresh_token = decrypted['Plaintext'].decode('utf-8')
+    
+    # Call token endpoint
+    token_response = requests.post(
+        'https://identity.xero.com/connect/token',
+        headers={
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': f'Basic {get_basic_auth_header()}'
+        },
+        data={
+            'grant_type': 'refresh_token',
+            'refresh_token': refresh_token
+        }
+    )
+    
+    tokens = token_response.json()
+    
+    # Update stored tokens
+    new_access = tokens['access_token']
+    new_refresh = tokens.get('refresh_token', refresh_token)  # Some providers rotate
+    new_expires_at = now + int(tokens.get('expires_in', 1800)) - 30
+    
+    save_refreshed_tokens(
+        business_id, 
+        auth_record, 
+        new_access, 
+        new_refresh, 
+        new_expires_at
+    )
+    
+    return new_access, auth_record['tenantId']
 
 
-  def save_refreshed_tokens(business_id, auth_record, access_token, 
-                            refresh_token, expires_at):
-      """Encrypt and save refreshed tokens"""
-      # Encrypt new refresh token
-      encrypted = kms_client.encrypt(
-          KeyId=os.environ['APP_KMS_KEY_ID'],
-          Plaintext=refresh_token.encode('utf-8')
-      )
-      refresh_ciphertext = base64.b64encode(encrypted['CiphertextBlob']).decode()
-      
-      # Update DynamoDB
-      table.update_item(
-          Key={
-              'businessId': business_id,
-              'sortKey': auth_record['sortKey']
-          },
-          UpdateExpression="""
-              SET accessToken = :atk,
-                  accessTokenExpiresAt = :exp,
-                  refreshCiphertext = :rc,
-                  updatedAt = :upd
-          """,
-          ExpressionAttributeValues={
-              ':atk': access_token,
-              ':exp': expires_at,
-              ':rc': refresh_ciphertext,
-              ':upd': int(datetime.utcnow().timestamp())
-          }
-      )`}</pre>
+def save_refreshed_tokens(business_id, auth_record, access_token, 
+                          refresh_token, expires_at):
+    """Encrypt and save refreshed tokens"""
+    # Encrypt new refresh token
+    encrypted = kms_client.encrypt(
+        KeyId=os.environ['APP_KMS_KEY_ID'],
+        Plaintext=refresh_token.encode('utf-8')
+    )
+    refresh_ciphertext = base64.b64encode(encrypted['CiphertextBlob']).decode()
+    
+    # Update DynamoDB
+    table.update_item(
+        Key={
+            'businessId': business_id,
+            'sortKey': auth_record['sortKey']
+        },
+        UpdateExpression="""
+            SET accessToken = :atk,
+                accessTokenExpiresAt = :exp,
+                refreshCiphertext = :rc,
+                updatedAt = :upd
+        """,
+        ExpressionAttributeValues={
+            ':atk': access_token,
+            ':exp': expires_at,
+            ':rc': refresh_ciphertext,
+            ':upd': int(datetime.utcnow().timestamp())
+        }
+    )`}</pre>
         </div>
 
         <h3 className="mt-8 text-xl font-semibold">Key Design Decisions</h3>
@@ -596,48 +600,48 @@ export default function Page() {
 
         <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <pre className="text-black/80 dark:text-white/80">{`def handler(event, context):
-      """Fetch financial data from Xero"""
-      business_id = event['arguments']['businessId']
-      
-      # 1. Get stored auth record
-      response = table.get_item(
-          Key={
-              'businessId': business_id,
-              'sortKey': 'xero#'  # Query for Xero integration
-          }
-      )
-      
-      if 'Item' not in response:
-          return {'error': 'Xero not connected'}
-      
-      auth_record = response['Item']
-      
-      # 2. Ensure token is fresh (auto-refresh if needed)
-      access_token, tenant_id = refresh_if_needed_xero(business_id, auth_record)
-      
-      # 3. Make API call
-      headers = {
-          'Authorization': f'Bearer {access_token}',
-          'Xero-Tenant-Id': tenant_id,
-          'Accept': 'application/json'
-      }
-      
-      # Fetch balance sheet
-      balance_sheet = requests.get(
-          'https://api.xero.com/api.xro/2.0/Reports/BalanceSheet',
-          headers=headers
-      ).json()
-      
-      # Fetch profit & loss
-      profit_loss = requests.get(
-          'https://api.xero.com/api.xro/2.0/Reports/ProfitAndLoss',
-          headers=headers
-      ).json()
-      
-      return {
-          'balanceSheet': balance_sheet,
-          'profitLoss': profit_loss
-      }`}</pre>
+    """Fetch financial data from Xero"""
+    business_id = event['arguments']['businessId']
+    
+    # 1. Get stored auth record
+    response = table.get_item(
+        Key={
+            'businessId': business_id,
+            'sortKey': 'xero#'  # Query for Xero integration
+        }
+    )
+    
+    if 'Item' not in response:
+        return {'error': 'Xero not connected'}
+    
+    auth_record = response['Item']
+    
+    # 2. Ensure token is fresh (auto-refresh if needed)
+    access_token, tenant_id = refresh_if_needed_xero(business_id, auth_record)
+    
+    # 3. Make API call
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Xero-Tenant-Id': tenant_id,
+        'Accept': 'application/json'
+    }
+    
+    # Fetch balance sheet
+    balance_sheet = requests.get(
+        'https://api.xero.com/api.xro/2.0/Reports/BalanceSheet',
+        headers=headers
+    ).json()
+    
+    # Fetch profit & loss
+    profit_loss = requests.get(
+        'https://api.xero.com/api.xro/2.0/Reports/ProfitAndLoss',
+        headers=headers
+    ).json()
+    
+    return {
+        'balanceSheet': balance_sheet,
+        'profitLoss': profit_loss
+    }`}</pre>
         </div>
 
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -699,21 +703,21 @@ export default function Page() {
 
         <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <pre className="text-black/80 dark:text-white/80">{`try:
-      tokens = token_response.json()
-  except:
-      if token_response.status_code == 400:
-          error = token_response.json()
-          if error.get('error') == 'invalid_grant':
-              # User revoked access - delete integration
-              table.delete_item(
-                  Key={
-                      'businessId': business_id,
-                      'sortKey': auth_record['sortKey']
-                  }
-              )
-              # Notify user via email/notification
-              send_notification(business_id, 'xero_disconnected')
-              raise Exception('Xero access revoked by user')`}</pre>
+    tokens = token_response.json()
+except:
+    if token_response.status_code == 400:
+        error = token_response.json()
+        if error.get('error') == 'invalid_grant':
+            # User revoked access - delete integration
+            table.delete_item(
+                Key={
+                    'businessId': business_id,
+                    'sortKey': auth_record['sortKey']
+                }
+            )
+            # Notify user via email/notification
+            send_notification(business_id, 'xero_disconnected')
+            raise Exception('Xero access revoked by user')`}</pre>
         </div>
 
         <h3 className="mt-8 text-xl font-semibold">Rate Limits</h3>
@@ -725,25 +729,25 @@ export default function Page() {
 
         <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <pre className="text-black/80 dark:text-white/80">{`def api_call_with_retry(url, headers, max_retries=3):
-      for attempt in range(max_retries):
-          response = requests.get(url, headers=headers)
-          
-          if response.status_code == 200:
-              return response.json()
-          
-          if response.status_code == 429:  # Rate limited
-              retry_after = int(response.headers.get('Retry-After', 60))
-              print(f"Rate limited, waiting {retry_after}s")
-              time.sleep(retry_after)
-              continue
-          
-          if response.status_code >= 500:  # Server error
-              wait = 2 ** attempt  # Exponential backoff
-              print(f"Server error, retrying in {wait}s")
-              time.sleep(wait)
-              continue
-          
-          raise Exception(f"API call failed: {response.status_code}")`}</pre>
+    for attempt in range(max_retries):
+        response = requests.get(url, headers=headers)
+        
+        if response.status_code == 200:
+            return response.json()
+        
+        if response.status_code == 429:  # Rate limited
+            retry_after = int(response.headers.get('Retry-After', 60))
+            print(f"Rate limited, waiting {retry_after}s")
+            time.sleep(retry_after)
+            continue
+        
+        if response.status_code >= 500:  # Server error
+            wait = 2 ** attempt  # Exponential backoff
+            print(f"Server error, retrying in {wait}s")
+            time.sleep(wait)
+            continue
+        
+        raise Exception(f"API call failed: {response.status_code}")`}</pre>
         </div>
 
         <h3 className="mt-8 text-xl font-semibold">Concurrent Refresh</h3>
@@ -775,28 +779,28 @@ export default function Page() {
 
         <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <pre className="text-black/80 dark:text-white/80">{`{
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Effect": "Allow",
-        "Action": [
-          "dynamodb:GetItem",
-          "dynamodb:PutItem",
-          "dynamodb:UpdateItem",
-          "dynamodb:Query"
-        ],
-        "Resource": "arn:aws:dynamodb:region:account:table/BookkeepingIntegrations"
-      },
-      {
-        "Effect": "Allow",
-        "Action": [
-          "kms:Encrypt",
-          "kms:Decrypt"
-        ],
-        "Resource": "arn:aws:kms:region:account:key/your-key-id"
-      }
-    ]
-  }`}</pre>
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:GetItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:Query"
+      ],
+      "Resource": "arn:aws:dynamodb:region:account:table/BookkeepingIntegrations"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "kms:Encrypt",
+        "kms:Decrypt"
+      ],
+      "Resource": "arn:aws:kms:region:account:key/your-key-id"
+    }
+  ]
+}`}</pre>
         </div>
 
         {/*<h2 className="mt-10 text-2xl font-semibold">Testing OAuth Flows</h2>
@@ -891,13 +895,13 @@ export default function Page() {
 
         <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <pre className="text-black/80 dark:text-white/80">{`print(json.dumps({
-      'event': 'token_refresh',
-      'business_id': business_id,
-      'provider': 'xero',
-      'expires_at': expires_at,
-      'time_until_expiry': expires_at - now,
-      'success': True
-  }))`}</pre>
+    'event': 'token_refresh',
+    'business_id': business_id,
+    'provider': 'xero',
+    'expires_at': expires_at,
+    'time_until_expiry': expires_at - now,
+    'success': True
+}))`}</pre>
         </div>
 
         <h3 className="mt-8 text-xl font-semibold">CloudWatch Alarms</h3>
@@ -920,15 +924,15 @@ export default function Page() {
 
         <div className="mt-6 p-6 rounded-2xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur font-mono text-sm overflow-x-auto">
           <pre className="text-black/80 dark:text-white/80">{`# Add metadata to each integration record
-  {
-    'businessId': 'biz_123',
-    'sortKey': 'xero#tenant_456',
-    ...
-    'lastRefreshAt': 1706112000,
-    'lastRefreshSuccess': True,
-    'lastApiCallAt': 1706115600,
-    'consecutiveFailures': 0
-  }`}</pre>
+{
+  'businessId': 'biz_123',
+  'sortKey': 'xero#tenant_456',
+  ...
+  'lastRefreshAt': 1706112000,
+  'lastRefreshSuccess': True,
+  'lastApiCallAt': 1706115600,
+  'consecutiveFailures': 0
+}`}</pre>
         </div>
 
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -1092,7 +1096,8 @@ export default function Page() {
           </Link>
         </div>
         <p className="mt-8 text-sm text-black/60 dark:text-white/60 italic text-center">
-          I (Adam Dugan) used LLMs while writing this article.
+          The code examples are directly from my own production code bases. Not generated by LLMs.
+          LLMs were used to help with research and article structure.
         </p>
       </main>
     </>

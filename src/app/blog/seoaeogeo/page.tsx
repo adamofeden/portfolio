@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "The Evolution of SEO — From Search to Answer to Generative Optimization",
+  title: "The Evolution of SEO: From Search to Answer to Generative Optimization",
   description:
     "Explore how the $80B SEO industry is evolving into AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization), and why now is the perfect time to enter this fast-growing field.",
 };
@@ -12,7 +12,7 @@ export default function Page() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: "The Evolution of SEO — From Search to Answer to Generative Optimization",
+    headline: "The Evolution of SEO: From Search to Answer to Generative Optimization",
     description: "Explore how the $80B SEO industry is evolving into AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization), and why now is the perfect time to enter this fast-growing field.",
     author: {
       "@type": "Person",
@@ -57,7 +57,7 @@ export default function Page() {
       {
         "@type": "ListItem",
         position: 3,
-        name: "The Evolution of SEO — From Search to Answer to Generative Optimization",
+        name: "The Evolution of SEO: From Search to Answer to Generative Optimization",
         item: "https://adamdugan.com/blog/seoaeogeo"
       }
     ]
@@ -83,12 +83,16 @@ export default function Page() {
         </nav>
 
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
-          The Evolution of SEO — From Search to Answer to Generative Optimization
+          The Evolution of SEO: From Search to Answer to Generative Optimization
         </h1>
+
+        <p className="mt-2 text-sm text-black/60 dark:text-white/60">
+          Adam Dugan • October 21, 2025
+        </p>
 
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
           For more than two decades, <strong>Search Engine Optimization (SEO)</strong> has been the
-          backbone of digital marketing — a global industry estimated at over{" "}
+          backbone of digital marketing, a global industry estimated at over{" "}
           <strong>$80 billion in annual spending</strong>. Every business, from local shops to
           multinational brands, has relied on SEO to earn visibility in Google’s search results.
           But the landscape is changing. The rise of <strong>AI-driven assistants</strong>,
@@ -100,7 +104,7 @@ export default function Page() {
         <h2 className="mt-10 text-2xl font-semibold">From Search to Answers</h2>
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
           In the traditional SEO world, success meant ranking high on a search engine results page
-          (SERP). But today’s users are no longer typing short, keyword-based queries — they’re
+          (SERP). But today’s users are no longer typing short, keyword-based queries, they’re
           asking full questions. Tools like ChatGPT, Perplexity, Gemini, and even Google’s new{" "}
           <strong>AI Overviews</strong> deliver direct answers rather than links.
         </p>
@@ -109,7 +113,7 @@ export default function Page() {
           focuses on structuring content so AI and voice assistants can easily extract concise,
           authoritative responses. AEO relies heavily on{" "}
           <strong>structured data (schema.org)</strong>, Q&amp;A formatting, and clear, factual
-          writing. AEO isn’t replacing SEO — it’s extending it into the world of conversational AI.
+          writing. AEO isn’t replacing SEO, it’s extending it into the world of conversational AI.
         </p>
 
         <h2 className="mt-10 text-2xl font-semibold">The Rise of Generative Engine Optimization</h2>
@@ -132,7 +136,7 @@ export default function Page() {
 
         <h2 className="mt-10 text-2xl font-semibold">A Massive Industry in Transition</h2>
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-          The SEO industry isn’t disappearing — it’s evolving. Analysts at{" "}
+          The SEO industry isn’t disappearing, it’s evolving. Analysts at{" "}
           <em>Grand View Research</em> project the global SEO services market to reach{" "}
           <strong>$122 billion by 2028</strong>, growing steadily at 9% CAGR. Meanwhile, demand
           for AI-optimized content and conversational visibility is expanding at{" "}
@@ -140,14 +144,14 @@ export default function Page() {
           keyword ranking are now rebranding around AEO and GEO offerings.
         </p>
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-          This transition mirrors earlier waves of digital disruption — from desktop to mobile,
+          This transition mirrors earlier waves of digital disruption, from desktop to mobile,
           from text search to voice, and now from voice to generative AI. Businesses that adapt
           early can establish authority in how AI systems perceive and present their brand.
         </p>
 
         <h2 className="mt-10 text-2xl font-semibold">Why Now Is the Time to Enter</h2>
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-          The AEO and GEO markets are still in their infancy — roughly where traditional SEO was
+          The AEO and GEO markets are still in their infancy, roughly where traditional SEO was
           in the early 2000s. There’s little competition, high innovation, and growing demand for
           professionals who understand both marketing and AI. Industry analysts predict that by{" "}
           <strong>2026</strong>, over <strong>50% of online queries</strong> will originate from
@@ -157,7 +161,7 @@ export default function Page() {
           That means there’s a once-in-a-decade opportunity for creators, developers, and digital
           strategists to lead the next phase of online visibility. Whether you’re a marketer
           learning schema markup, a writer mastering conversational tone, or a developer working
-          with structured data and APIs — the skills you build now will define the next generation
+          with structured data and APIs, the skills you build now will define the next generation
           of search and discovery.
         </p>
 
@@ -178,7 +182,7 @@ export default function Page() {
             adopters seeing higher conversion rates from AI-driven traffic.
           </li>
           <li>
-            Now is the perfect time to enter this space — it’s young, rapidly growing, and
+            Now is the perfect time to enter this space, it’s young, rapidly growing, and
             foundational to the future of search.
           </li>
         </ul>
@@ -186,11 +190,11 @@ export default function Page() {
         <p className="mt-8 text-black/70 dark:text-white/70 leading-relaxed">
           The rules of digital visibility are being rewritten. Those who understand both how
           search engines <em>rank</em> information and how AI systems <em>generate</em> it will
-          shape the next decade of marketing. Whether you call it SEO, AEO, or GEO — the future
+          shape the next decade of marketing. Whether you call it SEO, AEO, or GEO, the future
           of discovery belongs to those who can optimize for all three.
         </p>
         <p className="mt-8 text-sm text-black/60 dark:text-white/60 italic text-center">
-          I (Adam Dugan) used LLMs while writing this article.
+          LLMs were used to help with research and article structure.
         </p>
       </main>
     </>

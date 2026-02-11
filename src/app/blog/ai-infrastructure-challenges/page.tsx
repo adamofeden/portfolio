@@ -85,6 +85,10 @@ export default function Page() {
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
           The Hard Part Isn&apos;t the Model: Real Challenges in Production AI Systems
         </h1>
+        
+        <p className="mt-2 text-sm text-black/60 dark:text-white/60">
+          Adam Dugan • January 21, 2026
+        </p>
 
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
           I&apos;ve been building AI-powered systems for a few years now, from <em>BalancingIQ </em> 
@@ -414,7 +418,7 @@ export default function Page() {
           </p>
         </div>
         <p className="mt-8 text-sm text-black/60 dark:text-white/60 italic text-center">
-          I (Adam Dugan) used LLMs while writing this article.
+          LLMs were used to help with research and article structure.
         </p>
       </main>
     </>

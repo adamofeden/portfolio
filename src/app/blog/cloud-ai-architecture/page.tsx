@@ -86,6 +86,10 @@ export default function Page() {
           Why Architecture Matters More Than Your Model Choice in Cloud + AI Systems
         </h1>
 
+        <p className="mt-2 text-sm text-black/60 dark:text-white/60">
+          Adam Dugan • January 12, 2026
+        </p>
+
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
           I&apos;ve noticed a consistent pattern working with startups and enterprise teams building AI powered systems: 
           there&apos;s an overwhelming focus on <strong>which model to use</strong> (GPT-4 vs Claude vs Gemini) 
@@ -258,7 +262,7 @@ export default function Page() {
           </p>
         </div>
         <p className="mt-8 text-sm text-black/60 dark:text-white/60 italic text-center">
-          I (Adam Dugan) used LLMs while writing this article.
+          LLMs were used to help with research and article structure.
         </p>
       </main>
     </>
