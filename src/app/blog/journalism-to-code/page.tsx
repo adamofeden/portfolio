@@ -26,8 +26,8 @@ export default function Page() {
       name: "Adam Dugan",
       url: "https://adamdugan.com"
     },
-    datePublished: "2026-01-21",
-    dateModified: "2026-01-21",
+    datePublished: "2026-01-26",
+    dateModified: "2026-01-26",
     url: "https://adamdugan.com/blog/journalism-to-code",
     keywords: ["Journalism", "Engineering", "Product", "UX", "Travel"],
     articleSection: "Engineering",

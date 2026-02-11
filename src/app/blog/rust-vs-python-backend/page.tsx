@@ -26,8 +26,8 @@ export default function Page() {
       name: "Adam Dugan",
       url: "https://adamdugan.com"
     },
-    datePublished: "2026-01-23",
-    dateModified: "2026-01-23",
+    datePublished: "2026-01-28",
+    dateModified: "2026-01-28",
     url: "https://adamdugan.com/blog/rust-vs-python-backend",
     keywords: ["Rust", "Python", "Backend", "AWS Lambda", "Performance", "Engineering"],
     articleSection: "Engineering",

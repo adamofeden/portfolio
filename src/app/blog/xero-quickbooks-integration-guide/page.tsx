@@ -27,8 +27,8 @@ export default function Page() {
       name: "Adam Dugan",
       url: "https://adamdugan.com"
     },
-    datePublished: "2026-01-20",
-    dateModified: "2026-01-20",
+    datePublished: "2026-01-23",
+    dateModified: "2026-01-23",
     url: "https://adamdugan.com/blog/xero-quickbooks-integration-guide",
     keywords: ["Xero", "QuickBooks", "Accounting", "API Integration", "OAuth", "AWS", "System Architecture"],
     articleSection: "Engineering",

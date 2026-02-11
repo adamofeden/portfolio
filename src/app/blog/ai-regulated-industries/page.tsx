@@ -26,8 +26,8 @@ export default function Page() {
       name: "Adam Dugan",
       url: "https://adamdugan.com"
     },
-    datePublished: "2026-01-17",
-    dateModified: "2026-01-17",
+    datePublished: "2026-01-14",
+    dateModified: "2026-01-14",
     url: "https://adamdugan.com/blog/ai-regulated-industries",
     keywords: ["AI", "Regulated Industries", "Compliance", "Security", "Data Boundaries", "Human Override Paths"],
     articleSection: "Engineering",

@@ -26,8 +26,8 @@ export default function Page() {
       name: "Adam Dugan",
       url: "https://adamdugan.com"
     },
-    datePublished: "2026-01-25",
-    dateModified: "2026-01-25",
+    datePublished: "2026-01-19",
+    dateModified: "2026-01-19",
     url: "https://adamdugan.com/blog/llm-action-handler-pattern",
     keywords: ["AI", "LLMs", "Architecture", "System Design", "AWS Lambda", "OpenAI", "Claude", "Gemini"],
     articleSection: "Engineering",

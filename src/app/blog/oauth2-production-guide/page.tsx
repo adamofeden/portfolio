@@ -26,8 +26,8 @@ export default function Page() {
       name: "Adam Dugan",
       url: "https://adamdugan.com"
     },
-    datePublished: "2026-01-26",
-    dateModified: "2026-01-26",
+    datePublished: "2026-01-30",
+    dateModified: "2026-01-30",
     url: "https://adamdugan.com/blog/oauth2-production-guide",
     keywords: ["OAuth", "Security", "AWS", "API Integration", "Xero", "QuickBooks", "Microsoft", "KMS"],
     articleSection: "Engineering",

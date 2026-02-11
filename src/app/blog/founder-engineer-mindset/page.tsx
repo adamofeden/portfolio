@@ -26,8 +26,8 @@ export default function Page() {
       name: "Adam Dugan",
       url: "https://adamdugan.com"
     },
-    datePublished: "2026-01-18",
-    dateModified: "2026-01-18",
+    datePublished: "2026-01-16",
+    dateModified: "2026-01-16",
     url: "https://adamdugan.com/blog/founder-engineer-mindset",
     keywords: ["Founder", "Engineer", "Product", "Leadership", "Software Development"],
     articleSection: "Engineering",

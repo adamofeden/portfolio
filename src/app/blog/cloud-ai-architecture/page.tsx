@@ -26,8 +26,8 @@ export default function Page() {
       name: "Adam Dugan",
       url: "https://adamdugan.com"
     },
-    datePublished: "2026-01-16",
-    dateModified: "2026-01-16",
+    datePublished: "2026-01-12",
+    dateModified: "2026-01-12",
     url: "https://adamdugan.com/blog/cloud-ai-architecture",
     keywords: ["AI", "Cloud", "Architecture", "Event-driven", "Data Partitioning", "Encryption Boundaries", "Observability"],
     articleSection: "Engineering",
