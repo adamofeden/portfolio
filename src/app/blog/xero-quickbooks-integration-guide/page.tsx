@@ -27,8 +27,8 @@ export default function Page() {
       name: "Adam Dugan",
       url: "https://adamdugan.com"
     },
-    datePublished: "2026-01-20",
-    dateModified: "2026-01-20",
+    datePublished: "2026-01-23",
+    dateModified: "2026-01-23",
     url: "https://adamdugan.com/blog/xero-quickbooks-integration-guide",
     keywords: ["Xero", "QuickBooks", "Accounting", "API Integration", "OAuth", "AWS", "System Architecture"],
     articleSection: "Engineering",
@@ -86,6 +86,10 @@ export default function Page() {
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
           Integrating with Xero and QuickBooks: A Developer&apos;s Guide to Accounting APIs
         </h1>
+
+        <p className="mt-2 text-sm text-black/60 dark:text-white/60">
+          Adam Dugan • January 23, 2026
+        </p>
 
         <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
           When I started building <em>BalancingIQ</em>, I thought integrating with accounting 
@@ -205,43 +209,43 @@ export default function Page() {
               label: "JavaScript",
               language: "javascript",
               code: `// Encrypt before storing
-  const encrypted = await kms.encrypt({
-    KeyId: process.env.KMS_KEY_ID,
-    Plaintext: Buffer.from(JSON.stringify(tokens)),
-    EncryptionContext: { orgId: organization.id }
-  });
+const encrypted = await kms.encrypt({
+  KeyId: process.env.KMS_KEY_ID,
+  Plaintext: Buffer.from(JSON.stringify(tokens)),
+  EncryptionContext: { orgId: organization.id }
+});
 
-  await db.put({
-    orgId: organization.id,
-    encryptedTokens: encrypted.CiphertextBlob,
-    provider: 'xero', // or 'quickbooks'
-    expiresAt: new Date(Date.now() + 30 * 60 * 1000) // 30 min
-  });`
+await db.put({
+  orgId: organization.id,
+  encryptedTokens: encrypted.CiphertextBlob,
+  provider: 'xero', // or 'quickbooks'
+  expiresAt: new Date(Date.now() + 30 * 60 * 1000) // 30 min
+});`
             },
             {
               label: "Python",
               language: "python",
               code: `# Encrypt before storing
-  import boto3
-  import json
-  from datetime import datetime, timedelta
+import boto3
+import json
+from datetime import datetime, timedelta
 
-  kms_client = boto3.client('kms')
+kms_client = boto3.client('kms')
 
-  encrypted = kms_client.encrypt(
-      KeyId=os.environ['KMS_KEY_ID'],
-      Plaintext=json.dumps(tokens).encode('utf-8'),
-      EncryptionContext={'orgId': organization.id}
-  )
+encrypted = kms_client.encrypt(
+    KeyId=os.environ['KMS_KEY_ID'],
+    Plaintext=json.dumps(tokens).encode('utf-8'),
+    EncryptionContext={'orgId': organization.id}
+)
 
-  await db.put_item(
-      Item={
-          'orgId': organization.id,
-          'encryptedTokens': encrypted['CiphertextBlob'],
-          'provider': 'xero',  # or 'quickbooks'
-          'expiresAt': datetime.now() + timedelta(minutes=30)
-      }
-  )`
+await db.put_item(
+    Item={
+        'orgId': organization.id,
+        'encryptedTokens': encrypted['CiphertextBlob'],
+        'provider': 'xero',  # or 'quickbooks'
+        'expiresAt': datetime.now() + timedelta(minutes=30)
+    }
+)`
             }
           ]}
         />
@@ -260,34 +264,34 @@ export default function Page() {
               label: "JavaScript",
               language: "javascript",
               code: `// Scheduled Lambda that runs every 15 minutes
-  const tokensExpiringSoon = await db.query({
-    IndexName: 'expiresAt-index',
-    KeyConditionExpression: 'expiresAt < :soon',
-    ExpressionAttributeValues: {
-      ':soon': Date.now() + 10 * 60 * 1000 // 10 min buffer
-    }
-  });
+const tokensExpiringSoon = await db.query({
+  IndexName: 'expiresAt-index',
+  KeyConditionExpression: 'expiresAt < :soon',
+  ExpressionAttributeValues: {
+    ':soon': Date.now() + 10 * 60 * 1000 // 10 min buffer
+  }
+});
 
-  for (const record of tokensExpiringSoon) {
-    await refreshTokens(record.orgId, record.provider);
-  }`
+for (const record of tokensExpiringSoon) {
+  await refreshTokens(record.orgId, record.provider);
+}`
             },
             {
               label: "Python",
               language: "python",
               code: `# Scheduled Lambda that runs every 15 minutes
-  from datetime import datetime, timedelta
+from datetime import datetime, timedelta
 
-  tokens_expiring_soon = await db.query(
-      IndexName='expiresAt-index',
-      KeyConditionExpression='expiresAt < :soon',
-      ExpressionAttributeValues={
-          ':soon': int((datetime.now() + timedelta(minutes=10)).timestamp() * 1000)
-      }
-  )
+tokens_expiring_soon = await db.query(
+    IndexName='expiresAt-index',
+    KeyConditionExpression='expiresAt < :soon',
+    ExpressionAttributeValues={
+        ':soon': int((datetime.now() + timedelta(minutes=10)).timestamp() * 1000)
+    }
+)
 
-  for record in tokens_expiring_soon['Items']:
-      await refresh_tokens(record['orgId'], record['provider'])`
+for record in tokens_expiring_soon['Items']:
+    await refresh_tokens(record['orgId'], record['provider'])`
             }
           ]}
         />
@@ -319,63 +323,63 @@ export default function Page() {
               label: "TypeScript",
               language: "typescript",
               code: `// Common interface for invoices
-  interface Invoice {
+interface Invoice {
+  id: string;
+  number: string;
+  date: Date;
+  dueDate: Date;
+  customer: {
     id: string;
-    number: string;
-    date: Date;
-    dueDate: Date;
-    customer: {
-      id: string;
-      name: string;
-    };
-    lineItems: {
-      description: string;
-      quantity: number;
-      unitPrice: number;
-      total: number;
-      accountCode: string;
-    }[];
-    subtotal: number;
-    tax: number;
+    name: string;
+  };
+  lineItems: {
+    description: string;
+    quantity: number;
+    unitPrice: number;
     total: number;
-    amountDue: number;
-    status: 'draft' | 'submitted' | 'paid' | 'voided';
-  }`
+    accountCode: string;
+  }[];
+  subtotal: number;
+  tax: number;
+  total: number;
+  amountDue: number;
+  status: 'draft' | 'submitted' | 'paid' | 'voided';
+}`
             },
             {
               label: "Python",
               language: "python",
               code: `# Common interface for invoices
-  from dataclasses import dataclass
-  from datetime import date
-  from typing import List, Literal
+from dataclasses import dataclass
+from datetime import date
+from typing import List, Literal
 
-  @dataclass
-  class LineItem:
-      description: str
-      quantity: float
-      unit_price: float
-      total: float
-      account_code: str
+@dataclass
+class LineItem:
+    description: str
+    quantity: float
+    unit_price: float
+    total: float
+    account_code: str
 
-  @dataclass
-  class Customer:
-      id: str
-      name: str
+@dataclass
+class Customer:
+    id: str
+    name: str
 
-  @dataclass
-  class Invoice:
-      id: str
-      number: str
-      date: date
-      due_date: date
-      customer: Customer
-      line_items: List[LineItem]
-      subtotal: float
-      tax: float
-      total: float
-      amount_due: float
-      status: Literal['draft', 'submitted', 'paid', 'voided']`
+@dataclass
+class Invoice:
+    id: str
+    number: str
+    date: date
+    due_date: date
+    customer: Customer
+    line_items: List[LineItem]
+    subtotal: float
+    tax: float
+    total: float
+    amount_due: float
+    status: Literal['draft', 'submitted', 'paid', 'voided']`
             }
           ]}
         />
@@ -388,101 +392,101 @@ export default function Page() {
               label: "TypeScript",
               language: "typescript",
               code: `class XeroAdapter {
-    async getInvoices(orgId: string): Promise<Invoice[]> {
-      const raw = await xeroClient.invoices.list();
-      return raw.map(this.normalizeInvoice);
-    }
-
-    private normalizeInvoice(xeroInvoice): Invoice {
-      return {
-        id: xeroInvoice.InvoiceID,
-        number: xeroInvoice.InvoiceNumber,
-        date: new Date(xeroInvoice.Date),
-        dueDate: new Date(xeroInvoice.DueDate),
-        customer: {
-          id: xeroInvoice.Contact.ContactID,
-          name: xeroInvoice.Contact.Name
-        },
-        // ... map other fields
-        status: this.normalizeStatus(xeroInvoice.Status)
-      };
-    }
+  async getInvoices(orgId: string): Promise<Invoice[]> {
+    const raw = await xeroClient.invoices.list();
+    return raw.map(this.normalizeInvoice);
   }
 
-  class QuickBooksAdapter {
-    async getInvoices(orgId: string): Promise<Invoice[]> {
-      const raw = await qboClient.query('SELECT * FROM Invoice');
-      return raw.map(this.normalizeInvoice);
-    }
+  private normalizeInvoice(xeroInvoice): Invoice {
+    return {
+      id: xeroInvoice.InvoiceID,
+      number: xeroInvoice.InvoiceNumber,
+      date: new Date(xeroInvoice.Date),
+      dueDate: new Date(xeroInvoice.DueDate),
+      customer: {
+        id: xeroInvoice.Contact.ContactID,
+        name: xeroInvoice.Contact.Name
+      },
+      // ... map other fields
+      status: this.normalizeStatus(xeroInvoice.Status)
+    };
+  }
+}
 
-    private normalizeInvoice(qboInvoice): Invoice {
-      return {
-        id: qboInvoice.Id,
-        number: qboInvoice.DocNumber,
-        date: new Date(qboInvoice.TxnDate),
-        dueDate: new Date(qboInvoice.DueDate),
-        customer: {
-          id: qboInvoice.CustomerRef.value,
-          name: qboInvoice.CustomerRef.name
-        },
-        // ... map other fields
-        status: this.normalizeStatus(qboInvoice.Status)
-      };
-    }
-  }`
+class QuickBooksAdapter {
+  async getInvoices(orgId: string): Promise<Invoice[]> {
+    const raw = await qboClient.query('SELECT * FROM Invoice');
+    return raw.map(this.normalizeInvoice);
+  }
+
+  private normalizeInvoice(qboInvoice): Invoice {
+    return {
+      id: qboInvoice.Id,
+      number: qboInvoice.DocNumber,
+      date: new Date(qboInvoice.TxnDate),
+      dueDate: new Date(qboInvoice.DueDate),
+      customer: {
+        id: qboInvoice.CustomerRef.value,
+        name: qboInvoice.CustomerRef.name
+      },
+      // ... map other fields
+      status: this.normalizeStatus(qboInvoice.Status)
+    };
+  }
+}`
             },
             {
               label: "Python",
               language: "python",
               code: `from abc import ABC, abstractmethod
-  from typing import List
+from typing import List
 
-  class AccountingAdapter(ABC):
-      @abstractmethod
-      async def get_invoices(self, org_id: str) -> List[Invoice]:
-          pass
-      
-      @abstractmethod
-      def normalize_invoice(self, raw_invoice) -> Invoice:
-          pass
+class AccountingAdapter(ABC):
+    @abstractmethod
+    async def get_invoices(self, org_id: str) -> List[Invoice]:
+        pass
+    
+    @abstractmethod
+    def normalize_invoice(self, raw_invoice) -> Invoice:
+        pass
 
-  class XeroAdapter(AccountingAdapter):
-      async def get_invoices(self, org_id: str) -> List[Invoice]:
-          raw = await self.xero_client.invoices.list()
-          return [self.normalize_invoice(inv) for inv in raw]
-      
-      def normalize_invoice(self, xero_invoice) -> Invoice:
-          return Invoice(
-              id=xero_invoice['InvoiceID'],
-              number=xero_invoice['InvoiceNumber'],
-              date=datetime.fromisoformat(xero_invoice['Date']).date(),
-              due_date=datetime.fromisoformat(xero_invoice['DueDate']).date(),
-              customer=Customer(
-                  id=xero_invoice['Contact']['ContactID'],
-                  name=xero_invoice['Contact']['Name']
-              ),
-              # ... map other fields
-              status=self.normalize_status(xero_invoice['Status'])
-          )
+class XeroAdapter(AccountingAdapter):
+    async def get_invoices(self, org_id: str) -> List[Invoice]:
+        raw = await self.xero_client.invoices.list()
+        return [self.normalize_invoice(inv) for inv in raw]
+    
+    def normalize_invoice(self, xero_invoice) -> Invoice:
+        return Invoice(
+            id=xero_invoice['InvoiceID'],
+            number=xero_invoice['InvoiceNumber'],
+            date=datetime.fromisoformat(xero_invoice['Date']).date(),
+            due_date=datetime.fromisoformat(xero_invoice['DueDate']).date(),
+            customer=Customer(
+                id=xero_invoice['Contact']['ContactID'],
+                name=xero_invoice['Contact']['Name']
+            ),
+            # ... map other fields
+            status=self.normalize_status(xero_invoice['Status'])
+        )
 
-  class QuickBooksAdapter(AccountingAdapter):
-      async def get_invoices(self, org_id: str) -> List[Invoice]:
-          raw = await self.qbo_client.query('SELECT * FROM Invoice')
-          return [self.normalize_invoice(inv) for inv in raw]
-      
-      def normalize_invoice(self, qbo_invoice) -> Invoice:
-          return Invoice(
-              id=qbo_invoice['Id'],
-              number=qbo_invoice['DocNumber'],
-              date=datetime.strptime(qbo_invoice['TxnDate'], '%Y-%m-%d').date(),
-              due_date=datetime.strptime(qbo_invoice['DueDate'], '%Y-%m-%d').date(),
-              customer=Customer(
-                  id=qbo_invoice['CustomerRef']['value'],
-                  name=qbo_invoice['CustomerRef']['name']
-              ),
-              # ... map other fields
-              status=self.normalize_status(qbo_invoice['Status'])
-          )`
+class QuickBooksAdapter(AccountingAdapter):
+    async def get_invoices(self, org_id: str) -> List[Invoice]:
+        raw = await self.qbo_client.query('SELECT * FROM Invoice')
+        return [self.normalize_invoice(inv) for inv in raw]
+    
+    def normalize_invoice(self, qbo_invoice) -> Invoice:
+        return Invoice(
+            id=qbo_invoice['Id'],
+            number=qbo_invoice['DocNumber'],
+            date=datetime.strptime(qbo_invoice['TxnDate'], '%Y-%m-%d').date(),
+            due_date=datetime.strptime(qbo_invoice['DueDate'], '%Y-%m-%d').date(),
+            customer=Customer(
+                id=qbo_invoice['CustomerRef']['value'],
+                name=qbo_invoice['CustomerRef']['name']
+            ),
+            # ... map other fields
+            status=self.normalize_status(qbo_invoice['Status'])
+        )`
             }
           ]}
         />
@@ -495,35 +499,35 @@ export default function Page() {
               label: "TypeScript",
               language: "typescript",
               code: `function getAccountingAdapter(provider: 'xero' | 'quickbooks') {
-    switch (provider) {
-      case 'xero':
-        return new XeroAdapter();
-      case 'quickbooks':
-        return new QuickBooksAdapter();
-      default:
-        throw new Error(\`Unknown provider: \${provider}\`);
-    }
+  switch (provider) {
+    case 'xero':
+      return new XeroAdapter();
+    case 'quickbooks':
+      return new QuickBooksAdapter();
+    default:
+      throw new Error(\`Unknown provider: \${provider}\`);
   }
+}
 
-  // Usage
-  const adapter = getAccountingAdapter(org.provider);
-  const invoices = await adapter.getInvoices(org.id);`
+// Usage
+const adapter = getAccountingAdapter(org.provider);
+const invoices = await adapter.getInvoices(org.id);`
             },
             {
               label: "Python",
               language: "python",
               code: `def get_accounting_adapter(provider: Literal['xero', 'quickbooks']) -> AccountingAdapter:
-      match provider:
-          case 'xero':
-              return XeroAdapter()
-          case 'quickbooks':
-              return QuickBooksAdapter()
-          case _:
-              raise ValueError(f'Unknown provider: {provider}')
+    match provider:
+        case 'xero':
+            return XeroAdapter()
+        case 'quickbooks':
+            return QuickBooksAdapter()
+        case _:
+            raise ValueError(f'Unknown provider: {provider}')
 
-  # Usage
-  adapter = get_accounting_adapter(org.provider)
-  invoices = await adapter.get_invoices(org.id)`
+# Usage
+adapter = get_accounting_adapter(org.provider)
+invoices = await adapter.get_invoices(org.id)`
             }
           ]}
         />
@@ -546,36 +550,36 @@ export default function Page() {
               label: "JavaScript",
               language: "javascript",
               code: `async function fetchWithRetry(fn, maxRetries = 3) {
-    for (let i = 0; i < maxRetries; i++) {
-      try {
-        return await fn();
-      } catch (error) {
-        if (error.statusCode === 429 && i < maxRetries - 1) {
-          const delay = Math.min(1000 * 2 ** i + Math.random() * 1000, 10000);
-          await sleep(delay);
-          continue;
-        }
-        throw error;
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      return await fn();
+    } catch (error) {
+      if (error.statusCode === 429 && i < maxRetries - 1) {
+        const delay = Math.min(1000 * 2 ** i + Math.random() * 1000, 10000);
+        await sleep(delay);
+        continue;
       }
+      throw error;
     }
-  }`
+  }
+}`
             },
             {
               label: "Python",
               language: "python",
               code: `import asyncio
-  import random
+import random
 
-  async def fetch_with_retry(fn, max_retries=3):
-      for i in range(max_retries):
-          try:
-              return await fn()
-          except Exception as error:
-              if hasattr(error, 'status_code') and error.status_code == 429 and i < max_retries - 1:
-                  delay = min(1000 * (2 ** i) + random.random() * 1000, 10000) / 1000
-                  await asyncio.sleep(delay)
-                  continue
-              raise error`
+async def fetch_with_retry(fn, max_retries=3):
+    for i in range(max_retries):
+        try:
+            return await fn()
+        except Exception as error:
+            if hasattr(error, 'status_code') and error.status_code == 429 and i < max_retries - 1:
+                delay = min(1000 * (2 ** i) + random.random() * 1000, 10000) / 1000
+                await asyncio.sleep(delay)
+                continue
+            raise error`
             }
           ]}
         />
@@ -699,7 +703,8 @@ export default function Page() {
           </p>
         </div>
         <p className="mt-8 text-sm text-black/60 dark:text-white/60 italic text-center">
-          I (Adam Dugan) used LLMs while writing this article.
+          The code examples are directly from my own production code bases. Not generated by LLMs.
+          LLMs were used to help with research and article structure.
         </p>
       </main>
     </>

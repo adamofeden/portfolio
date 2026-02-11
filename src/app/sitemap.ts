@@ -7,15 +7,15 @@ type Post = {
 };
 
 const posts: Post[] = [
-  { slug: "oauth2-production-guide", date: "2026-01-26" },
-  { slug: "llm-action-handler-pattern", date: "2026-01-25" },
-  { slug: "rust-vs-python-backend", date: "2026-01-23" },
-  { slug: "journalism-to-code", date: "2026-01-21" },
-  { slug: "xero-quickbooks-integration-guide", date: "2026-01-20" },
-  { slug: "ai-infrastructure-challenges", date: "2026-01-19" },
-  { slug: "founder-engineer-mindset", date: "2026-01-18" },
-  { slug: "ai-regulated-industries", date: "2026-01-17" },
-  { slug: "cloud-ai-architecture", date: "2026-01-16" },
+  { slug: "oauth2-production-guide", date: "2026-01-30" },
+  { slug: "rust-vs-python-backend", date: "2026-01-28" },
+  { slug: "journalism-to-code", date: "2026-01-26" },
+  { slug: "xero-quickbooks-integration-guide", date: "2026-01-23" },
+  { slug: "ai-infrastructure-challenges", date: "2026-01-21" },
+  { slug: "llm-action-handler-pattern", date: "2026-01-19" },
+  { slug: "founder-engineer-mindset", date: "2026-01-16" },
+  { slug: "ai-regulated-industries", date: "2026-01-14" },
+  { slug: "cloud-ai-architecture", date: "2026-01-12" },
   { slug: "seoaeogeo", date: "2025-10-21" },
 ];
 
