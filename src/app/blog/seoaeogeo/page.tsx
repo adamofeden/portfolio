@@ -189,6 +189,9 @@ export default function Page() {
           shape the next decade of marketing. Whether you call it SEO, AEO, or GEO — the future
           of discovery belongs to those who can optimize for all three.
         </p>
+        <p className="mt-8 text-sm text-black/60 dark:text-white/60 italic text-center">
+          I (Adam Dugan) used LLMs while writing this article.
+        </p>
       </main>
     </>
   );
