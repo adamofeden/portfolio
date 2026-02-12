@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Designing Software That Feels Native: Why Your App Should Speak the Language of Its Industry - Adam Dugan",
   description:
-    "Most software feels like a tech product dropped into an industry. Here's why studying industry tools—their patterns, workflows, and design language—creates software users understand immediately, based on building products for insurance, finance, education, and healthcare.",
+    "Most software feels like a tech product dropped into an industry. Here's why studying industry tools, their patterns, workflows, and design language,creates software users understand immediately, based on building products for insurance, law, finance, and education.",
 };
 
 export default function Page() {
@@ -37,9 +37,9 @@ export default function Page() {
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        I&apos;ve built software for insurance, finance, education, and healthcare. Every time, the 
+        I&apos;ve built software for insurance, finance, education, and law. Every time, the 
         biggest design insight came from studying <strong>the tools that already exist in that 
-        industry</strong> — not to copy them, but to understand the design language users already 
+        industry</strong> in order to understand the design language users already 
         speak.
       </p>
 
@@ -66,7 +66,7 @@ export default function Page() {
       <h3 className="mt-8 text-xl font-semibold">2. Match Established Workflows</h3>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        Industries have workflows that evolved over decades for good reasons — regulations, error 
+        Industries have workflows that evolved over decades for good reasons: regulations, error 
         prevention, collaboration patterns. When building court case filing automation, I didn&apos;t 
         &quot;improve&quot; the process. I matched how court clerks <em>actually</em> work: verify 
         case info → check formatting → validate fees → assign timestamp → generate confirmation. 
@@ -78,16 +78,16 @@ export default function Page() {
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         In financial software, negative numbers appear in parentheses and red: <span className="text-red-600">(2,450.00)</span>. 
         Currency shows two decimal places. Debits and credits appear in separate columns. These 
-        aren&apos;t just aesthetics — they&apos;re <strong>scanning patterns</strong> professionals 
+        aren&apos;t just aesthetics, they&apos;re <strong>scanning patterns</strong> professionals 
         have trained their eyes to recognize.
       </p>
 
       <h3 className="mt-8 text-xl font-semibold">4. Respect Industry Constraints</h3>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        In SOA Assist Pro (healthcare AI), HIPAA compliance shaped the entire UX: visible audit 
-        trails, explicit consent workflows, manual overrides for every AI suggestion, PHI warnings. 
-        Healthcare workers <em>expect</em> these constraints. Software that ignores them feels 
+        In SOA Assist Pro, HIPAA compliance shaped the entire UX: visible audit 
+        trails, explicit consent workflows, manual overrides at every step. 
+        Health insurance agents <em>expect</em> these constraints. Software that ignores them feels 
         unsafe, even if technically compliant.
       </p>
 
@@ -129,7 +129,7 @@ export default function Page() {
         Accountants said it felt like &quot;QuickBooks with intelligence built in.&quot;
       </p>
 
-      <h3 className="mt-8 text-xl font-semibold">SOA Assist Pro: Healthcare AI</h3>
+      <h3 className="mt-8 text-xl font-semibold">SOA Assist Pro: Health Insurance Compliance Automation</h3>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         I used SOAP note structure (Subjective, Objective, Assessment, Plan), visible audit trails, 
@@ -150,7 +150,7 @@ export default function Page() {
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         Industry-native design doesn&apos;t mean copying. It means <strong>innovating within the 
-        design language users already speak</strong>. Like modern architecture in Paris — distinctly 
+        design language users already speak</strong>. Like modern architecture in Paris, distinctly 
         new, but respecting height limits, materials, and street-level design.
       </p>
 
@@ -201,20 +201,20 @@ export default function Page() {
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
         This is the difference between software that <em>works</em> and software that <em>belongs</em>. 
         When an accountant opens BalancingIQ and immediately understands it because it matches 
-        QuickBooks patterns — that&apos;s industry-native design. When healthcare workers see audit 
-        trails and think &quot;these developers understand HIPAA&quot; — that&apos;s industry-native 
+        QuickBooks patterns, that&apos;s industry-native design. When health insurance agents see audit 
+        trails and think &quot;these developers understand HIPAA&quot;, that&apos;s industry-native 
         design.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">How to Get Started</h2>
 
       <ol className="mt-4 list-decimal list-inside space-y-2 text-black/70 dark:text-white/70 ml-4">
-        <li><strong>Inventory incumbent tools</strong> — List the 5-10 most-used tools in your industry</li>
-        <li><strong>Use them yourself</strong> — Sign up, watch tutorials, complete real workflows</li>
-        <li><strong>Talk to power users</strong> — Understand their mental models</li>
-        <li><strong>Document design language</strong> — Terminology, visual patterns, workflow sequences</li>
-        <li><strong>Design within constraints first</strong> — Match patterns, then innovate selectively</li>
-        <li><strong>Test with professionals</strong> — Show prototypes early, watch reactions</li>
+        <li><strong>Inventory incumbent tools:</strong> List the 5-10 most-used tools in your industry</li>
+        <li><strong>Use them yourself:</strong> Sign up, watch tutorials, complete real workflows</li>
+        <li><strong>Talk to power users:</strong> Understand their mental models</li>
+        <li><strong>Document design language:</strong> Terminology, visual patterns, workflow sequences</li>
+        <li><strong>Design within constraints first:</strong> Match patterns, then innovate selectively</li>
+        <li><strong>Test with professionals:</strong> Show prototypes early, watch reactions</li>
       </ol>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
@@ -236,8 +236,8 @@ export default function Page() {
       </p>
 
       <p className="mt-4 text-black/70 dark:text-white/70 leading-relaxed">
-        I&apos;ve built software for insurance, finance, education, healthcare, and legal industries. 
-        Every time, the biggest competitive advantage wasn&apos;t better technology — it was 
+        I&apos;ve built software for insurance, finance, education, and legal industries. 
+        Every time, the biggest competitive advantage wasn&apos;t better technology, it was 
         <strong> designing software that spoke the language of the industry</strong>.
       </p>
 
@@ -248,7 +248,7 @@ export default function Page() {
       <div className="mt-10 p-6 rounded-2xl border border-black/10 dark:border-white/20 bg-gradient-to-br from-indigo-50 to-emerald-50 dark:from-indigo-950/30 dark:to-emerald-950/30">
         <p className="text-sm opacity-90">
           <strong>Building software for a specific industry?</strong> I&apos;ve designed 
-          industry-native products for finance, healthcare, education, and legal sectors. 
+          industry-native products for finance, insurance, education, and legal sectors. 
           If you&apos;re working on domain-specific software, reach out at{' '}
           <a href="mailto:adamdugan6@gmail.com" className="underline underline-offset-2">
             adamdugan6@gmail.com
