@@ -113,12 +113,12 @@ export default function Page() {
       role: "Automation Engineer",
       period: "2023 — Present",
       points: [
-        "Automated Medicare compliance workflows: reduced form processing time by 90% with HIPAA-compliant CRM and encrypted document handling (SOA Assist Pro).",
-        "Built AI-powered financial advisory platform: automated SMB bookkeeping analysis with QuickBooks/Xero integration and LLM driven insights, GDPR compliance (MyBalancingIQ).",
-        "Engineered Python RPA solution: automated court case filing workflows using Selenium and Tkinter for GUI.",
+        "Automated Medicare compliance workflows: reduced form processing time by 90% with HIPAA-compliant CRM and encrypted document handling (SOA Assist Pro: Python, Next.js, TypeScript).",
+        "Built AI-powered financial advisory platform: automated bookkeeping ingestion and analysis with Oauth2 QuickBooks/Xero integration and LLM driven insights, GDPR compliance (MyBalancingIQ: Python, Go, TypeScript).",
+        "Automated deployment pipelines with GitHub Actions and YAML-based CI/CD, reducing deployment time from hours to minutes.",
         "Architected multi-tenant SaaS infrastructure on AWS with CDK-based IaC, Lambda functions, DynamoDB, S3, and KMS encryption.",
         "Developed voice-enabled AI assistant, automating customer service workflows with OpenAI + Twilio integration and Azure Speech Services.",
-        "Automated deployment pipelines with GitHub Actions and YAML-based CI/CD, reducing deployment time from hours to minutes.",
+        "Engineered Python automation solution: automated court case filing workflows using Python, Selenium, and Tkinter for GUI.",
       ],
     },
     {
@@ -126,9 +126,9 @@ export default function Page() {
       role: "Software Engineer",
       period: "2024 — Present",
       points: [
-        "Automated back-office operations: reduced manual processing time by 60% using Python scripts, Azure Serverless Functions, and scheduled workflows.",
-        "Developed real-time conversational AI avatars for VR experiences with OpenAI integrations, ElevenLabs text-to-speech, and Unity character controllers.",
-        "Built avatar generation web app by converting user photos to realistic 3D digital avatars using computer vision and Azure Blob Storage.",
+        "Automated back-office operations: reduced manual processing time by 60% using Python and Azure Serverless Functions.",
+        "Developed real-time conversational AI avatars for VR experiences with OpenAI, ElevenLabs text-to-speech, and Unity character controllers.",
+        "Built avatar generation web app by converting user photos to realistic 3D digital avatars using Azure Functions and Azure Blob Storage.",
         "Led Android/Quest port of a large-scale WebXR project: reduced app size by 70% with APK/OBB packaging, Addressables, SideQuest distribution, and optimized performance for mobile VR hardware.",
         "Designed adaptive UI systems and multi-user networking for educational VR modules using Photon networking, responsive layouts, and session management.",
       ],
@@ -303,8 +303,8 @@ export default function Page() {
             <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight">Automating complex workflows</h1>
             <p className="mt-6 text-base sm:text-lg leading-relaxed text-black/70 dark:text-white/70">
               I specialize in automating complex workflows across education, healthcare, finance, and legal sectors. 
-              My work includes reducing Medicare compliance processing by 90% (SOA Assist Pro), 
-              AI-powered financial analysis platforms (MyBalancingIQ), Python-based RPA systems for 
+              My work includes Medicare compliance processing (SOA Assist Pro: Python, Next.js), 
+              AI-powered financial analysis platforms (MyBalancingIQ: Python, Go, TypeScript), Python-based automation systems for 
               legal case filing, and voice-enabled AI assistants, all built on secure, HIPAA/GDPR-compliant 
               AWS and Azure architectures.
             </p>
