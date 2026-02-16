@@ -116,6 +116,7 @@ export default function Page() {
         "Automated Medicare compliance workflows: reduced form processing time by 90% with HIPAA-compliant CRM and encrypted document handling (SOA Assist Pro: Python, Next.js, TypeScript).",
         "Built AI-powered financial advisory platform: automated bookkeeping ingestion and analysis with Oauth2 QuickBooks/Xero integration and LLM driven insights, GDPR compliance (MyBalancingIQ: Python, Go, TypeScript).",
         "Automated deployment pipelines with GitHub Actions and YAML-based CI/CD, reducing deployment time from hours to minutes.",
+        "Implemented Stripe payment processing for SOA Assist Pro and MyBalancingIQ..",
         "Architected multi-tenant SaaS infrastructure on AWS with CDK-based IaC, Lambda functions, DynamoDB, S3, and KMS encryption.",
         "Developed voice-enabled AI assistant, automating customer service workflows with OpenAI + Twilio integration and Azure Speech Services.",
         "Engineered Python automation solution: automated court case filing workflows using Python, Selenium, and Tkinter for GUI.",
