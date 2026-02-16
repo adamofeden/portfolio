@@ -16,6 +16,13 @@ type Post = {
 };
 
 const posts: Post[] = [
+  /*{
+    slug: "industry-native-design",
+    title: "Designing Software That Feels Native: Why Your App Should Speak the Language of Its Industry",
+    description: "Most software feels like a tech product dropped into an industry. Here's why studying industry tools—their patterns, workflows, and design language—creates software users understand immediately, based on building products for insurance, finance, education, and healthcare.",
+    date: "2026-02-11",
+    tags: ["Product Design", "UX", "Industry Software", "Healthcare", "FinTech", "Education", "Engineering"],
+  },*/
   {
     slug: "llm-cost-comparison",
     title: "The Real Cost of LLMs in Production: A Model Comparison for Finished Products",
