@@ -1,5 +1,6 @@
 import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
 import { chatBot } from '../functions/chatbot/resource';
+import { myGoFunction } from '../functions/my-go-function/resource';
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -37,6 +38,19 @@ const schema = a.schema({
     .returns(a.ref('ChatbotResponse'))
     .handler(a.handler.function(chatBot))
     .authorization((allow) => [allow.guest()]),  // Or adjust based on your auth needs
+
+  askGoFunction: a
+    .query()
+    .arguments({
+      name: a.string().required(),
+    })
+    .returns(a.ref('GoFunctionResponse'))  // Define a custom type for the response
+    .handler(a.handler.function(myGoFunction))
+    .authorization((allow) => [allow.guest()]),
+
+  GoFunctionResponse: a.customType({
+      message: a.string().required(),
+    }),
 });
 
 export type Schema = ClientSchema<typeof schema>;
