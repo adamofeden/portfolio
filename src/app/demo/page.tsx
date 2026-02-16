@@ -138,7 +138,7 @@ export default function DemoPage() {
             {/* Console Info */}
             <div className="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
               <p className="text-sm text-blue-800 dark:text-blue-300">
-                💡 <strong>Tip:</strong> Open your browser's Developer Console (F12) 
+                💡 <strong>Tip:</strong> Open your browser&apos;s Developer Console (F12) 
                 to see detailed logging of the Lambda call lifecycle.
               </p>
             </div>
