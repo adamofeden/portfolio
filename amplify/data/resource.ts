@@ -44,7 +44,7 @@ const schema = a.schema({
   askChatbotGo: a
     .query()
     .arguments({
-      messages: a.json().required(),
+      messages: a.ref('MessageInput').array().required(), //messages: a.json().required(),
       systemPrompt: a.string(),
       initializeSession: a.boolean(),
     })
