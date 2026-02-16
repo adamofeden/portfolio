@@ -77,8 +77,8 @@ export default function Chatbot() {
 
       // Call the GraphQL query
       //const response = await clientRef.current.queries.askChatbot({
-      const response = await client.queries.askChatbot({
-        messages: JSON.stringify(messagesForAPI),
+      const response = await client.queries.askChatbotGo({
+        messages: messagesForAPI,//JSON.stringify(messagesForAPI),
         systemPrompt: SYSTEM_PROMPT,
       });
 
@@ -110,8 +110,8 @@ export default function Chatbot() {
   // Warm Lambda to stop long waiting for cold starts
   const warmLambda = async () => {
     try {
-      await client.queries.askChatbot({
-        messages: JSON.stringify([{ role: "user", content: "Hi" }]), // Minimal message
+      await client.queries.askChatbotGo({
+        messages: [{ role: "user", content: "Hi" }],//JSON.stringify([{ role: "user", content: "Hi" }]), // Minimal message
         systemPrompt: "Reply with one word only.",
         //messages: JSON.stringify([]), // Empty messages
         //initializeSession: true,
