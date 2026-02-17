@@ -111,21 +111,22 @@ export default function Page() {
     {
       company: "Versytech",
       role: "Automation Engineer",
-      period: "2023 — Present",
+      period: "2023 -- Present",
       points: [
+        "Built AI-powered financial advisory platform: used python and typescript to automate bookkeeping ingestion with Oauth2, QuickBooks/Xero, and implemented live LLM driven insights, GDPR compliant (MyBalancingIQ).",
+        "Used Python to engineer data condensing, cleaning, and transformation workflows for AI ready data ingestion.",
         "Automated Medicare compliance workflows: reduced form processing time by 90% with HIPAA-compliant CRM and encrypted document handling (SOA Assist Pro: Python, Next.js, TypeScript).",
-        "Built AI-powered financial advisory platform: automated bookkeeping ingestion and analysis with Oauth2 QuickBooks/Xero integration and LLM driven insights, GDPR compliance (MyBalancingIQ: Python, Go, TypeScript).",
         "Automated deployment pipelines with GitHub Actions and YAML-based CI/CD, reducing deployment time from hours to minutes.",
-        "Implemented Stripe payment processing for SOA Assist Pro and MyBalancingIQ..",
+        "Implemented Stripe payment processing with NoSQL database subscription management.",
         "Architected multi-tenant SaaS infrastructure on AWS with CDK-based IaC, Lambda functions, DynamoDB, S3, and KMS encryption.",
         "Developed voice-enabled AI assistant, automating customer service workflows with OpenAI + Twilio integration and Azure Speech Services.",
-        "Engineered Python automation solution: automated court case filing workflows using Python, Selenium, and Tkinter for GUI.",
+        "Engineered Python automation solution: court case filing workflows using Python, Selenium, and Tkinter.",
       ],
     },
     {
       company: "Intelimmerse LLC",
       role: "Software Engineer",
-      period: "2024 — Present",
+      period: "2024 -- Present (Contract)",
       points: [
         "Automated back-office operations: reduced manual processing time by 60% using Python and Azure Serverless Functions.",
         "Developed real-time conversational AI avatars for VR experiences with OpenAI, ElevenLabs text-to-speech, and Unity character controllers.",
@@ -137,9 +138,9 @@ export default function Page() {
     {
       company: "Language Lab (Acquired)",
       role: "Co-Founder & Lead Engineer",
-      period: "2020 — 2024",
+      period: "2020 -- 2024",
       points: [
-        "Co-founded and engineered a top 3 language learning app on the Meta Quest Store, reached hundreds of thousands of users across 100+ countries, successfully acquired in 2025.",
+        "Co-founded and lead engineering team at Language Lab, a language education app (top 3 on the Meta Quest Store), reached hundreds of thousands of users across 100+ countries, successfully acquired in 2025.",
         "Automated content generation with recursive C# algorithms, produced 1,000+ hours of adaptive, procedurally-generated learning scenarios.",
         "Built scalable backend infrastructure on Azure, PlayFab integration for analytics, real-time leaderboards, in-app purchases, and user progression tracking.",
         "Managed international development team of 10 developers and over 30 translators through product lifecycle, live operations, feature releases, content updates, and platform migrations.",
@@ -148,7 +149,7 @@ export default function Page() {
     {
       company: "Stargrazer Studios",
       role: "Unity/C# Developer",
-      period: "2019 — 2020",
+      period: "2019 -- 2020",
       points: [
         "Developed medieval VR combat game for Oculus Quest from concept to production in 6 months.",
         "Engineered dynamic NPC AI systems, NavMesh pathfinding, state machines, raycasting-based decision trees for realistic enemy behaviors.",
@@ -170,7 +171,7 @@ export default function Page() {
       company: "The Shuler Group INC",
       //role: "Fabrication Engineer & CAD Designer",
       role: "Manufacturing Engineer & CAD Designer",
-      period: "2014 — 2016",
+      period: "2014 -- 2016",
       points: [
         "Designed and manufactured custom surfboards using CAD software and CNC/CAD-driven shaping systems.",
         "Engineered and maintained electrical hot-wire foam cutting systems for precision shaping and repeatability.",
@@ -305,7 +306,7 @@ export default function Page() {
             <p className="mt-6 text-base sm:text-lg leading-relaxed text-black/70 dark:text-white/70">
               I specialize in automating complex workflows across education, healthcare, finance, and legal sectors. 
               My work includes Medicare compliance processing (SOA Assist Pro: Python, Next.js), 
-              AI-powered financial analysis platforms (MyBalancingIQ: Python, Go, TypeScript), Python-based automation systems for 
+              AI-powered financial analysis platforms (MyBalancingIQ: Python, TypeScript), Python-based automation systems for 
               legal case filing, and voice-enabled AI assistants, all built on secure, HIPAA/GDPR-compliant 
               AWS and Azure architectures.
             </p>
