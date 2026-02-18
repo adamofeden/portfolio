@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Blog — Adam Dugan",
+  title: "Blog - Adam Dugan",
   description: "Articles and notes on engineering, AI, and product.",
 };
 
@@ -19,7 +19,7 @@ const posts: Post[] = [
   {
     slug: "industry-native-design",
     title: "Designing Software That Feels Native: Why Your App Should Speak the Language of Its Industry",
-    description: "Most software feels like a tech product dropped into an industry. Here's why studying industry tools—their patterns, workflows, and design language—creates software users understand immediately, based on building products for insurance, finance, education, and healthcare.",
+    description: "Most software feels like a tech product dropped into an industry. Here’s why studying industry tools, patterns, workflows, and design language matters: it creates software users understand right away. I’ve seen this building products for insurance, finance, and education.",
     date: "2026-02-16",
     tags: ["Product Design", "UX", "Industry Software", "Healthcare", "FinTech", "Education", "Engineering"],
   },
@@ -68,7 +68,7 @@ const posts: Post[] = [
   {
     slug: "ai-infrastructure-challenges",
     title: "The Hard Part Isn't the Model: Real Challenges in Production AI Systems",
-    description: "After building multiple AI products, the toughest problems weren't prompts or LLM choice — they were multi-tenant isolation, cost control, explainability, and guardrails. Here's what actually matters.",
+    description: "After building multiple AI products, the toughest problems weren't prompts or LLM choice, they were multi-tenant isolation, cost control, explainability, and guardrails. Here's what actually matters.",
     date: "2026-01-21",
     tags: ["AI", "Infrastructure", "Security", "Multi-tenant", "Cost Optimization"],
   },
